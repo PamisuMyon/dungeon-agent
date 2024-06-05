@@ -1,0 +1,106 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=16 format=3 uid="uid://bjw5urveg6vvv"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ew5f"]
+animation = &"Dualwield_Melee_Attack_Slice"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b63jc"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_th34w"]
+animation = &"Blocking"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y8g5l"]
+animation = &"Running_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l0bs2"]
+animation = &"Death_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3logw"]
+animation = &"1H_Melee_Attack_Stab"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ok4vp"]
+animation = &"1H_Melee_Attack_Slice_Diagonal"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2t3hj"]
+animation = &"1H_Melee_Attack_Chop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yy2sg"]
+animation = &"Dualwield_Melee_Attack_Chop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xhj28"]
+animation = &"2H_Melee_Idle"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_nk656"]
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_j7vdc"]
+input_0/name = "h1_melee_chop"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "h1_melee_dia"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "h1_melee_stab"
+input_2/auto_advance = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_yi4f7"]
+fadein_time = 0.1
+fadeout_time = 0.1
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_g6ogm"]
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "dual_wield"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "blocking"
+input_2/auto_advance = false
+input_2/reset = true
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_8nd8v"]
+xfade_time = 0.2
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "running"
+input_1/auto_advance = false
+input_1/reset = true
+input_2/name = "death"
+input_2/auto_advance = false
+input_2/reset = true
+
+[resource]
+graph_offset = Vector2(-1087.3, -126.497)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_xhj28")
+nodes/Animation/position = Vector2(-752, -336)
+"nodes/Animation 10/node" = SubResource("AnimationNodeAnimation_1ew5f")
+"nodes/Animation 10/position" = Vector2(-848, 832)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_b63jc")
+"nodes/Animation 2/position" = Vector2(-704, -464)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_th34w")
+"nodes/Animation 3/position" = Vector2(-720, -208)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_y8g5l")
+"nodes/Animation 4/position" = Vector2(-736, -48)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_l0bs2")
+"nodes/Animation 5/position" = Vector2(-720, 112)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_3logw")
+"nodes/Animation 6/position" = Vector2(-768, 496)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_ok4vp")
+"nodes/Animation 7/position" = Vector2(-832, 368)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_2t3hj")
+"nodes/Animation 8/position" = Vector2(-768, 256)
+"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_yy2sg")
+"nodes/Animation 9/position" = Vector2(-848, 704)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_nk656")
+nodes/TimeScale/position = Vector2(-560, -48)
+nodes/action/node = SubResource("AnimationNodeTransition_j7vdc")
+nodes/action/position = Vector2(-272, 288)
+nodes/action_shot/node = SubResource("AnimationNodeOneShot_yi4f7")
+nodes/action_shot/position = Vector2(96, 80)
+nodes/idle_variant/node = SubResource("AnimationNodeTransition_g6ogm")
+nodes/idle_variant/position = Vector2(-512, -384)
+nodes/output/position = Vector2(432, 80)
+nodes/state/node = SubResource("AnimationNodeTransition_8nd8v")
+nodes/state/position = Vector2(-272, -96)
+node_connections = [&"TimeScale", 0, &"Animation 4", &"action", 0, &"Animation 8", &"action", 1, &"Animation 7", &"action", 2, &"Animation 6", &"action_shot", 0, &"state", &"action_shot", 1, &"action", &"idle_variant", 0, &"Animation 2", &"idle_variant", 1, &"Animation", &"idle_variant", 2, &"Animation 3", &"output", 0, &"action_shot", &"state", 0, &"idle_variant", &"state", 1, &"TimeScale", &"state", 2, &"Animation 5"]

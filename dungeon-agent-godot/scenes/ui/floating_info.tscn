@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://skck16wkvfo3"]
+
+[ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/OnePx.png" id="1_b867m"]
+[ext_resource type="Script" path="res://src/ui/floating_info.gd" id="1_tws0r"]
+
+[node name="FloatingInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 362.0
+offset_top = 51.0
+offset_right = 388.0
+offset_bottom = 83.0
+script = ExtResource("1_tws0r")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_top = -11.0
+offset_right = 19.0
+offset_bottom = -6.0
+grow_horizontal = 2
+mouse_filter = 2
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_b867m")
+texture_progress = ExtResource("1_b867m")
+tint_under = Color(0.229593, 0.229593, 0.229593, 0.831373)
+tint_progress = Color(0.82, 0.300667, 0.041, 1)
+
+[node name="HoverDummy" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -36.0
+offset_right = 13.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+color = Color(1, 1, 1, 0)

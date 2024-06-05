@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp1v2b2nhs2wm"]
+
+[ext_resource type="PackedScene" uid="uid://yha7373t7a6f" path="res://scenes/servants/base_minion_model.tscn" id="1_blvq0"]
+[ext_resource type="ArrayMesh" uid="uid://bfnoc8xn4aidy" path="res://assets/skeletons/props/Skeleton_Blade.obj" id="2_2d6ip"]
+
+[node name="SkeletonMinionModel" instance=ExtResource("1_blvq0")]
+
+[node name="Skeleton3D" parent="Rig" index="0"]
+bones/1/position = Vector3(0, 0.391553, 0)
+bones/4/rotation = Quaternion(-0.559742, -0.0607449, -0.643726, 0.518282)
+bones/5/rotation = Quaternion(3.71674e-09, -4.59659e-08, -0.495092, 0.86884)
+bones/7/rotation = Quaternion(-0.32112, -0.325785, 0.146008, 0.87717)
+bones/8/rotation = Quaternion(4.06738e-05, 4.06791e-05, -0.706958, 0.707256)
+bones/9/rotation = Quaternion(-0.618079, 0.0806101, 0.617813, 0.479362)
+bones/10/rotation = Quaternion(2.95796e-08, 4.75634e-08, 0.518296, 0.855201)
+bones/12/rotation = Quaternion(-0.319351, 0.300883, -0.227565, 0.869309)
+bones/13/rotation = Quaternion(0.00011424, 0.000134555, 0.706988, 0.707225)
+bones/15/rotation = Quaternion(0.993695, 0.0836757, 0.0736052, 0.0123036)
+bones/16/rotation = Quaternion(0.199195, 6.32515e-08, -1.32384e-07, 0.97996)
+bones/17/rotation = Quaternion(-0.519432, -0.209394, 0.0441948, 0.82728)
+bones/18/rotation = Quaternion(0.000100663, 0.920248, -0.391336, -2.2726e-05)
+bones/19/rotation = Quaternion(0.997262, -0.0295102, 0.0315035, 0.0600507)
+bones/20/rotation = Quaternion(0.276584, -6.32084e-08, 1.94882e-07, 0.96099)
+bones/21/rotation = Quaternion(-0.560408, 0.114497, -0.0088404, 0.820216)
+bones/38/position = Vector3(0.520841, 0.787895, -0.0576373)
+bones/40/position = Vector3(-0.510844, 0.787895, 0.0597369)
+
+[node name="LeftHandAttachment" parent="Rig/Skeleton3D" index="9"]
+transform = Transform3D(-0.000155297, 0.263676, 0.964611, 0.999999, -0.000947773, 0.000420494, 0.00102538, 0.96461, -0.263676, 0.507908, 0.636458, -0.018712)
+
+[node name="RightHandAttachment" parent="Rig/Skeleton3D" index="10"]
+transform = Transform3D(-0.000129192, -0.15075, -0.988571, -0.999999, -0.000789424, 0.000251363, -0.000818677, 0.988571, -0.15075, -0.49121, 0.640754, 0.106427)
+
+[node name="SkeletonBlade" type="MeshInstance3D" parent="Rig/Skeleton3D/RightHandAttachment" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("2_2d6ip")
+skeleton = NodePath("../../../..")
+
+[node name="AnimationTree" parent="." index="2"]
+parameters/TimeScale/scale = 1.2
+parameters/action/transition_request = "h1_melee_chop"

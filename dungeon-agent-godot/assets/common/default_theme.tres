@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c12818w33rh73"]
+
+[ext_resource type="FontVariation" uid="uid://d2jsg5wvwku6" path="res://assets/fonts/default_font.tres" id="1_fq542"]
+
+[resource]
+Button/fonts/font = ExtResource("1_fq542")
+Label/fonts/font = ExtResource("1_fq542")
+RichTextLabel/fonts/bold_font = ExtResource("1_fq542")
+RichTextLabel/fonts/bold_italics_font = ExtResource("1_fq542")
+RichTextLabel/fonts/italics_font = ExtResource("1_fq542")
+RichTextLabel/fonts/mono_font = ExtResource("1_fq542")
+RichTextLabel/fonts/normal_font = ExtResource("1_fq542")

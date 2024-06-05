@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bikjt0k4i0fkt"]
+
+[ext_resource type="PackedScene" uid="uid://5wfosaqai4hm" path="res://scenes/adventurers/base_rogue_hooded_model.tscn" id="1_6mngp"]
+
+[node name="AssasinModel" instance=ExtResource("1_6mngp")]
+
+[node name="Knife_Offhand" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.999999, -9.51134e-08, -6.33434e-08, -7.01685e-08, -5.60721e-07, 0.999999, -2.43372e-08, 0.999999, 5.63844e-07, 0.883132, 1.04926, -1.64386e-05)
+
+[node name="1H_Crossbow" parent="Rig/Skeleton3D" index="1"]
+transform = Transform3D(-5.16915e-07, -4.93464e-08, -0.999999, -0.999999, -5.5946e-07, 4.53893e-07, -4.43668e-07, 1, -1.83453e-07, -0.778504, 1.04926, -0.0103746)
+visible = false
+
+[node name="2H_Crossbow" parent="Rig/Skeleton3D" index="2"]
+transform = Transform3D(-5.16915e-07, -4.93464e-08, -0.999999, -0.999999, -5.5946e-07, 4.53893e-07, -4.43668e-07, 1, -1.83453e-07, -0.778504, 1.04926, -0.0103746)
+visible = false
+
+[node name="2H_Crossbow" parent="Rig/Skeleton3D/2H_Crossbow" index="0"]
+visible = false
+
+[node name="Knife" parent="Rig/Skeleton3D" index="3"]
+transform = Transform3D(0.999999, 9.88405e-08, -4.98676e-07, -4.35653e-07, -8.58306e-07, -0.999999, 3.52662e-08, 1, -7.42514e-07, -0.883132, 1.04926, -1.61464e-05)
+
+[node name="Throwable" parent="Rig/Skeleton3D" index="4"]
+transform = Transform3D(0.999999, 1.13574e-07, -5.12362e-07, -4.49339e-07, -7.39097e-07, -0.999999, 2.05328e-08, 1, -6.23305e-07, -0.883132, 1.04926, 0.18023)
+visible = false
+
+[node name="Rogue_Cape" parent="Rig/Skeleton3D" index="5"]
+transform = Transform3D(1, 1.25214e-21, 0, -1.25214e-21, 1, 7.17465e-43, 0, 0, 1, 0, 1.21587, 0)
+visible = false

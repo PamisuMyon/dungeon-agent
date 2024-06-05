@@ -1,0 +1,41 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Dungeon Chess"
+run/main_scene="res://scenes/playground.tscn"
+config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://assets/common/icon.svg"
+
+[autoload]
+
+Events="*res://src/framework/events.gd"
+App="*res://src/framework/app.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nv.file_system/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_1="default"
+3d_physics/layer_2="environment"
+3d_physics/layer_3="obstacle"
+3d_physics/layer_4="floor"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

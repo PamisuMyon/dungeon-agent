@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://b55ncydxxru4w"]
+
+[ext_resource type="PackedScene" uid="uid://b3pcoyj7nol86" path="res://assets/dungeon/floor_dirt_small_B.gltf" id="1_0vift"]
+[ext_resource type="PackedScene" uid="uid://fg0whr7q4opk" path="res://assets/dungeon/floor_dirt_small_A.gltf" id="2_mpbre"]
+[ext_resource type="PackedScene" uid="uid://dl1ic6fxomduu" path="res://assets/dungeon/floor_dirt_small_C.gltf" id="3_db5vw"]
+[ext_resource type="PackedScene" uid="uid://cigpoikonghu3" path="res://assets/dungeon/floor_dirt_small_D.gltf" id="4_kfhul"]
+[ext_resource type="PackedScene" uid="uid://kqimb7c0qbea" path="res://assets/dungeon/floor_dirt_small_weeds.gltf" id="5_iwr57"]
+[ext_resource type="PackedScene" uid="uid://dnifyweyn0nlf" path="res://assets/dungeon/floor_wood_small.gltf" id="6_h28ay"]
+[ext_resource type="PackedScene" uid="uid://bc4as6p3jbojv" path="res://assets/dungeon/floor_wood_small_dark.gltf" id="7_r32mg"]
+[ext_resource type="PackedScene" uid="uid://1gdhoursfpvm" path="res://assets/custom/floor_tile_small_square.obj" id="8_bjhvq"]
+
+[node name="FloorMeshLibrarySource" type="Node3D"]
+
+[node name="floor_dirt_small_B2" parent="." instance=ExtResource("1_0vift")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0363822, 0, -2.41756)
+
+[node name="floor_dirt_small_A2" parent="." instance=ExtResource("2_mpbre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0336815, 0, -4.72474)
+
+[node name="floor_dirt_small_C2" parent="." instance=ExtResource("3_db5vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44206, 0, -2.47284)
+
+[node name="floor_dirt_small_D2" parent="." instance=ExtResource("4_kfhul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44672, 0, -4.69239)
+
+[node name="floor_dirt_small_weeds2" parent="." instance=ExtResource("5_iwr57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51673, 0, -7.33558)
+
+[node name="floor_wood_small2" parent="." instance=ExtResource("6_h28ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0918205, 0, 2.41746)
+
+[node name="floor_wood_small_dark2" parent="." instance=ExtResource("7_r32mg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71548, 0, 2.59226)
+
+[node name="floor_tile_small_square" parent="." instance=ExtResource("8_bjhvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7227, 0, -2.48453)

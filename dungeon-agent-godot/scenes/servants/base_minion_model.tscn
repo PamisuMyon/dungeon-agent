@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://yha7373t7a6f"]
+
+[ext_resource type="PackedScene" uid="uid://boafmcfgi67sk" path="res://assets/skeletons/Skeleton_Minion.glb" id="1_i8uog"]
+[ext_resource type="Script" path="res://src/framework/character_model.gd" id="2_0o2ks"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://bjw5urveg6vvv" path="res://assets/skeletons/skeleton_blend_tree.tres" id="3_pmlxh"]
+
+[node name="BaseMinionModel" node_paths=PackedStringArray("anim_tree") instance=ExtResource("1_i8uog")]
+script = ExtResource("2_0o2ks")
+anim_tree = NodePath("AnimationTree")
+
+[node name="Skeleton3D" parent="Rig" index="0"]
+bones/1/position = Vector3(0, 0.38777, 0)
+bones/1/rotation = Quaternion(-1.11123e-10, 0.0431578, 2.57241e-09, 0.999068)
+bones/4/rotation = Quaternion(-0.55657, -0.0626671, -0.652278, 0.510722)
+bones/5/rotation = Quaternion(1.85007e-08, -6.02089e-08, -0.48092, 0.876765)
+bones/6/rotation = Quaternion(-9.73784e-11, -2.98437e-10, 0.0266581, 0.999645)
+bones/7/rotation = Quaternion(-0.318484, -0.325875, 0.138356, 0.879336)
+bones/8/rotation = Quaternion(0.00112797, 0.00112794, -0.702954, 0.711234)
+bones/9/rotation = Quaternion(-0.61554, 0.0825661, 0.625398, 0.472409)
+bones/10/rotation = Quaternion(1.73715e-08, 5.92121e-08, 0.504772, 0.863253)
+bones/11/rotation = Quaternion(-9.73784e-11, 2.98437e-10, -0.0266581, 0.999645)
+bones/12/rotation = Quaternion(-0.316804, 0.300252, -0.219947, 0.872415)
+bones/13/rotation = Quaternion(0.00221816, 0.00261266, 0.7048, 0.709398)
+bones/14/rotation = Quaternion(-5.80608e-11, -0.0313417, -1.88012e-09, 0.999509)
+bones/15/rotation = Quaternion(0.993236, 0.0832841, 0.0749178, 0.0305628)
+bones/16/rotation = Quaternion(0.246681, 6.38146e-08, -1.72533e-07, 0.969097)
+bones/17/rotation = Quaternion(-0.54411, -0.207879, 0.0515055, 0.81122)
+bones/18/rotation = Quaternion(6.35259e-05, 0.920214, -0.391414, -1.43259e-05)
+bones/19/rotation = Quaternion(0.99631, -0.0302733, 0.0311402, 0.0740351)
+bones/20/rotation = Quaternion(0.312569, -6.36024e-08, 2.17426e-07, 0.949895)
+bones/21/rotation = Quaternion(-0.57955, 0.114227, -0.011864, 0.806805)
+bones/22/rotation = Quaternion(-8.93489e-05, 0.920222, -0.391398, 2.0291e-05)
+bones/23/rotation = Quaternion(0.707107, -2.29302e-07, -4.60552e-08, 0.707107)
+bones/24/position = Vector3(0.202182, 0.0259903, 0.205181)
+bones/24/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/25/rotation = Quaternion(9.65792e-09, 1.77955e-09, 0.985719, -0.168398)
+bones/26/rotation = Quaternion(-1.04035e-07, 0.391084, 0.920355, -2.9526e-08)
+bones/28/rotation = Quaternion(1, -3.10863e-15, 1.94707e-07, -6.91739e-22)
+bones/30/rotation = Quaternion(0.707107, -3.82385e-08, 1.45009e-07, 0.707107)
+bones/31/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/32/rotation = Quaternion(-5.83589e-09, 6.43837e-10, 0.994809, 0.101756)
+bones/33/rotation = Quaternion(-1.04035e-07, 0.391084, 0.920355, -2.95261e-08)
+bones/38/position = Vector3(0.520841, 0.778509, -0.0576374)
+bones/38/rotation = Quaternion(0.794627, -1.11759e-07, 0.607098, -5.96046e-08)
+bones/40/position = Vector3(-0.510844, 0.778508, 0.0597369)
+bones/40/rotation = Quaternion(-0.758253, -1.52737e-07, 0.651961, -1.11759e-08)
+
+[node name="LeftHandAttachment" type="BoneAttachment3D" parent="Rig/Skeleton3D" index="9"]
+transform = Transform3D(4.08718e-05, 0.262981, 0.9648, 0.999925, -0.011712, 0.00315043, 0.0121285, 0.964729, -0.262962, 0.507594, 0.626352, -0.0195225)
+bone_name = "handslot.l"
+bone_idx = 8
+
+[node name="RightHandAttachment" type="BoneAttachment3D" parent="Rig/Skeleton3D" index="10"]
+transform = Transform3D(0.00155073, -0.156642, -0.987653, -0.999978, -0.00650342, -0.000538323, -0.00633908, 0.987633, -0.156649, -0.491065, 0.630505, 0.105604)
+bone_name = "handslot.r"
+bone_idx = 13
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = ExtResource("3_pmlxh")
+anim_player = NodePath("../AnimationPlayer")
+parameters/action/current_state = "dual_melee_2"
+parameters/action/transition_request = ""
+parameters/action/current_index = 3
+parameters/action_shot/active = false
+parameters/action_shot/internal_active = false
+parameters/action_shot/request = 0
+parameters/idle_variant/current_state = "idle"
+parameters/idle_variant/transition_request = ""
+parameters/idle_variant/current_index = 0
+parameters/state/current_state = "idle"
+parameters/state/transition_request = ""
+parameters/state/current_index = 0

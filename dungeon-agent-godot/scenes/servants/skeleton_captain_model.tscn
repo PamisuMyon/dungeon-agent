@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://nl800ju660ho"]
+
+[ext_resource type="PackedScene" uid="uid://yha7373t7a6f" path="res://scenes/servants/base_minion_model.tscn" id="1_kb833"]
+[ext_resource type="ArrayMesh" uid="uid://uafh68jyabyr" path="res://assets/skeletons/props/Skeleton_Shield_Large_A.obj" id="2_5iwek"]
+[ext_resource type="ArrayMesh" uid="uid://bfnoc8xn4aidy" path="res://assets/skeletons/props/Skeleton_Blade.obj" id="3_diob5"]
+
+[node name="SkeletonCaptainModel" instance=ExtResource("1_kb833")]
+
+[node name="Skeleton3D" parent="Rig" index="0"]
+bones/1/position = Vector3(0, 0.391726, 0)
+bones/1/rotation = Quaternion(-1.11123e-10, 0.0431578, 2.57241e-09, 0.999068)
+bones/4/rotation = Quaternion(-0.559751, -0.0609746, -0.644406, 0.517399)
+bones/5/rotation = Quaternion(3.1148e-08, -4.71968e-08, -0.493996, 0.869464)
+bones/6/rotation = Quaternion(-9.73784e-11, -2.98437e-10, 0.0266581, 0.999645)
+bones/7/rotation = Quaternion(-0.320929, -0.325323, 0.145349, 0.877521)
+bones/8/rotation = Quaternion(6.15149e-05, 6.15048e-05, -0.706881, 0.707332)
+bones/9/rotation = Quaternion(-0.618121, 0.0808241, 0.618394, 0.478522)
+bones/10/rotation = Quaternion(3.25678e-08, 4.09083e-08, 0.517248, 0.855835)
+bones/11/rotation = Quaternion(-9.73784e-11, 2.98437e-10, -0.0266581, 0.999645)
+bones/12/rotation = Quaternion(-0.319159, 0.300486, -0.22697, 0.869672)
+bones/13/rotation = Quaternion(0.000196351, 0.00023127, 0.706903, 0.70731)
+bones/14/rotation = Quaternion(-5.80608e-11, -0.0313417, -1.88012e-09, 0.999509)
+bones/15/rotation = Quaternion(0.993702, 0.0836889, 0.0735708, 0.0118334)
+bones/16/rotation = Quaternion(0.197976, 6.30381e-08, -1.32335e-07, 0.980207)
+bones/17/rotation = Quaternion(-0.518798, -0.209429, 0.0440115, 0.827678)
+bones/18/rotation = Quaternion(0.000104439, 0.920251, -0.391328, -2.35803e-05)
+bones/19/rotation = Quaternion(0.997282, -0.0294923, 0.0315122, 0.0597104)
+bones/20/rotation = Quaternion(0.27571, -6.38093e-08, 1.93498e-07, 0.961241)
+bones/21/rotation = Quaternion(-0.559944, 0.114502, -0.00876818, 0.820534)
+bones/22/rotation = Quaternion(-8.93489e-05, 0.920222, -0.391398, 2.0291e-05)
+bones/23/rotation = Quaternion(0.707107, -2.29302e-07, -4.60552e-08, 0.707107)
+bones/24/position = Vector3(0.202182, 0.0259903, 0.205181)
+bones/24/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/25/rotation = Quaternion(9.65792e-09, 1.77955e-09, 0.985719, -0.168398)
+bones/26/rotation = Quaternion(-1.04035e-07, 0.391084, 0.920355, -2.9526e-08)
+bones/28/rotation = Quaternion(1, -3.10863e-15, 1.94707e-07, -6.91739e-22)
+bones/30/rotation = Quaternion(0.707107, -3.82385e-08, 1.45009e-07, 0.707107)
+bones/31/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/32/rotation = Quaternion(-5.83589e-09, 6.43837e-10, 0.994809, 0.101756)
+bones/33/rotation = Quaternion(-1.04035e-07, 0.391084, 0.920355, -2.95261e-08)
+bones/38/position = Vector3(0.520841, 0.787841, -0.0576373)
+bones/38/rotation = Quaternion(0.794627, -1.11759e-07, 0.607098, -5.96046e-08)
+bones/40/position = Vector3(-0.510844, 0.78784, 0.0597369)
+bones/40/rotation = Quaternion(-0.758253, -1.52737e-07, 0.651961, -1.11759e-08)
+
+[node name="LeftHandAttachment" parent="Rig/Skeleton3D" index="9"]
+transform = Transform3D(1.38258e-07, 0.262863, 0.964832, 0.999999, -0.000638246, 0.000174125, 0.000661769, 0.964832, -0.262863, 0.50776, 0.636043, -0.0185736)
+
+[node name="SkeletonShieldLargeA" type="MeshInstance3D" parent="Rig/Skeleton3D/LeftHandAttachment" index="0"]
+mesh = ExtResource("2_5iwek")
+skeleton = NodePath("../../../..")
+
+[node name="RightHandAttachment" parent="Rig/Skeleton3D" index="10"]
+transform = Transform3D(0.000135947, -0.150492, -0.988611, -0.999999, -0.000575483, -4.95959e-05, -0.000561763, 0.988611, -0.150492, -0.491062, 0.640359, 0.106544)
+
+[node name="SkeletonBlade" type="MeshInstance3D" parent="Rig/Skeleton3D/RightHandAttachment" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("3_diob5")
+skeleton = NodePath("../../../..")
+
+[node name="AnimationTree" parent="." index="2"]
+active = false

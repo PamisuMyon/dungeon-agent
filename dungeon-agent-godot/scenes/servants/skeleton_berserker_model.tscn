@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://55jua3xrm6kx"]
+
+[ext_resource type="PackedScene" uid="uid://b6qsnx1bhpoqw" path="res://scenes/servants/base_skeleton_warrior_model.tscn" id="1_m8lj1"]
+[ext_resource type="ArrayMesh" uid="uid://cen7vmmrgobma" path="res://assets/skeletons/props/Skeleton_Axe.obj" id="2_esrde"]
+
+[node name="SkeletonBerserkerModel" instance=ExtResource("1_m8lj1")]
+
+[node name="Skeleton3D" parent="Rig" index="0"]
+bones/1/position = Vector3(0.00841076, 0.378046, 1.21849e-10)
+bones/1/rotation = Quaternion(0, -1.19209e-07, 0, 1)
+bones/2/rotation = Quaternion(-0.0605995, -0.130282, -0.00797808, 0.989591)
+bones/3/rotation = Quaternion(-2.22045e-16, -3.57567e-09, -2.85747e-10, 1)
+bones/4/position = Vector3(0.248044, 0.110857, 0.0825816)
+bones/4/rotation = Quaternion(-0.577713, -0.249364, -0.73471, 0.253509)
+bones/5/rotation = Quaternion(2.57531e-08, -7.4026e-08, -0.550246, 0.835003)
+bones/7/rotation = Quaternion(-0.195243, -0.672535, -0.0531652, 0.711864)
+bones/9/position = Vector3(-0.176682, 0.111703, 0.0891542)
+bones/9/rotation = Quaternion(-0.248319, 0.341504, 0.842174, 0.335345)
+bones/10/rotation = Quaternion(1.54903e-08, 4.43594e-08, 0.573091, 0.819492)
+bones/12/rotation = Quaternion(-0.234584, 0.22343, -0.113618, 0.939223)
+bones/13/position = Vector3(-8.34829e-10, 0.0961251, -0.0574999)
+bones/13/rotation = Quaternion(0.155711, -0.189455, 0.670289, 0.700409)
+bones/14/rotation = Quaternion(0.0854265, 0.130441, 0.00470451, 0.987758)
+bones/16/rotation = Quaternion(0.993728, 0.0733767, 0.0391868, 0.0747389)
+bones/17/rotation = Quaternion(0.350238, 6.5134e-08, -2.45306e-07, 0.936661)
+bones/18/rotation = Quaternion(-0.592131, -0.213501, 0.0538368, 0.775177)
+bones/19/rotation = Quaternion(4.92663e-05, 0.92016, -0.391541, -1.11104e-05)
+bones/20/rotation = Quaternion(0.991183, -0.0392424, -0.0117463, 0.126008)
+bones/21/rotation = Quaternion(0.389035, -6.29368e-08, 2.68502e-07, 0.921223)
+bones/22/rotation = Quaternion(-0.602857, 0.112087, -0.0280757, 0.789437)
+bones/23/rotation = Quaternion(-2.55501e-05, 0.920165, -0.391531, 5.95206e-06)
+bones/25/position = Vector3(0.170945, 0.0259903, 0.245789)
+bones/25/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/26/position = Vector3(0.0308395, 0.382458, -2.86687e-15)
+bones/26/rotation = Quaternion(1.00138e-08, 1.91522e-09, 0.984639, -0.174603)
+bones/38/position = Vector3(0.839842, 0.719866, -0.447558)
+bones/39/position = Vector3(0.339729, 0.818401, 0.412805)
+bones/39/rotation = Quaternion(0.611846, 0.0640472, 0.465299, 0.636427)
+bones/40/position = Vector3(-0.87741, 1.03555, -0.447559)
+bones/41/position = Vector3(-0.335004, 0.82588, 0.274458)
+bones/41/rotation = Quaternion(-0.330753, 0.224688, 0.90319, -0.156094)
+
+[node name="Skeleton_Warrior_Helmet" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(1, -2.98023e-08, -5.81145e-07, -1.49012e-08, 0.998739, -0.050199, 5.66244e-07, 0.050199, 0.998739, 0.0287416, 1.18348, -0.0771585)
+
+[node name="RightHandAttachment" parent="Rig/Skeleton3D" index="10"]
+transform = Transform3D(-0.22092, 0.761971, -0.608764, -0.617507, 0.373857, 0.692037, 0.754903, 0.528801, 0.38793, -0.277306, 0.691313, 0.348753)
+
+[node name="SkeletonAxe" type="MeshInstance3D" parent="Rig/Skeleton3D/RightHandAttachment" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("2_esrde")
+skeleton = NodePath("../../../..")

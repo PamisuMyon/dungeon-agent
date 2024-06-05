@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgjud7y7587v0"]
+
+[ext_resource type="PackedScene" uid="uid://b1orbla0kfvgo" path="res://scenes/adventurers/base_barbarian_model.tscn" id="1_plkld"]
+
+[node name="BarbarianModel" instance=ExtResource("1_plkld")]
+
+[node name="Skeleton3D" parent="Rig" index="0"]
+bones/1/position = Vector3(0, 0.37734, 0)
+bones/1/rotation = Quaternion(-1.11123e-10, 0.0431578, 2.57241e-09, 0.999068)
+bones/4/rotation = Quaternion(-0.551637, -0.0622938, -0.655895, 0.511485)
+bones/5/rotation = Quaternion(1.56661e-08, -5.51791e-08, -0.478912, 0.877863)
+bones/7/rotation = Quaternion(-0.316831, -0.330529, 0.134975, 0.878721)
+bones/8/rotation = Quaternion(0.00165629, 0.00165629, -0.700999, 0.713158)
+bones/11/rotation = Quaternion(-0.611107, 0.0824484, 0.628931, 0.473494)
+bones/12/rotation = Quaternion(2.82728e-08, 4.71707e-08, 0.502859, 0.864369)
+bones/14/rotation = Quaternion(-0.315504, 0.304766, -0.216722, 0.872128)
+bones/15/rotation = Quaternion(0.00432694, 0.0050965, 0.702592, 0.711561)
+bones/19/rotation = Quaternion(-5.80608e-11, -0.0313417, -1.88012e-09, 0.999509)
+bones/22/rotation = Quaternion(0.991346, 0.083223, 0.0773415, 0.0657708)
+bones/23/rotation = Quaternion(0.338837, 5.87914e-08, -2.40596e-07, 0.940845)
+bones/24/rotation = Quaternion(-0.592075, -0.203978, 0.0666991, 0.776783)
+bones/25/rotation = Quaternion(-3.04791e-08, 0.920355, -0.391084, 6.94848e-08)
+bones/26/rotation = Quaternion(0.993617, -0.03207, 0.0303399, 0.103808)
+bones/27/rotation = Quaternion(0.389404, -6.07648e-08, 2.72397e-07, 0.921067)
+bones/28/rotation = Quaternion(-0.620637, 0.113329, -0.0186657, 0.77564)
+bones/29/rotation = Quaternion(3.04791e-08, 0.920355, -0.391084, -6.94849e-08)
+bones/30/rotation = Quaternion(0.707107, -2.29302e-07, -4.60552e-08, 0.707107)
+bones/31/position = Vector3(0.202182, 0.0259903, 0.205181)
+bones/31/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/32/rotation = Quaternion(9.65792e-09, 1.77955e-09, 0.985719, -0.168398)
+bones/33/rotation = Quaternion(-1.04035e-07, 0.391084, 0.920355, -2.9526e-08)
+bones/35/rotation = Quaternion(1, -3.10863e-15, 1.94707e-07, -6.91739e-22)
+bones/37/rotation = Quaternion(0.707107, -3.82385e-08, 1.45009e-07, 0.707107)
+bones/38/rotation = Quaternion(-0.707107, -7.05285e-08, -7.05285e-08, 0.707107)
+bones/39/rotation = Quaternion(-5.83589e-09, 6.43837e-10, 0.994809, 0.101756)
+bones/40/rotation = Quaternion(-1.04035e-07, 0.391084, 0.920355, -2.95261e-08)
+bones/44/rotation = Quaternion(-0.707107, -7.27951e-08, -7.27951e-08, 0.707107)
+bones/45/position = Vector3(0.520841, 0.767886, -0.0576374)
+bones/45/rotation = Quaternion(0.794627, -1.11759e-07, 0.607098, -5.96046e-08)
+bones/46/rotation = Quaternion(-0.707107, -7.27951e-08, -7.27951e-08, 0.707107)
+bones/47/position = Vector3(-0.510844, 0.767885, 0.0597369)
+bones/47/rotation = Quaternion(-0.758253, -1.52737e-07, 0.651961, -1.11759e-08)
+
+[node name="1H_Axe_Offhand" parent="Rig/Skeleton3D" index="0"]
+transform = Transform3D(1.23236e-05, 0.26286, 0.964834, 0.99984, -0.0172124, 0.0046768, 0.0178367, 0.96468, -0.262818, 0.5161, 0.614276, 0.0123481)
+visible = true
+
+[node name="Barbarian_Round_Shield" parent="Rig/Skeleton3D" index="1"]
+transform = Transform3D(1.21121e-05, 0.262859, 0.964834, 0.99984, -0.0172149, 0.00467771, 0.0178394, 0.96468, -0.262818, 0.66222, 0.615286, -0.0443429)
+
+[node name="1H_Axe" parent="Rig/Skeleton3D" index="2"]
+transform = Transform3D(-0.00305909, -0.16304, 0.986614, 0.999918, -0.0126883, 0.00100322, 0.012355, 0.986537, 0.163066, -0.496276, 0.618544, 0.138223)
+visible = true
+
+[node name="2H_Axe" parent="Rig/Skeleton3D" index="3"]
+transform = Transform3D(-0.00305909, -0.16304, 0.986614, 0.999918, -0.0126883, 0.00100322, 0.012355, 0.986537, 0.163066, -0.496276, 0.618544, 0.138223)
+visible = false
+
+[node name="Mug" parent="Rig/Skeleton3D" index="4"]
+transform = Transform3D(-0.00305909, -0.16304, 0.986614, 0.999918, -0.0126883, 0.00100322, 0.012355, 0.986537, 0.163066, -0.487376, 0.318623, 0.0862223)
+
+[node name="Barbarian_Hat" parent="Rig/Skeleton3D" index="5"]
+transform = Transform3D(0.99972, -1.40143e-09, 0.0236466, 1.39341e-09, 1, 3.55686e-10, -0.0236466, -3.22637e-10, 0.99972, -7.55726e-09, 1.18755, -1.39052e-07)
+visible = true
+
+[node name="Barbarian_Cape" parent="Rig/Skeleton3D" index="6"]
+transform = Transform3D(0.996275, -5.14962e-09, 0.0862353, 5.13043e-09, 1, 4.44077e-10, -0.0862353, 1.8939e-15, 0.996275, -1.91641e-06, 1.18755, 2.59003e-08)
+
+[node name="AnimationTree" parent="." index="2"]
+parameters/idle_variant/current_state = "idle"
+parameters/idle_variant/current_index = 0
+parameters/state/current_state = "idle"
+parameters/state/current_index = 0
