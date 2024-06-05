@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://jw1balh7eku1"]
 
-[ext_resource type="Script" path="res://src/ui/servant_card.gd" id="1_4rj34"]
+[ext_resource type="Script" path="res://scripts/ui/servant_card.gd" id="1_rybs3"]
 [ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/panel_blue.png" id="1_yjm6t"]
 [ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="2_l1cm4"]
 [ext_resource type="Texture2D" uid="uid://dgw75o8or6oh2" path="res://assets/ui/rect_r8.png" id="4_ng2ec"]
@@ -14,7 +14,7 @@ custom_minimum_size = Vector2(100, 120)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ourua")
-script = ExtResource("1_4rj34")
+script = ExtResource("1_rybs3")
 
 [node name="Body" type="Panel" parent="."]
 layout_mode = 1

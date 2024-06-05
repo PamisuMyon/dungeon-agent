@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://yha7373t7a6f"]
 
 [ext_resource type="PackedScene" uid="uid://boafmcfgi67sk" path="res://assets/skeletons/Skeleton_Minion.glb" id="1_i8uog"]
-[ext_resource type="Script" path="res://src/framework/character_model.gd" id="2_0o2ks"]
+[ext_resource type="Script" path="res://scripts/framework/character_model.gd" id="2_0o2ks"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://bjw5urveg6vvv" path="res://assets/skeletons/skeleton_blend_tree.tres" id="3_pmlxh"]
 
 [node name="BaseMinionModel" node_paths=PackedStringArray("anim_tree") instance=ExtResource("1_i8uog")]

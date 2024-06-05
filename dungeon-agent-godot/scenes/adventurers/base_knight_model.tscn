@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6m7l1jtigbgj"]
 
 [ext_resource type="PackedScene" uid="uid://c4ashr7rnqhre" path="res://assets/adventurers/Knight.glb" id="1_b2x1j"]
-[ext_resource type="Script" path="res://src/framework/character_model.gd" id="2_8wwlq"]
+[ext_resource type="Script" path="res://scripts/framework/character_model.gd" id="2_8wwlq"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://brovcjtlg48rv" path="res://assets/adventurers/adventurer_blend_tree.tres" id="3_e1wwt"]
 
 [node name="BaseKnightModel" node_paths=PackedStringArray("anim_tree") instance=ExtResource("1_b2x1j")]

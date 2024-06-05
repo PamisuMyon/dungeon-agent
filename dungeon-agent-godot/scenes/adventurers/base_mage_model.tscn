@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfx8lqlj473x4"]
 
 [ext_resource type="PackedScene" uid="uid://ciq2ouky31wux" path="res://assets/adventurers/Mage.glb" id="1_8usee"]
-[ext_resource type="Script" path="res://src/framework/character_model.gd" id="2_ajl8a"]
+[ext_resource type="Script" path="res://scripts/framework/character_model.gd" id="2_ajl8a"]
 
 [node name="BaseMageModel" instance=ExtResource("1_8usee")]
 script = ExtResource("2_ajl8a")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckwrfy8vklxcu"]
 
-[ext_resource type="Script" path="res://src/ui/floating_text.gd" id="1_k182g"]
+[ext_resource type="Script" path="res://scripts/ui/floating_text.gd" id="1_5vuw1"]
 [ext_resource type="FontFile" uid="uid://o2q8ve2ao8yg" path="res://assets/fonts/Kenney Blocks.ttf" id="2_x3i56"]
 
 [node name="FloatingText" type="Control"]
@@ -8,7 +8,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1.0
 offset_bottom = 1.0
-script = ExtResource("1_k182g")
+script = ExtResource("1_5vuw1")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

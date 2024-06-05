@@ -1,7 +1,7 @@
 class_name AbilityFactory
 extends Node
 
-const SimpleMeleeAbility = preload("res://src/abilities/simple_melee_ability.gd")
+const SimpleMeleeAbility = preload("res://scripts/abilities/simple_melee_ability.gd")
 
 
 static func create(config: AbilityConfig) -> Ability:

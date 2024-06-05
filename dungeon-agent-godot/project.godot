@@ -17,7 +17,7 @@ config/icon="res://assets/common/icon.svg"
 
 [autoload]
 
-Events="*res://src/framework/events.gd"
+Events="*res://scripts/framework/events.gd"
 App="*res://scenes/app.tscn"
 
 [display]
