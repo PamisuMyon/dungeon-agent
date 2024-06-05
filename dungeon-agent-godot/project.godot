@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Dungeon Chess"
+config/name="Dungeon Agent"
 run/main_scene="res://scenes/playground.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/common/icon.svg"
@@ -22,6 +22,10 @@ App="*res://src/framework/app.gd"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
