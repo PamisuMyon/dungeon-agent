@@ -1,6 +1,7 @@
+class_name ServantCard
 extends Control
 
-signal card_selected
+signal card_selected(index: int, config: CharacterConfig)
 
 enum State {
 	NORMAL, DISABLED, SELECTED
@@ -8,9 +9,12 @@ enum State {
 
 @export var selection_offset_y: float = -20.
 
+var index: int
+var config: CharacterConfig
 var _state = State.NORMAL
 
 @onready var body: Control = $Body
+@onready var icon: TextureRect = $Body/Icon
 @onready var highlight: Control = $Body/HighLight
 @onready var disabled_mask: Control = $Body/DisabledMask
 
@@ -34,8 +38,7 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton \
 	and event.is_pressed() \
 	and event.button_index == MOUSE_BUTTON_LEFT:
-		print("Clicked")
-		pass
+		card_selected.emit(index, config)
 
 
 func _on_mouse_exited():
@@ -43,7 +46,25 @@ func _on_mouse_exited():
 		body.position = Vector2.ZERO
 
 
-func change_state(p_state: State):
+func on_spawn():
+	visible = true
+
+
+func on_release():
+	visible = false
+	config = null
+
+
+func set_data(p_index: int, p_config: CharacterConfig):
+	index = p_index
+	config = p_config
+	if config.icon_path:
+		icon.texture = load(config.icon_path)
+	else:
+		icon.texture = null
+
+
+func change_state(p_state: ServantCard.State):
 	if _state == p_state:
 		return
 	_state = p_state

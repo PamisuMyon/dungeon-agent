@@ -4,6 +4,7 @@ extends Node3D
 @export var include_scene_characters: bool = false # for debug
 @export var floor_grid_map: GridMapNavRegion2D
 
+var data: CombatData
 var ccs: Array[CharacterController]
 var dead_ccs: Array[CharacterController]
 var alive_adventure_count: int
@@ -12,6 +13,12 @@ var is_acting: bool
 
 
 func _ready() -> void:
+	App.combat_controller = self
+	
+	data = CombatData.new()
+	for it in App.config.default_servants:
+		data.servants.push_back(it)
+
 	if include_scene_characters:
 		for node in get_parent().get_children():
 			if node is CharacterController:

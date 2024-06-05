@@ -9,6 +9,7 @@ enum Type {
 @export var id: String
 @export var type: Type = Type.None
 @export var display_name: String
+@export_file("*.png") var icon_path: String
 @export var attack_ability: AbilityConfig
 @export var skill_abilities: Array[AbilityConfig]
 

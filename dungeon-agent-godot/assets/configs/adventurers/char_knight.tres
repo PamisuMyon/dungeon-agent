@@ -34,6 +34,7 @@ script = ExtResource("2_3kukw")
 id = "knight"
 type = 1
 display_name = "Knight"
+icon_path = ""
 attack_ability = SubResource("Resource_j6abl")
 skill_abilities = Array[ExtResource("1_03v61")]([SubResource("Resource_lngl4")])
 max_health = 50.0

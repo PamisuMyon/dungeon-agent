@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ce1glbw1diptj" path="res://assets/ui/panel_red.png" id="3_50q1y"]
 [ext_resource type="Script" path="res://src/ui/character_info_panel.gd" id="3_k55px"]
 [ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/OnePx.png" id="4_7nvct"]
-[ext_resource type="PackedScene" uid="uid://jw1balh7eku1" path="res://scenes/ui/servant_card.tscn" id="7_lq12v"]
+[ext_resource type="Script" path="res://src/ui/servant_bar.gd" id="7_8o8fn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7sji"]
 
@@ -110,7 +110,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ServantBox" type="HBoxContainer" parent="BottomBar"]
+[node name="ServantBar" type="HBoxContainer" parent="BottomBar"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -122,6 +122,4 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 6
 alignment = 1
-
-[node name="ServantCard" parent="BottomBar/ServantBox" instance=ExtResource("7_lq12v")]
-layout_mode = 2
+script = ExtResource("7_8o8fn")

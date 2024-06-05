@@ -54,4 +54,24 @@ func release(node: Node):
 	if max_capacity != -1 and get_capacity() >= max_capacity:
 		print_debug("NodePool release: max capacity reached, freeing instance.")
 		node.queue_free()
+		return
 	available_instances.push_back(node)
+
+
+func release_all_in_use():
+	if in_use_instances.is_empty():
+		return
+	var size = available_instances.size()
+	for i in range(in_use_instances.size() - 1, -1, -1):
+		var it = in_use_instances[i]
+		in_use_instances.remove_at(i)
+
+		if it.has_method("on_release"):
+			it.call("on_release")
+
+		if max_capacity != -1 and size >= max_capacity:
+			print_debug("NodePool release: max capacity reached, freeing instance.")
+			it.queue_free()
+			continue
+		available_instances.push_back(it)
+		size += 1
