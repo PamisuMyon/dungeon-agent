@@ -107,3 +107,13 @@ static func find_nearest_reachable_cell_in_range(region: GridMapNavRegion2D, fro
 # 			neighbors.remove_at(i)
 # 	return neighbors
 
+
+static func hard_look_at_grid_pos(node: Node3D, pos: Vector3, use_model_front: bool = false):
+	var dir = pos - node.global_position
+	dir.y = 0
+	if abs(dir.x) > abs(dir.z):
+		dir.z = 0
+	else:
+		dir.x = 0
+	var target_quat = Basis.looking_at(dir, Vector3.UP, use_model_front).get_rotation_quaternion()
+	node.quaternion = target_quat

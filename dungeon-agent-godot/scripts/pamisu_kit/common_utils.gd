@@ -36,7 +36,7 @@ static func rotate_towards(from: Quaternion, to: Quaternion, max_degrees_delta: 
 static func smooth_look_at_3d(node: Node3D, dir: Vector3, delta: float, speed_degree: float, up: Vector3 = Vector3.UP, use_model_front: bool = false) -> bool:
 	if dir.is_equal_approx(Vector3.ZERO):
 		return true
-	var target_quat = Basis.looking_at(dir, Vector3.UP, use_model_front).get_rotation_quaternion()
+	var target_quat = Basis.looking_at(dir, up, use_model_front).get_rotation_quaternion()
 	var new_quat = rotate_towards(node.quaternion, target_quat, speed_degree * delta)
 	node.quaternion = new_quat
 	return new_quat.is_equal_approx(target_quat)

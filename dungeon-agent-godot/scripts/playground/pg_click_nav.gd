@@ -4,7 +4,6 @@ const RAY_LENGTH := 1000.
 
 @export var grid_map: GridMap
 @export var pawns: Array[Character]
-@export var cam: Camera3D
 @export_flags_3d_physics var collision_mask: int = 1
 
 var _pawn: Node3D
@@ -16,6 +15,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	var cam = get_viewport().get_camera_3d()
 	if event is InputEventMouseButton and event.is_pressed():
 		var mouse_pos = get_viewport().get_mouse_position()
 		var from = cam.project_ray_origin(mouse_pos)

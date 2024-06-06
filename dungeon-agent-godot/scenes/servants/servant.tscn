@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://sg6rni5651gw"]
+
+[ext_resource type="Script" path="res://scripts/characters/monster/monster_controller.gd" id="1_d1t7x"]
+[ext_resource type="Script" path="res://scripts/common/grid_map_nav_agent_2d.gd" id="2_hu83m"]
+[ext_resource type="Script" path="res://scripts/framework/character.gd" id="3_or05t"]
+[ext_resource type="Script" path="res://scripts/framework/attribute_component.gd" id="6_vc807"]
+[ext_resource type="Script" path="res://scripts/framework/ability_component.gd" id="7_7a0xq"]
+[ext_resource type="Script" path="res://scripts/pamisu_kit/fsm/state_machine.gd" id="8_bxvct"]
+[ext_resource type="Script" path="res://scripts/framework/char_states/idle.gd" id="9_3c6im"]
+[ext_resource type="Script" path="res://scripts/framework/char_states/track.gd" id="10_np3l5"]
+[ext_resource type="Script" path="res://scripts/framework/char_states/attack.gd" id="11_knqqh"]
+[ext_resource type="Script" path="res://scripts/framework/char_states/death.gd" id="12_ls1xt"]
+
+[node name="Servant" type="Node3D"]
+script = ExtResource("1_d1t7x")
+
+[node name="Agent" type="Node3D" parent="."]
+script = ExtResource("2_hu83m")
+use_local_as_global = true
+
+[node name="Character" type="Node3D" parent="."]
+script = ExtResource("3_or05t")
+
+[node name="AttributeComponent" type="Node" parent="Character"]
+script = ExtResource("6_vc807")
+
+[node name="AbilityComponent" type="Node" parent="Character"]
+script = ExtResource("7_7a0xq")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("8_bxvct")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("9_3c6im")
+
+[node name="Track" type="Node" parent="StateMachine"]
+script = ExtResource("10_np3l5")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("11_knqqh")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("12_ls1xt")

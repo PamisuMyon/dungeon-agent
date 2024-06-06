@@ -31,7 +31,7 @@ act_post_delay = 0.506
 
 [resource]
 script = ExtResource("2_3kukw")
-scene_path = ""
+scene_path = "res://scenes/adventurers/knight.tscn"
 id = "knight"
 type = 1
 display_name = "Knight"

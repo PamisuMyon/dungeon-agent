@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3cof8mb5rxdd"]
+
+[ext_resource type="Script" path="res://scripts/characters/adventurer/adventurer_controller.gd" id="1_f25b1"]
+[ext_resource type="Script" path="res://scripts/common/grid_map_nav_agent_2d.gd" id="2_5p2l3"]
+[ext_resource type="Script" path="res://scripts/framework/character.gd" id="3_fbskd"]
+[ext_resource type="Script" path="res://scripts/framework/attribute_component.gd" id="5_3hmih"]
+[ext_resource type="Script" path="res://scripts/framework/ability_component.gd" id="6_h8nn0"]
+[ext_resource type="Script" path="res://scripts/pamisu_kit/fsm/state_machine.gd" id="7_g42va"]
+[ext_resource type="Script" path="res://scripts/framework/char_states/idle.gd" id="8_ruc0l"]
+[ext_resource type="Script" path="res://scripts/framework/char_states/track.gd" id="9_tac7k"]
+[ext_resource type="Script" path="res://scripts/framework/char_states/attack.gd" id="10_71mv7"]
+[ext_resource type="Script" path="res://scripts/framework/char_states/death.gd" id="11_32isn"]
+
+[node name="Adventurer" type="Node3D"]
+script = ExtResource("1_f25b1")
+
+[node name="Agent" type="Node3D" parent="."]
+script = ExtResource("2_5p2l3")
+use_local_as_global = true
+
+[node name="Character" type="Node3D" parent="."]
+script = ExtResource("3_fbskd")
+
+[node name="AttributeComponent" type="Node" parent="Character"]
+script = ExtResource("5_3hmih")
+
+[node name="AbilityComponent" type="Node" parent="Character"]
+script = ExtResource("6_h8nn0")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("7_g42va")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("8_ruc0l")
+
+[node name="Track" type="Node" parent="StateMachine"]
+script = ExtResource("9_tac7k")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("10_71mv7")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("11_32isn")

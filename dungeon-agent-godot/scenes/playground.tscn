@@ -1,68 +1,22 @@
-[gd_scene load_steps=36 format=3 uid="uid://bvm1yboj080tv"]
+[gd_scene load_steps=12 format=3 uid="uid://bvm1yboj080tv"]
 
 [ext_resource type="Script" path="res://scripts/combat/combat_controller.gd" id="1_76yev"]
-[ext_resource type="MeshLibrary" uid="uid://b1s5wj6c7bmyr" path="res://scenes/env/floor_mesh_library.tres" id="2_jfwny"]
+[ext_resource type="Resource" uid="uid://mwxy7ml6yy8e" path="res://assets/configs/default_combat_config.tres" id="2_cwmui"]
 [ext_resource type="PackedScene" uid="uid://ifqn0r7alsb0" path="res://scenes/combat/placement_dummy.tscn" id="2_xqny3"]
 [ext_resource type="Material" uid="uid://byolekvd4eh1y" path="res://assets/common/hologram_blue.tres" id="3_l7s4p"]
 [ext_resource type="Material" uid="uid://db6nsqp2r3gff" path="res://assets/common/hologram_red.tres" id="4_6ssjo"]
 [ext_resource type="Script" path="res://scripts/combat/states/embattle.gd" id="4_10hvg"]
-[ext_resource type="Script" path="res://scripts/common/grid_map_nav_region_2d.gd" id="4_41pll"]
-[ext_resource type="MeshLibrary" uid="uid://xy418xoyc6pl" path="res://scenes/env/wall_mesh_library.tres" id="4_fbt6y"]
 [ext_resource type="Script" path="res://scripts/combat/states/battle.gd" id="5_1q0ry"]
-[ext_resource type="PackedScene" uid="uid://d33whwx33ji43" path="res://assets/dungeon/table_long_decorated_A.gltf" id="5_vu111"]
-[ext_resource type="PackedScene" uid="uid://ctgbjt8ct4oal" path="res://assets/dungeon/candle_lit.gltf" id="6_vwopl"]
-[ext_resource type="PackedScene" uid="uid://cl5bnnuvv1ugs" path="res://assets/dungeon/candle_melted.gltf" id="7_qmyje"]
-[ext_resource type="PackedScene" uid="uid://dqjqg7ak7i6tw" path="res://assets/dungeon/candle_thin_lit.gltf" id="8_3xs6j"]
-[ext_resource type="Script" path="res://scripts/common/grid_map_nav_agent_2d.gd" id="10_o8sid"]
-[ext_resource type="Script" path="res://scripts/framework/character.gd" id="11_catvy"]
-[ext_resource type="Script" path="res://scripts/framework/attribute_component.gd" id="14_i01ka"]
-[ext_resource type="Script" path="res://scripts/framework/ability_component.gd" id="15_fxq8b"]
+[ext_resource type="Script" path="res://scripts/combat/states/prepare.gd" id="6_jrr2i"]
+[ext_resource type="Script" path="res://scripts/playground/pg_reloader.gd" id="11_xwev3"]
 [ext_resource type="Script" path="res://scripts/pamisu_kit/fsm/state_machine.gd" id="16_b8u78"]
-[ext_resource type="PackedScene" uid="uid://sg6rni5651gw" path="res://scenes/servants/skeleton_minion.tscn" id="16_kajlk"]
-[ext_resource type="Script" path="res://scripts/framework/char_states/idle.gd" id="17_ti1fb"]
-[ext_resource type="Script" path="res://scripts/framework/char_states/track.gd" id="18_82ec6"]
-[ext_resource type="Script" path="res://scripts/framework/char_states/attack.gd" id="19_s717t"]
-[ext_resource type="Script" path="res://scripts/framework/char_states/death.gd" id="20_1x65v"]
-[ext_resource type="Script" path="res://scripts/characters/adventurer/adventurer_controller.gd" id="21_prhu7"]
-[ext_resource type="Resource" uid="uid://ci2hh014uav7c" path="res://assets/configs/adventurers/char_knight.tres" id="23_hjiat"]
-[ext_resource type="Script" path="res://scripts/playground/pg_click_nav.gd" id="23_lkxcg"]
 [ext_resource type="PackedScene" uid="uid://dpbiahnw3qd13" path="res://scenes/ui/combat_ui.tscn" id="24_02myq"]
-[ext_resource type="PackedScene" uid="uid://2y0q4a06wxkg" path="res://scenes/adventurers/models/knight_model.tscn" id="24_i3trj"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cm3eg"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_ik8sw"]
-sky_material = SubResource("ProceduralSkyMaterial_cm3eg")
-
-[sub_resource type="Environment" id="Environment_pi1oj"]
-background_mode = 2
-sky = SubResource("Sky_ik8sw")
-ambient_light_source = 2
-ambient_light_color = Color(0.7722, 0.85932, 0.99, 1)
-ambient_light_sky_contribution = 0.92
-ambient_light_energy = 0.6
-tonemap_mode = 3
-tonemap_exposure = 0.8
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_f32og"]
-size = Vector3(1.6, 1.6, 1.6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qg3cn"]
-size = Vector3(2, 2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_md022"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_5g2bm"]
 
 [node name="Playground" type="Node3D"]
 
-[node name="CombatController" type="Node3D" parent="." node_paths=PackedStringArray("floor_grid_map")]
-unique_name_in_owner = true
+[node name="CombatController" type="Node3D" parent="."]
 script = ExtResource("1_76yev")
-include_scene_characters = true
-floor_grid_map = NodePath("../FloorGridMap")
+config = ExtResource("2_cwmui")
 
 [node name="PlacementDummy" parent="CombatController" instance=ExtResource("2_xqny3")]
 available_material = ExtResource("3_l7s4p")
@@ -70,6 +24,9 @@ unavailable_material = ExtResource("4_6ssjo")
 
 [node name="StateMachine" type="Node" parent="CombatController"]
 script = ExtResource("16_b8u78")
+
+[node name="Prepare" type="Node" parent="CombatController/StateMachine"]
+script = ExtResource("6_jrr2i")
 
 [node name="Embattle" type="Node" parent="CombatController/StateMachine"]
 script = ExtResource("4_10hvg")
@@ -80,128 +37,5 @@ script = ExtResource("5_1q0ry")
 
 [node name="CombatUI" parent="." instance=ExtResource("24_02myq")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_pi1oj")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.872069, 0.423818, -0.244691, 0, 0.5, 0.866025, 0.489382, -0.755234, 0.436034, 0, 0, 0)
-light_energy = 0.2
-shadow_enabled = true
-shadow_opacity = 0.6
-
-[node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(0.559193, -0.717968, 0.414519, 0, 0.5, 0.866025, -0.829037, -0.484275, 0.279596, 5, 0, 8)
-
-[node name="Arm" type="Node3D" parent="CameraController"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38)
-
-[node name="Camera3D" type="Camera3D" parent="CameraController/Arm"]
-fov = 35.0
-
-[node name="FloorGridMap" type="GridMap" parent="." node_paths=PackedStringArray("agent_cast")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
-mesh_library = ExtResource("2_jfwny")
-cell_size = Vector3(2, 0.15, 2)
-collision_layer = 9
-data = {
-"cells": PackedInt32Array(0, 0, 1048583, 0, 1, 1048583, 0, 2, 7, 1, 0, 7, 1, 1, 7, 1, 2, 7, 1, 3, 7, 1, 4, 7, 0, 4, 7, 0, 3, 7, 2, 4, 7, 3, 3, 7, 3, 2, 7, 3, 1, 7, 2, 0, 7, 2, 1, 7, 2, 2, 7, 2, 3, 7, 1, 5, 7, 0, 5, 7, 0, 6, 7, 3, 6, 7, 2, 6, 7, 1, 6, 7, 2, 5, 7, 3, 0, 7, 3, 4, 7, 3, 5, 7, 4, 0, 7, 4, 1, 7, 4, 2, 7, 4, 3, 7, 4, 6, 7, 4, 5, 7, 4, 4, 7, 0, 7, 7, 1, 7, 7, 2, 7, 7, 3, 7, 7, 4, 7, 7, 0, 8, 7, 1, 8, 7, 2, 8, 7, 3, 8, 7, 4, 8, 7)
-}
-script = ExtResource("4_41pll")
-solid_cells = Array[Vector3i]([Vector3i(2, 0, 6), Vector3i(2, 0, 5)])
-agent_cast = NodePath("AgentCast")
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="AgentCast" type="ShapeCast3D" parent="FloorGridMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5, 17)
-enabled = false
-shape = SubResource("BoxShape3D_f32og")
-target_position = Vector3(0, -5, 0)
-collision_mask = 4
-
-[node name="WallGridMap" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.12, 1)
-mesh_library = ExtResource("4_fbt6y")
-cell_size = Vector3(2, 0.15, 2)
-collision_layer = 5
-data = {
-"cells": PackedInt32Array(65535, 65535, 1048577, 65535, 1, 1048578, 65535, 3, 1048581, 65535, 5, 1048578, 1, 65535, 3, 3, 65535, 0, 65535, 7, 1441792)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="Table" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 12)
-collision_layer = 5
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_qg3cn")
-
-[node name="table_long_decorated_A2" parent="Table" instance=ExtResource("5_vu111")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02976, 0, -0.00286007)
-
-[node name="candle_lit2" parent="Table" instance=ExtResource("6_vwopl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.31404, 1.1858, 1.84254)
-
-[node name="candle_melted2" parent="Table" instance=ExtResource("7_qmyje")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.245386, 1.00241, 1.75112)
-
-[node name="candle_thin_lit2" parent="Table" instance=ExtResource("8_3xs6j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.325584, 1.00241, 1.41241)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.392977, 2.44328, 1.52712)
-light_color = Color(1, 0.889, 0.26, 1)
-light_energy = 1.8
-omni_range = 16.0
-
-[node name="Box" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.42207, 6.40079, -0.344708)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Box"]
-mesh = SubResource("BoxMesh_md022")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Box"]
-shape = SubResource("BoxShape3D_5g2bm")
-
-[node name="SkeletonMinion" parent="." instance=ExtResource("16_kajlk")]
-
-[node name="Knight" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
-script = ExtResource("21_prhu7")
-
-[node name="Agent" type="Node3D" parent="Knight"]
-script = ExtResource("10_o8sid")
-
-[node name="Character" type="Node3D" parent="Knight"]
-script = ExtResource("11_catvy")
-config = ExtResource("23_hjiat")
-
-[node name="Model" parent="Knight/Character" instance=ExtResource("24_i3trj")]
-
-[node name="AttributeComponent" type="Node" parent="Knight/Character"]
-script = ExtResource("14_i01ka")
-
-[node name="AbilityComponent" type="Node" parent="Knight/Character"]
-script = ExtResource("15_fxq8b")
-
-[node name="StateMachine" type="Node" parent="Knight"]
-script = ExtResource("16_b8u78")
-
-[node name="Idle" type="Node" parent="Knight/StateMachine"]
-script = ExtResource("17_ti1fb")
-
-[node name="Track" type="Node" parent="Knight/StateMachine"]
-script = ExtResource("18_82ec6")
-
-[node name="Attack" type="Node" parent="Knight/StateMachine"]
-script = ExtResource("19_s717t")
-
-[node name="Death" type="Node" parent="Knight/StateMachine"]
-script = ExtResource("20_1x65v")
-
-[node name="PgClickNav" type="Node3D" parent="." node_paths=PackedStringArray("grid_map", "cam")]
-script = ExtResource("23_lkxcg")
-grid_map = NodePath("../FloorGridMap")
-cam = NodePath("../CameraController/Arm/Camera3D")
-collision_mask = 8
+[node name="PgReloader" type="Node" parent="."]
+script = ExtResource("11_xwev3")

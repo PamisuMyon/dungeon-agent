@@ -26,7 +26,6 @@ var current_ability: Ability
 @onready var agent: GridMapNavAgent2D = $Agent
 
 
-
 func _ready() -> void:
 	combat_controller = App.combat_controller
 	floor_grid_map = combat_controller.floor_grid_map
@@ -129,7 +128,7 @@ func select_ability():
 func select_target() -> bool:
 	target = null
 	var min_distance = 1000000.
-	for cc in combat_controller.ccs:
+	for cc in combat_controller.character_controllers:
 		if not cc.chara.is_alive():
 			continue
 		if (chara.config.type == CharacterConfig.Type.Adventurer \

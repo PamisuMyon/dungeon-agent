@@ -7,18 +7,16 @@ const RAY_LENGTH := 1000.
 var is_placing: bool
 var _placing_servant_index: int
 var _is_placement_available: bool
-var _cam: Camera3D
+# var _cam: Camera3D
 
 var debug_mouse_pos: Vector3
 var debug_cell_pos: Vector3i
 var debug_cell_world_pos: Vector3i
 
 
-func on_initialize():
-	super.on_initialize()
-	_cam = get_viewport().get_camera_3d()
-
-
+# func on_initialize():
+# 	super.on_initialize()
+# 	_cam = get_viewport().get_camera_3d()
 func on_enter():
 	pass
 
@@ -48,8 +46,8 @@ func on_process(_delta: float):
 			if _is_placement_available:
 				var spawn_pos = world_pos
 				spawn_pos.y = 0
-				p.spawn_character(p.data.servants[_placing_servant_index], spawn_pos)
-				p.data.servants.remove_at(_placing_servant_index)
+				p.spawn_character(p.bb.servants[_placing_servant_index], spawn_pos)
+				p.bb.servants.remove_at(_placing_servant_index)
 				_exit_placing()
 				Events.servant_placed.emit()
 			else:
@@ -64,7 +62,7 @@ func place_servant(index: int):
 		return
 	is_placing = true
 	_placing_servant_index = index
-	var config = p.data.servants[index]
+	var config = p.bb.servants[index]
 	assert(config.model_path, "model_path of config %s is null" % config.id)
 	var model_scene = load(config.model_path) as PackedScene
 	var model = model_scene.instantiate()
@@ -73,9 +71,10 @@ func place_servant(index: int):
 
 
 func _get_mouse_cell_pos() -> Vector3i:
+	var cam = p.stage.cam
 	var mouse_pos = get_viewport().get_mouse_position()
-	var from = _cam.project_ray_origin(mouse_pos)
-	var to = from + _cam.project_ray_normal(mouse_pos) * RAY_LENGTH
+	var from = cam.project_ray_origin(mouse_pos)
+	var to = from + cam.project_ray_normal(mouse_pos) * RAY_LENGTH
 	var space_state = p.get_world_3d().direct_space_state
 	var parameter = PhysicsRayQueryParameters3D.create(from, to, mouse_collision_mask)
 	var result = space_state.intersect_ray(parameter)
