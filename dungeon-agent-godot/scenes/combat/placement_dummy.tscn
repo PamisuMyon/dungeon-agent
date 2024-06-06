@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ifqn0r7alsb0"]
+
+[ext_resource type="Script" path="res://scripts/combat/placement_dummy.gd" id="1_wpxjf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nuwqv"]
+size = Vector3(1.6, 1.6, 1.6)
+
+[node name="PlacementDummy" type="Node3D"]
+script = ExtResource("1_wpxjf")
+
+[node name="ObstacleCast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+enabled = false
+shape = SubResource("BoxShape3D_nuwqv")
+target_position = Vector3(0, -5, 0)
+collision_mask = 4
+
+[node name="ModelRoot" type="Node3D" parent="."]

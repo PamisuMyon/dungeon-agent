@@ -2,7 +2,7 @@ class_name Character
 extends Node3D
 
 @export var config: CharacterConfig
-@export var is_auto_initialize: bool = false
+# @export var is_auto_initialize: bool = false
 
 var attack_ability: Ability
 
@@ -11,9 +11,9 @@ var attack_ability: Ability
 @onready var ability_comp: AbilityComponent = $AbilityComponent
 
 
-func _ready() -> void:
-	if is_auto_initialize:
-		initialize()
+# func _ready() -> void:
+# 	if is_auto_initialize:
+# 		initialize()
 
 
 func initialize():

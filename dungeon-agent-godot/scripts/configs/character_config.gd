@@ -5,11 +5,12 @@ enum Type {
 	None, Adventurer, Servant
 }
 
-
+@export_file("*.tscn") var scene_path: String
 @export var id: String
 @export var type: Type = Type.None
 @export var display_name: String
 @export_file("*.png") var icon_path: String
+@export_file("*.tscn") var model_path: String
 @export var attack_ability: AbilityConfig
 @export var skill_abilities: Array[AbilityConfig]
 

@@ -3,13 +3,16 @@ extends Control
 const ServantCardScene: PackedScene = preload("res://scenes/ui/servant_card.tscn")
 
 var card_pool: NodePool
-var cards: Array[ServantCard] = []
+var cards: Array[ServantCard] = [] # cards in use
+var _selected_index: int = -1
 
 
 func _ready() -> void:
 	card_pool = NodePool.new()
 	card_pool.init_by_scene(self, ServantCardScene)
 	_refresh()
+	Events.servant_placed.connect(_on_servant_placed)
+	Events.servant_place_cancelled.connect(_on_servant_place_cancelled)
 	
 
 func _refresh():
@@ -22,15 +25,33 @@ func _refresh():
 	for i in range(servants.size()):
 		var config = servants[i]
 		var card = card_pool.spawn() as ServantCard
-		card.set_data(i, config)
+		move_child(card, 0)
+		card.set_data(config)
 		card.change_state(ServantCard.State.NORMAL)
 		card.card_selected.connect(_on_card_selected)
 		cards.push_back(card)
 
 
-func _on_card_selected(index: int, config: CharacterConfig):
+func _on_card_selected(card: ServantCard):
 	for i in range(cards.size()):
-		if i == index:
+		if cards[i] == card:
+			_selected_index = i
 			cards[i].change_state(ServantCard.State.SELECTED)
 		else:
 			cards[i].change_state(ServantCard.State.DISABLED)
+	App.combat_controller.place_servant(_selected_index)
+
+
+func _on_servant_placed():
+	var card = cards[_selected_index]
+	cards.remove_at(_selected_index)
+	card_pool.release(card)
+	_selected_index = -1
+	for i in range(cards.size()):
+		cards[i].change_state(ServantCard.State.NORMAL)
+
+
+func _on_servant_place_cancelled():
+	_selected_index = -1
+	for i in range(cards.size()):
+		cards[i].change_state(ServantCard.State.NORMAL)

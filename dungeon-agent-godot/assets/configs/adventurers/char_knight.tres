@@ -31,10 +31,12 @@ act_post_delay = 0.506
 
 [resource]
 script = ExtResource("2_3kukw")
+scene_path = ""
 id = "knight"
 type = 1
 display_name = "Knight"
-icon_path = ""
+icon_path = "res://assets/ui/icons/knight.png"
+model_path = ""
 attack_ability = SubResource("Resource_j6abl")
 skill_abilities = Array[ExtResource("1_03v61")]([SubResource("Resource_lngl4")])
 max_health = 50.0

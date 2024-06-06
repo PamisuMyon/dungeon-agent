@@ -3,6 +3,13 @@ extends Node
 signal req_change_grid_map_solid_cell(pos: Vector2i)
 
 
+#region Combat
+
+signal servant_placed
+
+signal servant_place_cancelled
+#endregion
+
 #region UI
 
 signal req_bind_character_floating_info(chara: Character)

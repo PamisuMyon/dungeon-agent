@@ -1,7 +1,7 @@
 class_name ServantCard
 extends Control
 
-signal card_selected(index: int, config: CharacterConfig)
+signal card_selected(card: ServantCard)
 
 enum State {
 	NORMAL, DISABLED, SELECTED
@@ -38,7 +38,7 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton \
 	and event.is_pressed() \
 	and event.button_index == MOUSE_BUTTON_LEFT:
-		card_selected.emit(index, config)
+		card_selected.emit(self)
 
 
 func _on_mouse_exited():
@@ -55,8 +55,7 @@ func on_release():
 	config = null
 
 
-func set_data(p_index: int, p_config: CharacterConfig):
-	index = p_index
+func set_data(p_config: CharacterConfig):
 	config = p_config
 	if config.icon_path:
 		icon.texture = load(config.icon_path)

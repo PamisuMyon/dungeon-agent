@@ -11,6 +11,8 @@ var next_cell: Vector3i
 var next_cell_pos: Vector3
 var move_points: int
 var attack_points: int
+var floor_grid_map: GridMapNavRegion2D
+var combat_controller: CombatController
 
 #region Blackboard
 var target: CharacterController
@@ -22,13 +24,15 @@ var current_ability: Ability
 @onready var model: CharacterModel = $Character/Model
 @onready var fsm: StateMachine = $StateMachine
 @onready var agent: GridMapNavAgent2D = $Agent
-@onready var floor_grid_map: GridMapNavRegion2D = %FloorGridMap
-@onready var combat_controller: CombatController = %CombatController
+
 
 
 func _ready() -> void:
-	if not chara.is_auto_initialize:
-		chara.initialize()
+	combat_controller = App.combat_controller
+	floor_grid_map = combat_controller.floor_grid_map
+	
+	# if not chara.is_auto_initialize:
+	chara.initialize()
 	chara.attr_comp.health_changed.connect(_on_health_changed)
 
 	agent.region = floor_grid_map

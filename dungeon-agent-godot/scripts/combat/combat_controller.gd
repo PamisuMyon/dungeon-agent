@@ -11,6 +11,9 @@ var alive_adventure_count: int
 var alive_monster_count: int
 var is_acting: bool
 
+@onready var fsm: StateMachine = $StateMachine
+@onready var placement_dummy: PlacementDummy = $PlacementDummy
+
 
 func _ready() -> void:
 	App.combat_controller = self
@@ -23,9 +26,38 @@ func _ready() -> void:
 		for node in get_parent().get_children():
 			if node is CharacterController:
 				ccs.push_back(node)
-	await get_tree().process_frame
-	await get_tree().process_frame
-	_act()
+	
+	fsm.initialize()
+	fsm.change_state("Embattle")
+
+	# await get_tree().process_frame
+	# await get_tree().process_frame
+	# _act()
+
+
+func _process(delta: float) -> void:
+	if fsm.is_initialized:
+		fsm.on_process(delta)
+
+
+func _input(event: InputEvent) -> void:
+	if fsm.is_initialized:
+		fsm.on_input(event)
+
+
+func place_servant(index: int):
+	if fsm.current_state.name != "Embattle":
+		return
+	fsm.current_state.place_servant(index)
+
+
+func spawn_character(config: CharacterConfig, pos: Vector3):
+	assert(config.scene_path, "scene_path of config %s is null" % config.id)
+	var scene = load(config.scene_path) as PackedScene
+	var cc = scene.instantiate() as CharacterController
+	get_parent().add_child(cc)
+	cc.global_position = pos
+	ccs.push_back(cc)
 
 
 func _act():

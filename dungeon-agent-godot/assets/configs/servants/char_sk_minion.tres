@@ -18,10 +18,12 @@ act_post_delay = 0.62
 
 [resource]
 script = ExtResource("2_gaus8")
+scene_path = "res://scenes/servants/skeleton_minion.tscn"
 id = "sk_minion"
 type = 2
 display_name = "Skeleton Minion"
 icon_path = "res://assets/ui/icons/skeleton_minion.png"
+model_path = "res://scenes/servants/skeleton_minion_model.tscn"
 attack_ability = SubResource("Resource_lk3p3")
 skill_abilities = Array[ExtResource("1_l8naa")]([])
 max_health = 50.0
