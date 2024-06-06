@@ -2,8 +2,8 @@
 
 [ext_resource type="MeshLibrary" uid="uid://b1s5wj6c7bmyr" path="res://scenes/env/floor_mesh_library.tres" id="1_o23bu"]
 [ext_resource type="MeshLibrary" uid="uid://xy418xoyc6pl" path="res://scenes/env/wall_mesh_library.tres" id="2_7nyqm"]
-[ext_resource type="PackedScene" uid="uid://b6m7l1jtigbgj" path="res://scenes/adventurers/base_knight_model.tscn" id="3_whbo7"]
-[ext_resource type="PackedScene" uid="uid://yha7373t7a6f" path="res://scenes/servants/base_minion_model.tscn" id="4_5xnbd"]
+[ext_resource type="PackedScene" uid="uid://b6m7l1jtigbgj" path="res://scenes/adventurers/models/base_knight_model.tscn" id="3_whbo7"]
+[ext_resource type="PackedScene" uid="uid://yha7373t7a6f" path="res://scenes/servants/models/base_minion_model.tscn" id="4_5xnbd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lscgo"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdsyr2jllee5t"]
 
-[ext_resource type="PackedScene" uid="uid://b6m7l1jtigbgj" path="res://scenes/adventurers/base_knight_model.tscn" id="1_s7m5c"]
+[ext_resource type="PackedScene" uid="uid://b6m7l1jtigbgj" path="res://scenes/adventurers/models/base_knight_model.tscn" id="1_s7m5c"]
 
 [node name="TheExiledModel" instance=ExtResource("1_s7m5c")]
 

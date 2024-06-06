@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/common/grid_map_nav_agent_2d.gd" id="2_hu83m"]
 [ext_resource type="Script" path="res://scripts/framework/character.gd" id="3_or05t"]
 [ext_resource type="Resource" uid="uid://5le788wx3e14" path="res://assets/configs/servants/char_sk_minion.tres" id="4_furl1"]
-[ext_resource type="PackedScene" uid="uid://dp1v2b2nhs2wm" path="res://scenes/servants/skeleton_minion_model.tscn" id="5_ftek1"]
+[ext_resource type="PackedScene" uid="uid://dp1v2b2nhs2wm" path="res://scenes/servants/models/skeleton_minion_model.tscn" id="5_ftek1"]
 [ext_resource type="Script" path="res://scripts/framework/attribute_component.gd" id="6_vc807"]
 [ext_resource type="Script" path="res://scripts/framework/ability_component.gd" id="7_7a0xq"]
 [ext_resource type="Script" path="res://scripts/pamisu_kit/fsm/state_machine.gd" id="8_bxvct"]

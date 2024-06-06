@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdxp3ct56mqea"]
 
-[ext_resource type="PackedScene" uid="uid://cfx8lqlj473x4" path="res://scenes/adventurers/base_mage_model.tscn" id="1_x3ror"]
+[ext_resource type="PackedScene" uid="uid://cfx8lqlj473x4" path="res://scenes/adventurers/models/base_mage_model.tscn" id="1_x3ror"]
 
 [node name="PriestModel" instance=ExtResource("1_x3ror")]
 

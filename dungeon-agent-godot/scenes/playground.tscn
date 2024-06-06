@@ -27,7 +27,7 @@
 [ext_resource type="Resource" uid="uid://ci2hh014uav7c" path="res://assets/configs/adventurers/char_knight.tres" id="23_hjiat"]
 [ext_resource type="Script" path="res://scripts/playground/pg_click_nav.gd" id="23_lkxcg"]
 [ext_resource type="PackedScene" uid="uid://dpbiahnw3qd13" path="res://scenes/ui/combat_ui.tscn" id="24_02myq"]
-[ext_resource type="PackedScene" uid="uid://2y0q4a06wxkg" path="res://scenes/adventurers/knight_model.tscn" id="24_i3trj"]
+[ext_resource type="PackedScene" uid="uid://2y0q4a06wxkg" path="res://scenes/adventurers/models/knight_model.tscn" id="24_i3trj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cm3eg"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

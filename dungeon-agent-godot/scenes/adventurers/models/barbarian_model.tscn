@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgjud7y7587v0"]
 
-[ext_resource type="PackedScene" uid="uid://b1orbla0kfvgo" path="res://scenes/adventurers/base_barbarian_model.tscn" id="1_plkld"]
+[ext_resource type="PackedScene" uid="uid://b1orbla0kfvgo" path="res://scenes/adventurers/models/base_barbarian_model.tscn" id="1_plkld"]
 
 [node name="BarbarianModel" instance=ExtResource("1_plkld")]
 

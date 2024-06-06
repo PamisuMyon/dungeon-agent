@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://nn0bxlove5e"]
 
-[ext_resource type="PackedScene" uid="uid://bhuj6leth1ajm" path="res://scenes/servants/base_skeleton_mage_model.tscn" id="1_icqeh"]
+[ext_resource type="PackedScene" uid="uid://bhuj6leth1ajm" path="res://scenes/servants/models/base_skeleton_mage_model.tscn" id="1_icqeh"]
 [ext_resource type="ArrayMesh" uid="uid://r0jxo3ikwplr" path="res://assets/skeletons/props/Skeleton_Staff.obj" id="2_n3fco"]
 
 [node name="SkeletonMageModel" instance=ExtResource("1_icqeh")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dp1v2b2nhs2wm"]
 
-[ext_resource type="PackedScene" uid="uid://yha7373t7a6f" path="res://scenes/servants/base_minion_model.tscn" id="1_blvq0"]
+[ext_resource type="PackedScene" uid="uid://yha7373t7a6f" path="res://scenes/servants/models/base_minion_model.tscn" id="1_blvq0"]
 [ext_resource type="ArrayMesh" uid="uid://bfnoc8xn4aidy" path="res://assets/skeletons/props/Skeleton_Blade.obj" id="2_2d6ip"]
 
 [node name="SkeletonMinionModel" instance=ExtResource("1_blvq0")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bikjt0k4i0fkt"]
 
-[ext_resource type="PackedScene" uid="uid://5wfosaqai4hm" path="res://scenes/adventurers/base_rogue_hooded_model.tscn" id="1_6mngp"]
+[ext_resource type="PackedScene" uid="uid://5wfosaqai4hm" path="res://scenes/adventurers/models/base_rogue_hooded_model.tscn" id="1_6mngp"]
 
 [node name="AssasinModel" instance=ExtResource("1_6mngp")]
 

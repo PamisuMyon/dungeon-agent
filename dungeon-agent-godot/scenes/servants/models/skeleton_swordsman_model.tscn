@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://7gk5up3fs6rj"]
 
-[ext_resource type="PackedScene" uid="uid://yha7373t7a6f" path="res://scenes/servants/base_minion_model.tscn" id="1_kk3lk"]
+[ext_resource type="PackedScene" uid="uid://yha7373t7a6f" path="res://scenes/servants/models/base_minion_model.tscn" id="1_kk3lk"]
 [ext_resource type="PackedScene" uid="uid://dyawbs31f3oie" path="res://assets/adventurers/sword_1handed.gltf" id="2_fb1gl"]
 
 [node name="SkeletonSwordsmanModel" instance=ExtResource("1_kk3lk")]

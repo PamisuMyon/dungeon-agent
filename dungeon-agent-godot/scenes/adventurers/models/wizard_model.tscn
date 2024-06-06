@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://gqb7s76qagu6"]
 
-[ext_resource type="PackedScene" uid="uid://cfx8lqlj473x4" path="res://scenes/adventurers/base_mage_model.tscn" id="1_c5d42"]
+[ext_resource type="PackedScene" uid="uid://cfx8lqlj473x4" path="res://scenes/adventurers/models/base_mage_model.tscn" id="1_c5d42"]
 
 [node name="WizardModel" instance=ExtResource("1_c5d42")]
 
