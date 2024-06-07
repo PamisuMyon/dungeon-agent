@@ -18,7 +18,7 @@ var debug_cell_world_pos: Vector3i
 # 	super.on_initialize()
 # 	_cam = get_viewport().get_camera_3d()
 func on_enter():
-	pass
+	Events.combat_state_changed.emit(CombatBlackboard.SubState.EMBATTLE_NONE)
 
 
 func on_exit():
@@ -61,6 +61,7 @@ func place_servant(index: int):
 	if is_placing:
 		return
 	is_placing = true
+	Events.combat_state_changed.emit(CombatBlackboard.SubState.EMBATTLE_PLACING)
 	_placing_servant_index = index
 	var config = p.bb.servants[index]
 	assert(config.model_path, "model_path of config %s is null" % config.id)
@@ -96,3 +97,4 @@ func _exit_placing():
 		_placing_servant_index = -1
 		_is_placement_available = false
 		p.placement_dummy.clear_model()
+		Events.combat_state_changed.emit(CombatBlackboard.SubState.EMBATTLE_NONE)

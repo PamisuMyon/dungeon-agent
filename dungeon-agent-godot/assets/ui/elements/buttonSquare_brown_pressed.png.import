@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5lyoyurka7ph"
-path="res://.godot/imported/panelInset_beige.png-80d014c1bc4325d28b91e5cec6eb6d6e.ctex"
+uid="uid://dqcj34gq0e23u"
+path="res://.godot/imported/buttonSquare_brown_pressed.png-2ae9e43f7047fcca9d0a569ade3ee86e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/panelInset_beige.png"
-dest_files=["res://.godot/imported/panelInset_beige.png-80d014c1bc4325d28b91e5cec6eb6d6e.ctex"]
+source_file="res://assets/ui/elements/buttonSquare_brown_pressed.png"
+dest_files=["res://.godot/imported/buttonSquare_brown_pressed.png-2ae9e43f7047fcca9d0a569ade3ee86e.ctex"]
 
 [params]
 

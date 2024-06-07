@@ -3,7 +3,7 @@ extends Control
 
 signal card_selected(card: ServantCard)
 
-enum State {
+enum CardState {
 	NORMAL, DISABLED, SELECTED
 }
 
@@ -11,7 +11,7 @@ enum State {
 
 var index: int
 var config: CharacterConfig
-var _state = State.NORMAL
+var _state = CardState.NORMAL
 
 @onready var body: Control = $Body
 @onready var icon: TextureRect = $Body/Icon
@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func _on_mouse_entered():
-	if _state == State.NORMAL:
+	if _state == CardState.NORMAL:
 		# TODO Animation
 		var pos = body.position
 		pos.y = selection_offset_y
@@ -33,7 +33,7 @@ func _on_mouse_entered():
 
 
 func _gui_input(event: InputEvent) -> void:
-	if _state != State.NORMAL:
+	if _state != CardState.NORMAL:
 		return
 	if event is InputEventMouseButton \
 	and event.is_pressed() \
@@ -42,7 +42,7 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _on_mouse_exited():
-	if _state == State.NORMAL:
+	if _state == CardState.NORMAL:
 		body.position = Vector2.ZERO
 
 
@@ -63,17 +63,17 @@ func set_data(p_config: CharacterConfig):
 		icon.texture = null
 
 
-func change_state(p_state: ServantCard.State):
+func change_state(p_state: ServantCard.CardState):
 	if _state == p_state:
 		return
 	_state = p_state
-	if _state == State.NORMAL:
+	if _state == CardState.NORMAL:
 		highlight.visible = false
 		disabled_mask.visible = false
 		body.position = Vector2.ZERO
-	elif _state == State.DISABLED:
+	elif _state == CardState.DISABLED:
 		highlight.visible = false
 		disabled_mask.visible = true
 		body.position = Vector2.ZERO
-	elif _state == State.SELECTED:
+	elif _state == CardState.SELECTED:
 		highlight.visible = true

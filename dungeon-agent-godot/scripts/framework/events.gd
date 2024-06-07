@@ -5,9 +5,14 @@ signal req_change_grid_map_solid_cell(pos: Vector2i)
 
 #region Combat
 
+signal combat_state_changed(state: CombatBlackboard.SubState)
+
 signal servant_placed
 
 signal servant_place_cancelled
+
+signal req_next_wave
+
 #endregion
 
 #region UI

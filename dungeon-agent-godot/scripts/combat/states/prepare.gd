@@ -2,6 +2,7 @@ extends CombatState
 
 
 func on_enter():
+	Events.combat_state_changed.emit(CombatBlackboard.SubState.PREPARE)
 	var scene = load(p.bb.level_config.stage_path) as PackedScene
 	p.stage = scene.instantiate()
 	p.get_parent().add_child(p.stage)

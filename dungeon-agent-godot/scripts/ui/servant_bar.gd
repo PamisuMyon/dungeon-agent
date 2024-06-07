@@ -13,7 +13,8 @@ func _ready() -> void:
 	_refresh()
 	Events.servant_placed.connect(_on_servant_placed)
 	Events.servant_place_cancelled.connect(_on_servant_place_cancelled)
-	
+	Events.combat_state_changed.connect(_on_combat_state_changed)
+
 
 func _refresh():
 	for it in cards:
@@ -27,7 +28,7 @@ func _refresh():
 		var card = card_pool.spawn() as ServantCard
 		move_child(card, 0)
 		card.set_data(config)
-		card.change_state(ServantCard.State.NORMAL)
+		card.change_state(ServantCard.CardState.NORMAL)
 		card.card_selected.connect(_on_card_selected)
 		cards.push_back(card)
 
@@ -36,9 +37,9 @@ func _on_card_selected(card: ServantCard):
 	for i in range(cards.size()):
 		if cards[i] == card:
 			_selected_index = i
-			cards[i].change_state(ServantCard.State.SELECTED)
+			cards[i].change_state(ServantCard.CardState.SELECTED)
 		else:
-			cards[i].change_state(ServantCard.State.DISABLED)
+			cards[i].change_state(ServantCard.CardState.DISABLED)
 	App.combat_controller.place_servant(_selected_index)
 
 
@@ -47,11 +48,16 @@ func _on_servant_placed():
 	cards.remove_at(_selected_index)
 	card_pool.release(card)
 	_selected_index = -1
-	for i in range(cards.size()):
-		cards[i].change_state(ServantCard.State.NORMAL)
 
 
 func _on_servant_place_cancelled():
 	_selected_index = -1
-	for i in range(cards.size()):
-		cards[i].change_state(ServantCard.State.NORMAL)
+
+
+func _on_combat_state_changed(state: CombatBlackboard.SubState):
+	if state == CombatBlackboard.SubState.BATTLE:
+		for i in range(cards.size()):
+			cards[i].change_state(ServantCard.CardState.DISABLED)
+	elif state == CombatBlackboard.SubState.EMBATTLE_NONE:
+		for i in range(cards.size()):
+			cards[i].change_state(ServantCard.CardState.NORMAL)

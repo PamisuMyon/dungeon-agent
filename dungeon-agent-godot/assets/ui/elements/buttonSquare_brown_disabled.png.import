@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgw75o8or6oh2"
-path="res://.godot/imported/rect_r8.png-b9e360de7d5c0a2adc4db8b3e80b89c3.ctex"
+uid="uid://blbbexbjt04c4"
+path="res://.godot/imported/buttonSquare_brown_disabled.png-6b21637a565b936adac6f1d77ebcfea3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/rect_r8.png"
-dest_files=["res://.godot/imported/rect_r8.png-b9e360de7d5c0a2adc4db8b3e80b89c3.ctex"]
+source_file="res://assets/ui/elements/buttonSquare_brown_disabled.png"
+dest_files=["res://.godot/imported/buttonSquare_brown_disabled.png-6b21637a565b936adac6f1d77ebcfea3.ctex"]
 
 [params]
 

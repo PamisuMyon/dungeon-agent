@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://b0uoiqfmh2xkq"]
+
+[ext_resource type="Texture2D" uid="uid://dqcj34gq0e23u" path="res://assets/ui/elements/buttonSquare_brown_pressed.png" id="1_iuyfq"]
+
+[resource]
+texture = ExtResource("1_iuyfq")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

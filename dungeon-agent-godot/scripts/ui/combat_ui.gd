@@ -10,6 +10,8 @@ const FloatingTextScene: PackedScene = preload("res://scenes/ui/floating_text.ts
 var _floating_info_pool: NodePool
 var _damage_text_pool: NodePool
 
+@onready var start_button: Button = $StartButton
+
 
 func _ready() -> void:
 	_floating_info_pool = NodePool.new()
@@ -17,12 +19,23 @@ func _ready() -> void:
 	_damage_text_pool = NodePool.new()
 	_damage_text_pool.init_by_scene(self, FloatingTextScene)
 	character_info_panel.hide_info()
+	start_button.pressed.connect(_on_start_button_pressed)
 
+	Events.combat_state_changed.connect(_on_combat_state_changed)
 	Events.req_bind_character_floating_info.connect(_bind_character_floating_info)
 	Events.req_unbind_character_floating_info.connect(_unbind_character_floating_info)
 	Events.req_show_damage_text.connect(_show_damage_text)
 	Events.req_show_character_info_card.connect(_show_character_info_card)
 	Events.req_hide_character_info_card.connect(_hide_character_info_card)
+
+
+func _on_combat_state_changed(state: CombatBlackboard.SubState):
+	if state == CombatBlackboard.SubState.PREPARE \
+	or state == CombatBlackboard.SubState.EMBATTLE_PLACING \
+	or state == CombatBlackboard.SubState.BATTLE:
+		start_button.disabled = true
+	elif state == CombatBlackboard.SubState.EMBATTLE_NONE:
+		start_button.disabled = false
 
 
 func _bind_character_floating_info(chara: Character):
@@ -56,3 +69,7 @@ func _show_character_info_card(chara: Character):
 
 func _hide_character_info_card():
 	character_info_panel.hide_info()
+
+
+func _on_start_button_pressed():
+	Events.req_next_wave.emit()

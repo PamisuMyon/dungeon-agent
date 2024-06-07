@@ -7,6 +7,7 @@ var _is_acting: bool = false
 
 
 func on_enter():
+	Events.combat_state_changed.emit(CombatBlackboard.SubState.EMBATTLE_NONE)
 	pass
 
 

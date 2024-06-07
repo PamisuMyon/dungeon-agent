@@ -27,6 +27,8 @@ func _ready() -> void:
 	fsm.initialize()
 	await get_tree().process_frame
 	_next_level()
+	
+	Events.req_next_wave.connect(_on_req_next_wave)
 
 
 func _process(delta: float) -> void:
@@ -62,3 +64,7 @@ func spawn_character(p_config: CharacterConfig, pos: Vector3) -> CharacterContro
 	floor_grid_map.set_cell_solid(cell_pos, true)
 	bb.char_controllers.push_back(cc)
 	return cc
+
+
+func _on_req_next_wave():
+	pass

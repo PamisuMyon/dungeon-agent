@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://dpbiahnw3qd13"]
 
-[ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/panel_blue.png" id="1_ae8ex"]
-[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/common/default_theme.tres" id="1_yrdo6"]
+[ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/elements/panel_blue.png" id="1_ae8ex"]
+[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_yrdo6"]
 [ext_resource type="Script" path="res://scripts/ui/combat_ui.gd" id="2_ndcfv"]
-[ext_resource type="Texture2D" uid="uid://ce1glbw1diptj" path="res://assets/ui/panel_red.png" id="3_50q1y"]
+[ext_resource type="Texture2D" uid="uid://ce1glbw1diptj" path="res://assets/ui/elements/panel_red.png" id="3_50q1y"]
 [ext_resource type="Script" path="res://scripts/ui/character_info_panel.gd" id="3_k55px"]
-[ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/OnePx.png" id="4_7nvct"]
+[ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="4_7nvct"]
 [ext_resource type="Script" path="res://scripts/ui/servant_bar.gd" id="7_8o8fn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7sji"]
@@ -123,3 +123,19 @@ grow_vertical = 0
 theme_override_constants/separation = 6
 alignment = 1
 script = ExtResource("7_8o8fn")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -298.0
+offset_top = -202.0
+offset_right = -137.0
+offset_bottom = -129.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 34
+text = "Next Wave"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjmm0qdn8cd5k"
-path="res://.godot/imported/panel_beige.png-0c2561c71b5e775174913c731a813cc9.ctex"
+uid="uid://py115i8vots0"
+path="res://.godot/imported/buttonSquare_blue.png-631075255b32404a36d227a00ef600c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/panel_beige.png"
-dest_files=["res://.godot/imported/panel_beige.png-0c2561c71b5e775174913c731a813cc9.ctex"]
+source_file="res://assets/ui/elements/buttonSquare_blue.png"
+dest_files=["res://.godot/imported/buttonSquare_blue.png-631075255b32404a36d227a00ef600c5.ctex"]
 
 [params]
 
