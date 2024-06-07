@@ -45,7 +45,7 @@ func _ready() -> void:
 
 func initialize():
 	if use_local_as_global:
-		_current_cell = region.local_to_map(position)
+		_current_cell = region.local_to_map(global_position)
 	else:
 		_current_cell = region.local_to_map(region.to_local(global_position))
 	if is_self_solid:

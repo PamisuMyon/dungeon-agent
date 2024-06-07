@@ -18,7 +18,7 @@ var debug_cell_world_pos: Vector3i
 # 	super.on_initialize()
 # 	_cam = get_viewport().get_camera_3d()
 func on_enter():
-	Events.combat_state_changed.emit(CombatBlackboard.SubState.EMBATTLE_NONE)
+	p.bb.sub_state = CombatBlackboard.SubState.EMBATTLE_NONE
 
 
 func on_exit():
@@ -44,9 +44,7 @@ func on_process(_delta: float):
 		
 		if Input.is_action_just_pressed("confirm"):
 			if _is_placement_available:
-				var spawn_pos = world_pos
-				spawn_pos.y = 0
-				p.spawn_character(p.bb.servants[_placing_servant_index], spawn_pos)
+				p.spawn_character_at_cell(p.bb.servants[_placing_servant_index], cell_pos)
 				p.bb.servants.remove_at(_placing_servant_index)
 				_exit_placing()
 				Events.servant_placed.emit()
@@ -61,7 +59,7 @@ func place_servant(index: int):
 	if is_placing:
 		return
 	is_placing = true
-	Events.combat_state_changed.emit(CombatBlackboard.SubState.EMBATTLE_PLACING)
+	p.bb.sub_state = CombatBlackboard.SubState.EMBATTLE_PLACING
 	_placing_servant_index = index
 	var config = p.bb.servants[index]
 	assert(config.model_path, "model_path of config %s is null" % config.id)
@@ -97,4 +95,4 @@ func _exit_placing():
 		_placing_servant_index = -1
 		_is_placement_available = false
 		p.placement_dummy.clear_model()
-		Events.combat_state_changed.emit(CombatBlackboard.SubState.EMBATTLE_NONE)
+		p.bb.sub_state = CombatBlackboard.SubState.EMBATTLE_NONE

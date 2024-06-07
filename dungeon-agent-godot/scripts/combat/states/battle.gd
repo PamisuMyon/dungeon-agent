@@ -7,8 +7,12 @@ var _is_acting: bool = false
 
 
 func on_enter():
-	Events.combat_state_changed.emit(CombatBlackboard.SubState.EMBATTLE_NONE)
-	pass
+	p.bb.sub_state = CombatBlackboard.SubState.BATTLE
+	_act()
+
+
+func on_exit():
+	_is_acting = false
 
 
 func _act():

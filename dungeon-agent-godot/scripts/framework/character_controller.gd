@@ -53,6 +53,12 @@ func _on_health_changed(delta: float, new_health: float):
 		died.emit(self)
 
 
+func move_to_cell(cell_pos: Vector3i):
+	agent.current_cell = cell_pos
+	var world_pos = agent.cell_to_global(cell_pos)
+	global_position = world_pos
+
+
 func handle_movement(delta: float):
 	var dir = next_cell_pos - global_position
 	smooth_look_at(dir, delta)
@@ -87,7 +93,7 @@ func set_move_target_cell(cell: Vector3i) -> bool:
 
 
 func smooth_look_at(dir: Vector3, delta: float) -> bool:
-	return CommonUtils.smooth_look_at_3d(chara, dir, delta, turn_speed, Vector3.UP, true)
+	return CommonUtils.smooth_look_at_3d(chara.model, dir, delta, turn_speed, Vector3.UP, true)
 
 
 func on_turn_begin():
@@ -128,7 +134,9 @@ func select_ability():
 func select_target() -> bool:
 	target = null
 	var min_distance = 1000000.
-	for cc in combat_controller.character_controllers:
+	for cc in combat_controller.bb.char_controllers:
+		if cc == self:
+			continue
 		if not cc.chara.is_alive():
 			continue
 		if (chara.config.type == CharacterConfig.Type.Adventurer \

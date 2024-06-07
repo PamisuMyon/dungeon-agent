@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_scc22"]
 script = ExtResource("1_ql81l")
 stage_path = "res://scenes/stages/stage_0.tscn"
-enemies = Array[Resource("res://scripts/configs/character_config.gd")]([ExtResource("1_lslll"), ExtResource("1_lslll")])
+enemies = Array[Resource("res://scripts/configs/character_config.gd")]([ExtResource("1_lslll")])
 
 [resource]
 script = ExtResource("1_6711x")

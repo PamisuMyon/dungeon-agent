@@ -2,7 +2,7 @@ extends CombatState
 
 
 func on_enter():
-	Events.combat_state_changed.emit(CombatBlackboard.SubState.PREPARE)
+	p.bb.sub_state = CombatBlackboard.SubState.PREPARE
 	var scene = load(p.bb.level_config.stage_path) as PackedScene
 	p.stage = scene.instantiate()
 	p.get_parent().add_child(p.stage)
@@ -17,8 +17,7 @@ func _spawn_enemies():
 		var ri = randi_range(0, points.size() - 1)
 		var cell_pos = points[ri]
 		points.remove_at(ri)
-		var world_pos = p.floor_grid_map.map_to_local(cell_pos)
-		var cc = p.spawn_character(config, world_pos)
+		var cc = p.spawn_character_at_cell(config, cell_pos)
 		var map_center_pos = p.floor_grid_map.map_to_local(p.stage.map_center)
 		GameplayUtils.hard_look_at_grid_pos(cc.chara.model, map_center_pos, true)
 	pass
