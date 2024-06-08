@@ -2,18 +2,17 @@ extends CombatState
 
 
 func on_enter():
-	p.bb.sub_state = CombatBlackboard.SubState.PREPARE
-	var scene = load(p.bb.level_config.stage_path) as PackedScene
-	p.stage = scene.instantiate()
-	p.get_parent().add_child(p.stage)
-	p.floor_grid_map = p.stage.floor_grid_map
+	p.bb.sub_state = CombatBlackboard.SubState.WAVE_BEGIN
+	await get_tree().process_frame
+	await get_tree().process_frame
 	_spawn_enemies()
 	machine.change_state("Embattle")
 
 
 func _spawn_enemies():
 	var points = p.stage.spawn_points.duplicate()
-	for config in p.bb.level_config.enemies:
+	var wave = p.bb.level_config.waves[p.bb.wave_index]
+	for config in wave.enemies:
 		var ri = randi_range(0, points.size() - 1)
 		var cell_pos = points[ri]
 		points.remove_at(ri)

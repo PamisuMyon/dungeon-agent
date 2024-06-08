@@ -17,18 +17,18 @@ func _ready() -> void:
 	
 	bb = CombatBlackboard.new()
 	for it in App.config.default_servants:
-		bb.servants.push_back(it)
+		bb.inventory_servants.push_back(it)
 
 	if is_debug:
 		for node in get_parent().get_children():
 			if node is CharacterController:
-				bb.char_controllers.push_back(node)
+				bb.char_on_stage.push_back(node)
 	
 	fsm.initialize()
 	await get_tree().process_frame
 	_next_level()
 	
-	Events.req_next_wave.connect(_on_req_next_wave)
+	Events.req_start_battle.connect(_on_req_start_battle)
 
 
 func _process(delta: float) -> void:
@@ -41,7 +41,7 @@ func _input(event: InputEvent) -> void:
 		fsm.on_input(event)
 
 
-func _on_req_next_wave():
+func _on_req_start_battle():
 	# TODO TEMP
 	if bb.sub_state == CombatBlackboard.SubState.EMBATTLE_NONE:
 		fsm.change_state("Battle")
@@ -51,7 +51,8 @@ func _next_level():
 	# TODO TEMP
 	bb.level_index += 1
 	bb.level_config = config.levels[bb.level_index]
-	fsm.change_state("Prepare")
+	bb.wave_index = 0
+	fsm.change_state("Init")
 
 
 func place_servant(index: int):
@@ -68,7 +69,7 @@ func spawn_character(p_config: CharacterConfig, pos: Vector3) -> CharacterContro
 	cc.global_position = pos
 	var cell_pos = floor_grid_map.local_to_map(pos)
 	floor_grid_map.set_cell_solid(cell_pos, true)
-	bb.char_controllers.push_back(cc)
+	bb.char_on_stage.push_back(cc)
 	return cc
 
 
@@ -79,5 +80,5 @@ func spawn_character_at_cell(p_config: CharacterConfig, cell_pos: Vector3i) -> C
 	get_parent().add_child(cc)
 	cc.move_to_cell(cell_pos)
 	# floor_grid_map.set_cell_solid(cell_pos, true)
-	bb.char_controllers.push_back(cc)
+	bb.char_on_stage.push_back(cc)
 	return cc

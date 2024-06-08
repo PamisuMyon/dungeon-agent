@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvm1yboj080tv"]
+[gd_scene load_steps=15 format=3 uid="uid://bvm1yboj080tv"]
 
 [ext_resource type="Script" path="res://scripts/combat/combat_controller.gd" id="1_76yev"]
 [ext_resource type="Resource" uid="uid://mwxy7ml6yy8e" path="res://assets/configs/default_combat_config.tres" id="2_cwmui"]
@@ -7,8 +7,11 @@
 [ext_resource type="Material" uid="uid://db6nsqp2r3gff" path="res://assets/common/hologram_red.tres" id="4_6ssjo"]
 [ext_resource type="Script" path="res://scripts/combat/states/embattle.gd" id="4_10hvg"]
 [ext_resource type="Script" path="res://scripts/combat/states/battle.gd" id="5_1q0ry"]
-[ext_resource type="Script" path="res://scripts/combat/states/prepare.gd" id="6_jrr2i"]
+[ext_resource type="Script" path="res://scripts/combat/states/wave_begin.gd" id="6_jrr2i"]
+[ext_resource type="Script" path="res://scripts/combat/states/init.gd" id="7_4cihk"]
+[ext_resource type="Script" path="res://scripts/combat/states/wave_end.gd" id="11_xj7tj"]
 [ext_resource type="Script" path="res://scripts/playground/pg_reloader.gd" id="11_xwev3"]
+[ext_resource type="Script" path="res://scripts/playground/pg_grid_map_click_tester.gd" id="14_yultt"]
 [ext_resource type="Script" path="res://scripts/pamisu_kit/fsm/state_machine.gd" id="16_b8u78"]
 [ext_resource type="PackedScene" uid="uid://dpbiahnw3qd13" path="res://scenes/ui/combat_ui.tscn" id="24_02myq"]
 
@@ -25,7 +28,10 @@ unavailable_material = ExtResource("4_6ssjo")
 [node name="StateMachine" type="Node" parent="CombatController"]
 script = ExtResource("16_b8u78")
 
-[node name="Prepare" type="Node" parent="CombatController/StateMachine"]
+[node name="Init" type="Node" parent="CombatController/StateMachine"]
+script = ExtResource("7_4cihk")
+
+[node name="WaveBegin" type="Node" parent="CombatController/StateMachine"]
 script = ExtResource("6_jrr2i")
 
 [node name="Embattle" type="Node" parent="CombatController/StateMachine"]
@@ -35,7 +41,14 @@ mouse_collision_mask = 8
 [node name="Battle" type="Node" parent="CombatController/StateMachine"]
 script = ExtResource("5_1q0ry")
 
+[node name="WaveEnd" type="Node" parent="CombatController/StateMachine"]
+script = ExtResource("11_xj7tj")
+
 [node name="CombatUI" parent="." instance=ExtResource("24_02myq")]
 
 [node name="PgReloader" type="Node" parent="."]
 script = ExtResource("11_xwev3")
+
+[node name="PgGridMapClickTester" type="Node3D" parent="."]
+script = ExtResource("14_yultt")
+collision_mask = 8

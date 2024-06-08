@@ -3,10 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="1_b867m"]
 [ext_resource type="Script" path="res://scripts/ui/floating_info.gd" id="1_tws0r"]
 
-[node name="FloatingInfo" type="Control"]
+[node name="FloatingInfo" type="Control" node_paths=PackedStringArray("health_bar")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_tws0r")
+health_bar = NodePath("HealthBar")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 layout_mode = 1
@@ -22,7 +23,9 @@ offset_bottom = -67.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-value = 50.0
+max_value = 1.0
+step = 0.0
+value = 0.5
 nine_patch_stretch = true
 texture_under = ExtResource("1_b867m")
 texture_progress = ExtResource("1_b867m")

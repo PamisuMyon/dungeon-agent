@@ -2,16 +2,20 @@ extends Node3D
 
 const RAY_LENGTH := 1000.
 
-@export var grid_map: GridMap
-@export var pawns: Array[Character]
 @export_flags_3d_physics var collision_mask: int = 1
 
-var _pawn: Node3D
+var _floor_grid_map: GridMapNavRegion2D
 
 
 func _ready() -> void:
-	if not pawns.is_empty():
-		_pawn = pawns[0]
+	Events.combat_state_changed.connect(_on_combat_state_changed)
+
+
+func _on_combat_state_changed(state: CombatBlackboard.SubState):
+	if state == CombatBlackboard.SubState.WAVE_BEGIN:
+		Events.combat_state_changed.disconnect(_on_combat_state_changed)
+		await get_tree().process_frame
+		_floor_grid_map = App.combat_controller.floor_grid_map
 
 
 func _input(event: InputEvent) -> void:
@@ -25,17 +29,8 @@ func _input(event: InputEvent) -> void:
 		var result = space_state.intersect_ray(parameter)
 		if result:
 			var pos = result["position"]
-			print("Mouse hit: ", pos, " ", grid_map.local_to_map(pos))
-			if _pawn:
-				_pawn.set_target(pos)
+			var cell_pos = _floor_grid_map.local_to_map(pos)
+			var is_solid = _floor_grid_map.is_cell_solid(cell_pos)
+			print("Mouse hit cell %s solid %s" % [cell_pos, is_solid])
 		else:
 			print("Mouse hit nothing")
-		return
-	
-	if event is InputEventKey and event.is_pressed():
-		var index = 0
-		if event.keycode >= KEY_1 and event.keycode <= KEY_9:
-			index = event.keycode - KEY_1
-		if index < pawns.size():
-			_pawn = pawns[index]
-			print("Select pawn: %d, %s", [index, _pawn.name])

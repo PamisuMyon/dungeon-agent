@@ -48,9 +48,9 @@ func _process(delta: float) -> void:
 		fsm.on_process(delta)
 
 
-func _on_health_changed(delta: float, new_health: float):
-	if new_health < 0:
-		died.emit(self)
+func _on_health_changed(_delta: float, new_health: float):
+	if new_health < 0 and fsm.current_state.name != "Death":
+		fsm.change_state("Death")
 
 
 func move_to_cell(cell_pos: Vector3i):
@@ -103,7 +103,7 @@ func on_turn_begin():
 
 
 func act():
-	if chara.is_alive():
+	if chara.is_alive:
 		select_ability()
 		if (not select_target()):
 			await get_tree().process_frame
@@ -113,7 +113,7 @@ func act():
 
 
 func finish_acting():
-	if chara.is_alive():
+	if chara.is_alive:
 		fsm.change_state("Idle")
 	act_finished.emit()
 
@@ -134,10 +134,10 @@ func select_ability():
 func select_target() -> bool:
 	target = null
 	var min_distance = 1000000.
-	for cc in combat_controller.bb.char_controllers:
+	for cc in combat_controller.bb.char_on_stage:
 		if cc == self:
 			continue
-		if not cc.chara.is_alive():
+		if not cc.chara.is_alive:
 			continue
 		if (chara.config.type == CharacterConfig.Type.Adventurer \
 		and cc is MonsterController) \

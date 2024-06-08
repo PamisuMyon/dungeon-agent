@@ -35,12 +35,12 @@ size = Vector3(2, 2, 4)
 [node name="Stage0" type="Node3D" node_paths=PackedStringArray("floor_grid_map", "cam")]
 script = ExtResource("1_idco7")
 map_center = Vector3i(2, 0, 4)
-spawn_points = Array[Vector3i]([Vector3i(1, 0, 8), Vector3i(2, 0, 8), Vector3i(3, 0, 8), Vector3i(4, 0, 8), Vector3i(4, 0, 7), Vector3i(4, 0, 6), Vector3i(4, 0, 5), Vector3i(4, 0, 4), Vector3i(4, 0, 3)])
+spawn_points = Array[Vector3i]([Vector3i(2, 0, 9), Vector3i(3, 0, 9), Vector3i(4, 0, 9), Vector3i(5, 0, 9), Vector3i(5, 0, 8), Vector3i(5, 0, 7), Vector3i(5, 0, 6), Vector3i(5, 0, 5)])
 floor_grid_map = NodePath("FloorGridMap")
 cam = NodePath("CameraController/Arm/Camera3D")
 
 [node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(0.559193, -0.717968, 0.414519, 0, 0.5, 0.866025, -0.829037, -0.484275, 0.279596, 5, 0, 8)
+transform = Transform3D(0.559193, -0.717968, 0.414519, 0, 0.5, 0.866025, -0.829037, -0.484275, 0.279596, 7, 0, 10)
 
 [node name="Arm" type="Node3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38)
@@ -57,38 +57,39 @@ light_energy = 0.2
 shadow_enabled = true
 shadow_opacity = 0.6
 
-[node name="FloorGridMap" type="GridMap" parent="." node_paths=PackedStringArray("agent_cast")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
-mesh_library = ExtResource("2_av2ts")
-cell_size = Vector3(2, 0.15, 2)
-collision_layer = 9
-data = {
-"cells": PackedInt32Array(0, 0, 1048583, 0, 1, 1048583, 0, 2, 7, 1, 0, 7, 1, 1, 7, 1, 2, 7, 1, 3, 7, 1, 4, 7, 0, 4, 7, 0, 3, 7, 2, 4, 7, 3, 3, 7, 3, 2, 7, 3, 1, 7, 2, 0, 7, 2, 1, 7, 2, 2, 7, 2, 3, 7, 1, 5, 7, 0, 5, 7, 0, 6, 7, 3, 6, 7, 2, 6, 7, 1, 6, 7, 2, 5, 7, 3, 0, 7, 3, 4, 7, 3, 5, 7, 4, 0, 7, 4, 1, 7, 4, 2, 7, 4, 3, 7, 4, 6, 7, 4, 5, 7, 4, 4, 7, 0, 7, 7, 1, 7, 7, 2, 7, 7, 3, 7, 7, 4, 7, 7, 0, 8, 7, 1, 8, 7, 2, 8, 7, 3, 8, 7, 4, 8, 7)
-}
-script = ExtResource("3_d6gwb")
-solid_cells = Array[Vector3i]([Vector3i(2, 0, 6), Vector3i(2, 0, 5)])
-agent_cast = NodePath("AgentCast")
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="AgentCast" type="ShapeCast3D" parent="FloorGridMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5, 17)
-enabled = false
-shape = SubResource("BoxShape3D_f32og")
-target_position = Vector3(0, -5, 0)
-collision_mask = 4
-
 [node name="WallGridMap" type="GridMap" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.12, 1)
 mesh_library = ExtResource("4_cv4h4")
 cell_size = Vector3(2, 0.15, 2)
 collision_layer = 5
 data = {
-"cells": PackedInt32Array(65535, 65535, 1048577, 65535, 1, 1048578, 65535, 3, 1048581, 65535, 5, 1048578, 1, 65535, 3, 3, 65535, 0, 65535, 7, 1441792)
+"cells": PackedInt32Array(0, 0, 1048577, 0, 2, 1048578, 0, 4, 1048581, 0, 6, 1048578, 0, 8, 1048576, 2, 0, 3, 4, 0, 655362)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
+[node name="FloorGridMap" type="GridMap" parent="." node_paths=PackedStringArray("agent_cast")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12, 0)
+mesh_library = ExtResource("2_av2ts")
+cell_size = Vector3(2, 0.15, 2)
+collision_layer = 9
+data = {
+"cells": PackedInt32Array(1, 1, 7, 1, 2, 1048583, 1, 8, 1048583, 2, 8, 1048583, 3, 8, 1048583, 4, 8, 1048583, 4, 7, 1048583, 4, 6, 1048583, 4, 5, 1048583, 4, 4, 1048583, 4, 3, 1048583, 4, 1, 1048583, 4, 2, 1048583, 2, 3, 1048583, 1, 5, 1048583, 1, 6, 1048583, 1, 7, 1048583, 2, 4, 1048583, 2, 5, 1048583, 2, 6, 1048583, 2, 7, 1048583, 3, 7, 1048583, 3, 6, 1048583, 3, 5, 1048583, 3, 4, 1048583, 3, 3, 1048583, 3, 2, 1048583, 2, 1, 1048583, 3, 1, 1048583, 2, 2, 1048583, 1, 3, 1048583, 1, 4, 1048583, 1, 9, 1048583, 2, 9, 1048583, 3, 9, 1048583, 4, 9, 1048583, 5, 9, 1048583, 5, 8, 1048583, 5, 7, 1048583, 5, 6, 1048583, 5, 5, 1048583, 5, 4, 1048583, 5, 3, 1048583, 5, 2, 1048583, 5, 1, 1048583)
+}
+script = ExtResource("3_d6gwb")
+delay_initialize = null
+agent_cast = NodePath("AgentCast")
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="AgentCast" type="ShapeCast3D" parent="FloorGridMap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6, 3)
+enabled = false
+shape = SubResource("BoxShape3D_f32og")
+target_position = Vector3(0, -6, 0)
+max_results = 8
+collision_mask = 4
+
 [node name="Table" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 14)
 collision_layer = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]

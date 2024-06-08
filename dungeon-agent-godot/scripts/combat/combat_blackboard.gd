@@ -2,7 +2,8 @@ class_name CombatBlackboard
 extends RefCounted
 
 enum SubState {
-	PREPARE, 
+	INIT,
+	WAVE_BEGIN, 
 	EMBATTLE_NONE, 
 	EMBATTLE_PLACING,
 	BATTLE,
@@ -10,9 +11,11 @@ enum SubState {
 
 var level_index: int = -1
 var level_config: LevelConfig
-var servants: Array[CharacterConfig] = []
-var char_controllers: Array[CharacterController]
-var _sub_state: CombatBlackboard.SubState = SubState.PREPARE
+var wave_index: int = 0
+var inventory_servants: Array[CharacterConfig] = []
+
+var char_on_stage: Array[CharacterController]
+var _sub_state: CombatBlackboard.SubState = SubState.INIT
 var sub_state: CombatBlackboard.SubState:
 	get:
 		return _sub_state

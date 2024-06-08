@@ -22,7 +22,7 @@ func _refresh():
 	cards.clear()
 	card_pool.release_all_in_use()
 
-	var servants = App.combat_controller.bb.servants
+	var servants = App.combat_controller.bb.inventory_servants
 	for i in range(servants.size()):
 		var config = servants[i]
 		var card = card_pool.spawn() as ServantCard

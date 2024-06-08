@@ -4,6 +4,10 @@ extends Node3D
 @export var config: CharacterConfig
 # @export var is_auto_initialize: bool = false
 
+var _is_alive: bool
+var is_alive: bool:
+	get:
+		return _is_alive
 var attack_ability: Ability
 
 @onready var model: CharacterModel = $Model
@@ -18,13 +22,13 @@ var attack_ability: Ability
 
 func initialize():
 	attr_comp.initialize(self)
-	# attr_comp.health_changed.connect(_on_health_changed)
+	attr_comp.health_changed.connect(_on_health_changed)
 	ability_comp.initiate(self)
 
 	config.initialize()
 	for attr in config.attributes:
 		attr_comp.set_value(attr, config.attributes[attr])
-	attr_comp.revive()
+	revive()
 
 	if config.attack_ability:
 		attack_ability = AbilityFactory.create(config.attack_ability)
@@ -37,8 +41,11 @@ func initialize():
 				ability_comp.grant_ability(ability)
 
 
-# func _on_health_changed(delta: float, new_health: float):
+func _on_health_changed(_delta: float, new_health: float):
+	if new_health <= 0 and _is_alive:
+		is_alive = false
 
 
-func is_alive() -> bool:
-	return attr_comp.get_value(Schema.AttributeType.HEALTH) > 0
+func revive():
+	attr_comp.revive()
+	_is_alive = attr_comp.get_value(Schema.AttributeType.HEALTH) > 0

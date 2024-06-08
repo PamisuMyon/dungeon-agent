@@ -6,6 +6,8 @@ enum SolidMode { SOLID, HIGH_WEIGHT }
 
 const SOLID_WEIGHT: float = 1000000000.
 
+## used for instantiated from a packed scene
+@export var delay_initialize: bool = true
 @export var solid_cells: Array[Vector3i]
 @export var agent_cast: ShapeCast3D
 @export var diagonal_mode: AStarGrid2D.DiagonalMode = AStarGrid2D.DIAGONAL_MODE_ALWAYS
@@ -23,6 +25,8 @@ var _astar_grid: AStarGrid2D
 
 
 func _ready():
+	if delay_initialize:
+		await get_tree().process_frame
 	_initialize()
 
 

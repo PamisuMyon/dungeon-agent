@@ -11,7 +11,7 @@ signal servant_placed
 
 signal servant_place_cancelled
 
-signal req_next_wave
+signal req_start_battle
 
 #endregion
 

@@ -1,8 +1,8 @@
 extends CombatState
 
-var _dead_char_controllers: Array[CharacterController] = []
-var _alive_adventure_count = 0
-var _alive_monster_count = 0
+var _dead_chars: Array[CharacterController] = []
+var _alive_adventurer_count = 0
+var _alive_servant_count = 0
 var _is_acting: bool = false
 
 
@@ -16,43 +16,50 @@ func on_exit():
 
 
 func _act():
-	if p.bb.char_controllers.size() == 0:
+	if p.bb.char_on_stage.size() == 0:
 		print("CombatController no characters to act")
 		return
 	_is_acting = true
 
-	p.bb.char_controllers.sort_custom(_sort_by_initiative)
-	_dead_char_controllers.clear()
+	p.bb.char_on_stage.sort_custom(_sort_by_initiative)
+	_dead_chars.clear()
 
-	_alive_adventure_count = 0
-	_alive_monster_count = 0
-	for cc in p.bb.char_controllers:
-		if not cc.chara.is_alive():
+	_alive_adventurer_count = 0
+	_alive_servant_count = 0
+	for cc in p.bb.char_on_stage:
+		if not cc.chara.is_alive:
 			continue
 		if cc is AdventurerController:
-			_alive_adventure_count += 1
+			_alive_adventurer_count += 1
 		elif cc is CharacterController:
-			_alive_monster_count += 1
+			_alive_servant_count += 1
 		cc.died.connect(_on_character_died)
 
 	while _is_acting:
-		for cc in p.bb.char_controllers:
-			if not cc.chara.is_alive():
-				_dead_char_controllers.push_back(cc)
+		for cc in p.bb.char_on_stage:
+			if not _check_char_alive(cc):
 				continue
 			cc.on_turn_begin()
 
-		for cc in p.bb.char_controllers:
-			if not cc.chara.is_alive():
-				_dead_char_controllers.push_back(cc)
+		for cc in p.bb.char_on_stage:
+			if not _check_char_alive(cc):
 				continue
-			print("CombatController %s acting" % cc.name)
+			# print("CombatController %s acting" % cc.name)
 			cc.act()
 			await cc.act_finished
 		
-		for i in range(p.bb.char_controllers.size() - 1, -1, -1):
-			if p.bb.char_controllers[i] in _dead_char_controllers:
-				p.bb.char_controllers.remove_at(i)
+		if not _dead_chars.is_empty():
+			for i in range(p.bb.char_on_stage.size() - 1, -1, -1):
+				if p.bb.char_on_stage[i] in _dead_chars:
+					p.bb.char_on_stage.remove_at(i)
+			_dead_chars.clear()
+
+
+func _check_char_alive(cc: CharacterController) -> bool:
+	if not cc.chara.is_alive:
+		_dead_chars.push_back(cc)
+		return false
+	return true
 
 
 func _sort_by_initiative(a: CharacterController, b: CharacterController) -> bool:
@@ -62,14 +69,15 @@ func _sort_by_initiative(a: CharacterController, b: CharacterController) -> bool
 
 
 func _on_character_died(cc: CharacterController):
+	cc.died.disconnect(_on_character_died)
 	if cc is AdventurerController:
-		_alive_adventure_count -= 1
+		_alive_adventurer_count -= 1
 	elif cc is CharacterController:
-		_alive_monster_count -= 1
+		_alive_servant_count -= 1
 
-	if _alive_adventure_count == 0:
+	if _alive_adventurer_count == 0:
 		_is_acting = false
 		print("battle win")
-	elif _alive_monster_count == 0:
+	elif _alive_servant_count == 0:
 		_is_acting = false
 		print("battle lose")
