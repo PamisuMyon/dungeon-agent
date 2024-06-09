@@ -117,3 +117,17 @@ static func hard_look_at_grid_pos(node: Node3D, pos: Vector3, use_model_front: b
 		dir.x = 0
 	var target_quat = Basis.looking_at(dir, Vector3.UP, use_model_front).get_rotation_quaternion()
 	node.quaternion = target_quat
+
+
+static func filter_by_best_criteria(arr: Array, out_arr: Array, criteria_func: Callable, default_best_value: float = 1000000000.) -> float:
+	var best_value = default_best_value
+	out_arr.clear()
+	for it in arr:
+		var value = criteria_func.call(it)
+		if value < best_value:
+			best_value = value
+			out_arr.clear()
+			out_arr.push_back(it)
+		elif value == best_value:
+			out_arr.push_back(it)
+	return best_value

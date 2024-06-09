@@ -1,6 +1,7 @@
 class_name CharacterController
 extends Node3D
 
+signal die(cc: CharacterController)
 signal died(cc: CharacterController)
 signal act_finished	# dont emit in the same frame when act is called
 
@@ -18,6 +19,8 @@ var combat_controller: CombatController
 var target: CharacterController
 var target_cell: Vector3i
 var current_ability: Ability
+var _candidate_targets: Array[CharacterController] = []
+var _temp_targets: Array[CharacterController] = []
 #endregion
 
 @onready var chara: Character = $Character
@@ -49,7 +52,7 @@ func _process(delta: float) -> void:
 
 
 func _on_health_changed(_delta: float, new_health: float):
-	if new_health < 0 and fsm.current_state.name != "Death":
+	if new_health <= 0 and fsm.current_state.name != "Death":
 		fsm.change_state("Death")
 
 
@@ -133,23 +136,17 @@ func select_ability():
 
 func select_target() -> bool:
 	target = null
-	var min_distance = 1000000.
-	for cc in combat_controller.bb.char_on_stage:
-		if cc == self:
-			continue
-		if not cc.chara.is_alive:
-			continue
-		if (chara.config.type == CharacterConfig.Type.Adventurer \
-		and cc is MonsterController) \
-		or (chara.config.type == CharacterConfig.Type.Servant \
-		and cc is AdventurerController):
-			var distance = GameplayUtils.distance_chebyshev(agent.current_cell, cc.agent.current_cell)
-			if distance < min_distance:
-				min_distance = distance
-				target = cc
-	if not target:
-		print("CharacterController select_target no target")
+	var char_on_stage = combat_controller.bb.char_on_stage
+	var min_distance = GameplayUtils.filter_by_best_criteria(char_on_stage, _candidate_targets, _min_distance_criteria, 1000000.)
+	if _candidate_targets.is_empty():
+		# print("CharacterController select_target no target")
 		return false
+	
+	if _candidate_targets.size() == 1:
+		target = _candidate_targets[0]
+	else:
+		GameplayUtils.filter_by_best_criteria(_candidate_targets, _temp_targets, _min_health_criteria, 1000000.)
+		target = _temp_targets[0]
 
 	if min_distance <= 1:
 		if not current_ability:
@@ -167,3 +164,21 @@ func select_target() -> bool:
 	
 	print("Valid target cell not found, self: %s, target: %s" % [name, target.name])
 	return false
+
+
+func _min_distance_criteria(cc: CharacterController) -> float:
+	if cc == self or not cc.chara.is_alive:
+		return 1000001.
+	if (chara.config.type == CharacterConfig.Type.Adventurer \
+	and cc is MonsterController) \
+	or (chara.config.type == CharacterConfig.Type.Servant \
+	and cc is AdventurerController):
+		var distance = GameplayUtils.distance_chebyshev(agent.current_cell, cc.agent.current_cell)
+		return distance
+	return 1000001.
+
+
+func _min_health_criteria(cc: CharacterController) -> float:
+	if cc == self or not cc.chara.is_alive:
+		return 1000001.
+	return cc.chara.attr_comp.get_value(Schema.AttributeType.HEALTH)

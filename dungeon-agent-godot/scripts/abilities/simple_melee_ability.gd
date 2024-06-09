@@ -21,7 +21,7 @@ func activate():
 		is_critical = true
 	target.attr_comp.change_health(-damage)
 	Events.req_show_damage_text.emit(target.global_position, damage, is_critical)
-	print("Perform attack")
+	# print("Perform attack")
 
 	await p.get_tree().create_timer(config.act_post_delay).timeout
 	if state != AbilityState.ACTIVE:

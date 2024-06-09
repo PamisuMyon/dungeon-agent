@@ -59,7 +59,7 @@ func unbind():
 	# if chara != p_chara:
 	# 	printerr("FloatingInfo unbind wrong character")
 	# 	return false
-	chara.attr_comp.health_changed.connect(_on_health_changed)
+	chara.attr_comp.health_changed.disconnect(_on_health_changed)
 	chara = null
 	set_process(false)
 	# return true

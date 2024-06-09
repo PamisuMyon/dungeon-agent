@@ -22,11 +22,15 @@ script = ExtResource("2_ndcfv")
 character_info_panel = NodePath("CharacterInfoPanel")
 
 [node name="CharacterInfoPanel" type="PanelContainer" parent="." node_paths=PackedStringArray("background_normal", "background_red", "name_label", "stats_label", "desc_label")]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
 offset_left = 24.0
-offset_top = 24.0
+offset_top = -131.5
 offset_right = 402.0
-offset_bottom = 273.0
+offset_bottom = 131.5
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_c7sji")
 script = ExtResource("3_k55px")
 background_normal = NodePath("BackgroundNormal")
@@ -124,6 +128,21 @@ theme_override_constants/separation = 6
 alignment = 1
 script = ExtResource("7_8o8fn")
 
+[node name="Shop" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -139,3 +158,12 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 34
 text = "Next Wave"
+
+[node name="DefeatedDialog" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

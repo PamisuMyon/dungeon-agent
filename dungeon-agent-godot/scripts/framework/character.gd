@@ -43,7 +43,7 @@ func initialize():
 
 func _on_health_changed(_delta: float, new_health: float):
 	if new_health <= 0 and _is_alive:
-		is_alive = false
+		_is_alive = false
 
 
 func revive():

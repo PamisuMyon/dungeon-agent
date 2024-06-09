@@ -33,7 +33,7 @@ func _act():
 			_alive_adventurer_count += 1
 		elif cc is CharacterController:
 			_alive_servant_count += 1
-		cc.died.connect(_on_character_died)
+		cc.die.connect(_on_character_die)
 
 	while _is_acting:
 		for cc in p.bb.char_on_stage:
@@ -68,8 +68,8 @@ func _sort_by_initiative(a: CharacterController, b: CharacterController) -> bool
 	return ia - ib > 0
 
 
-func _on_character_died(cc: CharacterController):
-	cc.died.disconnect(_on_character_died)
+func _on_character_die(cc: CharacterController):
+	cc.die.disconnect(_on_character_die)
 	if cc is AdventurerController:
 		_alive_adventurer_count -= 1
 	elif cc is CharacterController:
