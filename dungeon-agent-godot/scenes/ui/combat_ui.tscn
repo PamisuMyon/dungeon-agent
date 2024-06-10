@@ -1,16 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpbiahnw3qd13"]
+[gd_scene load_steps=13 format=3 uid="uid://dpbiahnw3qd13"]
 
 [ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/elements/panel_blue.png" id="1_ae8ex"]
 [ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_yrdo6"]
 [ext_resource type="Script" path="res://scripts/ui/combat_ui.gd" id="2_ndcfv"]
 [ext_resource type="Texture2D" uid="uid://ce1glbw1diptj" path="res://assets/ui/elements/panel_red.png" id="3_50q1y"]
 [ext_resource type="Script" path="res://scripts/ui/character_info_panel.gd" id="3_k55px"]
+[ext_resource type="Script" path="res://scripts/ui/combat_hud.gd" id="3_sca00"]
+[ext_resource type="Script" path="res://scripts/ui/combat_overlay.gd" id="3_tng2u"]
 [ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="4_7nvct"]
 [ext_resource type="Script" path="res://scripts/ui/servant_bar.gd" id="7_8o8fn"]
+[ext_resource type="PackedScene" uid="uid://c6r21o7gyfdw8" path="res://scenes/ui/heart_texture.tscn" id="8_6l6gc"]
+[ext_resource type="Texture2D" uid="uid://cevfsikqqietk" path="res://assets/ui/icons/Coin_Skull.png" id="9_nv2ij"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7sji"]
 
-[node name="CombatUI" type="Control" node_paths=PackedStringArray("character_info_panel")]
+[node name="CombatUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,9 +23,66 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yrdo6")
 script = ExtResource("2_ndcfv")
+
+[node name="Overlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_tng2u")
+
+[node name="Hud" type="Control" parent="." node_paths=PackedStringArray("character_info_panel")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_sca00")
 character_info_panel = NodePath("CharacterInfoPanel")
 
-[node name="CharacterInfoPanel" type="PanelContainer" parent="." node_paths=PackedStringArray("background_normal", "background_red", "name_label", "stats_label", "desc_label")]
+[node name="Stats" type="VBoxContainer" parent="Hud"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 140.0
+offset_bottom = 121.0
+theme_override_constants/separation = 12
+
+[node name="HealthBar" type="HBoxContainer" parent="Hud/Stats"]
+layout_mode = 2
+
+[node name="HeartTexture" parent="Hud/Stats/HealthBar" instance=ExtResource("8_6l6gc")]
+layout_mode = 2
+
+[node name="HeartTexture2" parent="Hud/Stats/HealthBar" instance=ExtResource("8_6l6gc")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud/Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="Gold" type="HBoxContainer" parent="Hud/Stats/MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Hud/Stats/MarginContainer/Gold"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("9_nv2ij")
+expand_mode = 1
+
+[node name="GoldLabel" type="Label" parent="Hud/Stats/MarginContainer/Gold"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.490196, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "123"
+
+[node name="CharacterInfoPanel" type="PanelContainer" parent="Hud" node_paths=PackedStringArray("background_normal", "background_red", "name_label", "stats_label", "desc_label")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -39,7 +100,7 @@ name_label = NodePath("MarginContainer/VBoxContainer/NameLabel")
 stats_label = NodePath("MarginContainer/VBoxContainer/StatsLabel")
 desc_label = NodePath("MarginContainer/VBoxContainer/VBoxContainer/DescLabel")
 
-[node name="BackgroundNormal" type="NinePatchRect" parent="CharacterInfoPanel"]
+[node name="BackgroundNormal" type="NinePatchRect" parent="Hud/CharacterInfoPanel"]
 layout_mode = 2
 texture = ExtResource("1_ae8ex")
 patch_margin_left = 10
@@ -49,7 +110,7 @@ patch_margin_bottom = 10
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="BackgroundRed" type="NinePatchRect" parent="CharacterInfoPanel"]
+[node name="BackgroundRed" type="NinePatchRect" parent="Hud/CharacterInfoPanel"]
 visible = false
 layout_mode = 2
 texture = ExtResource("3_50q1y")
@@ -60,23 +121,23 @@ patch_margin_bottom = 10
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CharacterInfoPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Hud/CharacterInfoPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CharacterInfoPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/CharacterInfoPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="CharacterInfoPanel/MarginContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="Hud/CharacterInfoPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 38
 text = "Skeleton Minion"
 
-[node name="StatsLabel" type="RichTextLabel" parent="CharacterInfoPanel/MarginContainer/VBoxContainer"]
+[node name="StatsLabel" type="RichTextLabel" parent="Hud/CharacterInfoPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/normal_font_size = 28
@@ -87,15 +148,15 @@ Move: 1"
 fit_content = true
 scroll_active = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CharacterInfoPanel/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud/CharacterInfoPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Divider" type="TextureRect" parent="CharacterInfoPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Divider" type="TextureRect" parent="Hud/CharacterInfoPanel/MarginContainer/VBoxContainer/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.32549)
 layout_mode = 2
 texture = ExtResource("4_7nvct")
 
-[node name="DescLabel" type="RichTextLabel" parent="CharacterInfoPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="DescLabel" type="RichTextLabel" parent="Hud/CharacterInfoPanel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 28
@@ -105,7 +166,7 @@ Deals 200% damage to a single target, with a cooldown of 1 turn."
 fit_content = true
 scroll_active = false
 
-[node name="BottomBar" type="Control" parent="."]
+[node name="BottomBar" type="Control" parent="Hud"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -114,7 +175,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ServantBar" type="HBoxContainer" parent="BottomBar"]
+[node name="ServantBar" type="HBoxContainer" parent="Hud/BottomBar"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -128,6 +189,119 @@ theme_override_constants/separation = 6
 alignment = 1
 script = ExtResource("7_8o8fn")
 
+[node name="StartButton" type="Button" parent="Hud"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_top = -246.0
+offset_right = -135.0
+offset_bottom = -173.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 34
+text = "Next Wave"
+
+[node name="HealthDetailView" type="Control" parent="Hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Hud/HealthDetailView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="HealthBar" type="HBoxContainer" parent="Hud/HealthDetailView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HeartTexture" parent="Hud/HealthDetailView/HealthBar" instance=ExtResource("8_6l6gc")]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+
+[node name="HeartTexture2" parent="Hud/HealthDetailView/HealthBar" instance=ExtResource("8_6l6gc")]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+
+[node name="HeartTexture3" parent="Hud/HealthDetailView/HealthBar" instance=ExtResource("8_6l6gc")]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+
+[node name="DefeatedView" type="Control" parent="Hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="Hud/DefeatedView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Label" type="Label" parent="Hud/DefeatedView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -230.0
+offset_right = 145.0
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 76
+text = "Defeated..."
+
+[node name="WinView" type="Control" parent="Hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Hud/WinView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
 [node name="Shop" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -140,30 +314,5 @@ offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StartButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -298.0
-offset_top = -202.0
-offset_right = -137.0
-offset_bottom = -129.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 34
-text = "Next Wave"
-
-[node name="DefeatedDialog" type="Control" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2

@@ -1,0 +1,87 @@
+﻿================================================================================
+
+	KayKit : Dungeon Remastered Pack (1.1)
+
+	Created/distributed by Kay Lousberg (www.kaylousberg.com)
+	Creation date: 09/05/2024 09:00
+
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	This content is free to use in personal, educational and commercial projects.
+
+================================================================================
+
+	KayKit : Adventurers Character Pack (1.0)
+
+	Created/distributed by Kay Lousberg (www.kaylousberg.com)
+	Creation date: 15/07/2023 09:00
+
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	This content is free to use in personal, educational and commercial projects.
+
+================================================================================
+
+	KayKit Character Pack : Skeletons (1.0)
+
+	Created/distributed by Kay Lousberg (www.kaylousberg.com)
+	Creation date: 02/02/2024 09:00
+
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	This content is free to use in personal, educational and commercial projects.
+
+================================================================================
+
+	Particle Pack (1.1)
+
+	by Kenney Vleugels (Kenney.nl)
+
+	Additional credit for creating filter templates:
+	Indigo Ray, Craig Nisbet, Zoltan Erdokovy, Heliagon, ThreeDee, Killst4r and Tim2501
+
+			------------------------------
+
+	License (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	You may use these assets in personal and commercial projects.	
+
+================================================================================
+
+	Font package (free)
+
+	Created/distributed by Kenney (www.kenney.nl)
+
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	This content is free to use in personal, educational and commercial projects.
+
+================================================================================
+
+------------------------------------------------------
+LowPoly Models by @Quaternius
+Consider supporting me on Patreon, even $1 helps me a lot!
+
+https://www.patreon.com/quaternius
+-------------------------------------------------------
+
+License:
+CC0 1.0 Universal (CC0 1.0) 
+Public Domain Dedication
+https://creativecommons.org/publicdomain/zero/1.0/
+
+================================================================================
+
