@@ -13,6 +13,7 @@
 
 [node name="Adventurer" type="Node3D"]
 script = ExtResource("1_f25b1")
+metadata/adventurer = true
 
 [node name="Agent" type="Node3D" parent="."]
 script = ExtResource("2_5p2l3")

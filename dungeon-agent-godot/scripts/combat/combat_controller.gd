@@ -28,8 +28,6 @@ func _ready() -> void:
 	await get_tree().process_frame
 	_next_level()
 	
-	Events.req_start_battle.connect(_on_req_start_battle)
-
 
 func _process(delta: float) -> void:
 	if fsm.is_initialized:
@@ -41,18 +39,12 @@ func _input(event: InputEvent) -> void:
 		fsm.on_input(event)
 
 
-func _on_req_start_battle():
-	# TODO TEMP
-	if bb.sub_state == CombatBlackboard.SubState.EMBATTLE_NONE:
-		fsm.change_state("Battle")
-
-
 func _next_level():
 	# TODO TEMP
 	bb.level_index += 1
 	bb.level_config = config.levels[bb.level_index]
 	bb.wave_index = 0
-	fsm.change_state("Init")
+	fsm.change_state("LevelBegin")
 
 
 func place_servant(index: int):
@@ -61,16 +53,16 @@ func place_servant(index: int):
 	fsm.current_state.place_servant(index)
 
 
-func spawn_character(p_config: CharacterConfig, pos: Vector3) -> CharacterController:
-	assert(p_config.scene_path, "scene_path of config %s is null" % p_config.id)
-	var scene = load(p_config.scene_path) as PackedScene
-	var cc = scene.instantiate() as CharacterController
-	get_parent().add_child(cc)
-	cc.global_position = pos
-	var cell_pos = floor_grid_map.local_to_map(pos)
-	floor_grid_map.set_cell_solid(cell_pos, true)
-	bb.char_on_stage.push_back(cc)
-	return cc
+# func spawn_character(p_config: CharacterConfig, pos: Vector3) -> CharacterController:
+# 	assert(p_config.scene_path, "scene_path of config %s is null" % p_config.id)
+# 	var scene = load(p_config.scene_path) as PackedScene
+# 	var cc = scene.instantiate() as CharacterController
+# 	get_parent().add_child(cc)
+# 	cc.global_position = pos
+# 	var cell_pos = floor_grid_map.local_to_map(pos)
+# 	floor_grid_map.set_cell_solid(cell_pos, true)
+# 	bb.char_on_stage.push_back(cc)
+# 	return cc
 
 
 func spawn_character_at_cell(p_config: CharacterConfig, cell_pos: Vector3i) -> CharacterController:
@@ -79,6 +71,9 @@ func spawn_character_at_cell(p_config: CharacterConfig, cell_pos: Vector3i) -> C
 	var cc = scene.instantiate() as CharacterController
 	get_parent().add_child(cc)
 	cc.move_to_cell(cell_pos)
-	# floor_grid_map.set_cell_solid(cell_pos, true)
 	bb.char_on_stage.push_back(cc)
+	if cc.has_meta(GlobalConst.ADVENTURER):
+		bb.adventurers_on_stage.push_back(cc)
+	elif cc.has_meta(GlobalConst.SERVANT):
+		bb.servants_on_stage.push_back(cc)
 	return cc

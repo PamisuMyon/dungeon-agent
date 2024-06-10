@@ -13,6 +13,7 @@ func _ready() -> void:
 	_refresh()
 	Events.servant_placed.connect(_on_servant_placed)
 	Events.servant_place_cancelled.connect(_on_servant_place_cancelled)
+	Events.inventory_servants_changed.connect(_on_inventory_servants_changed)
 	Events.combat_state_changed.connect(_on_combat_state_changed)
 
 
@@ -52,6 +53,10 @@ func _on_servant_placed():
 
 func _on_servant_place_cancelled():
 	_selected_index = -1
+
+
+func _on_inventory_servants_changed():
+	_refresh()
 
 
 func _on_combat_state_changed(state: CombatBlackboard.SubState):

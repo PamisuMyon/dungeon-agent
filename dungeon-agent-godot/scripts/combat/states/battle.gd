@@ -1,8 +1,8 @@
 extends CombatState
 
 var _dead_chars: Array[CharacterController] = []
-var _alive_adventurer_count = 0
-var _alive_servant_count = 0
+# var _alive_adventurer_count = 0
+# var _alive_servant_count = 0
 var _is_acting: bool = false
 
 
@@ -24,15 +24,15 @@ func _act():
 	p.bb.char_on_stage.sort_custom(_sort_by_initiative)
 	_dead_chars.clear()
 
-	_alive_adventurer_count = 0
-	_alive_servant_count = 0
+	# _alive_adventurer_count = 0
+	# _alive_servant_count = 0
 	for cc in p.bb.char_on_stage:
 		if not cc.chara.is_alive:
 			continue
-		if cc is AdventurerController:
-			_alive_adventurer_count += 1
-		elif cc is CharacterController:
-			_alive_servant_count += 1
+		# if cc is AdventurerController:
+		# 	_alive_adventurer_count += 1
+		# elif cc is CharacterController:
+		# 	_alive_servant_count += 1
 		cc.die.connect(_on_character_die)
 
 	while _is_acting:
@@ -70,14 +70,27 @@ func _sort_by_initiative(a: CharacterController, b: CharacterController) -> bool
 
 func _on_character_die(cc: CharacterController):
 	cc.die.disconnect(_on_character_die)
-	if cc is AdventurerController:
-		_alive_adventurer_count -= 1
-	elif cc is CharacterController:
-		_alive_servant_count -= 1
+	if cc.has_meta(GlobalConst.ADVENTURER):
+		p.bb.adventurers_on_stage.erase(cc)
+	elif cc.has_meta(GlobalConst.SERVANT):
+		p.bb.servants_on_stage.erase(cc)
+	# if cc is AdventurerController:
+	# 	_alive_adventurer_count -= 1
+	# elif cc is MonsterController:
+	# 	_alive_servant_count -= 1
 
-	if _alive_adventurer_count == 0:
+	if p.bb.adventurers_on_stage.size() == 0:
 		_is_acting = false
-		print("battle win")
-	elif _alive_servant_count == 0:
+		machine.states["WaveEnd"].is_win = true
+		machine.change_state("WaveEnd")
+	elif p.bb.servants_on_stage.size() == 0:
 		_is_acting = false
-		print("battle lose")
+		machine.states["WaveEnd"].is_win = true
+		machine.change_state("WaveEnd")
+
+	# if _alive_adventurer_count == 0:
+	# 	_is_acting = false
+	# 	print("battle win")
+	# elif _alive_servant_count == 0:
+	# 	_is_acting = false
+	# 	print("battle lose")

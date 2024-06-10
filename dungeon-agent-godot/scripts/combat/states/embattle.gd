@@ -19,10 +19,12 @@ var debug_cell_world_pos: Vector3i
 # 	_cam = get_viewport().get_camera_3d()
 func on_enter():
 	p.bb.sub_state = CombatBlackboard.SubState.EMBATTLE_NONE
+	Events.req_start_battle.connect(_on_req_start_battle)
 
 
 func on_exit():
 	_exit_placing()
+	Events.req_start_battle.disconnect(_on_req_start_battle)
 
 
 func on_process(_delta: float):
@@ -53,6 +55,11 @@ func on_process(_delta: float):
 		elif Input.is_action_just_pressed("cancel"):
 			_exit_placing()
 			Events.servant_place_cancelled.emit()
+
+
+func _on_req_start_battle():
+	if p.bb.sub_state == CombatBlackboard.SubState.EMBATTLE_NONE:
+		machine.change_state("Battle")
 
 
 func place_servant(index: int):

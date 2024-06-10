@@ -28,7 +28,7 @@ unavailable_material = ExtResource("4_6ssjo")
 [node name="StateMachine" type="Node" parent="CombatController"]
 script = ExtResource("16_b8u78")
 
-[node name="Init" type="Node" parent="CombatController/StateMachine"]
+[node name="LevelBegin" type="Node" parent="CombatController/StateMachine"]
 script = ExtResource("7_4cihk")
 
 [node name="WaveBegin" type="Node" parent="CombatController/StateMachine"]

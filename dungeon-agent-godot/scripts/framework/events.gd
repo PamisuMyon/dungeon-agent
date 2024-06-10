@@ -11,6 +11,8 @@ signal servant_placed
 
 signal servant_place_cancelled
 
+signal inventory_servants_changed
+
 signal req_start_battle
 
 #endregion

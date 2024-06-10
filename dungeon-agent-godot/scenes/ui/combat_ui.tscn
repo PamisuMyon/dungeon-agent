@@ -284,7 +284,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 76
 text = "Defeated..."
 
-[node name="WinView" type="Control" parent="Hud"]
+[node name="VictoryView" type="Control" parent="Hud"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -293,7 +293,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="Hud/WinView"]
+[node name="Background" type="ColorRect" parent="Hud/VictoryView"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -301,6 +301,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.501961)
+
+[node name="Hint" type="PanelContainer" parent="Hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -223.0
+offset_top = -199.0
+offset_right = 224.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Hud/Hint"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HintLabel" type="Label" parent="Hud/Hint/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Place servants to start battle"
 
 [node name="Shop" type="Control" parent="."]
 visible = false
