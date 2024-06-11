@@ -1,7 +1,7 @@
 extends Control
 
-const FloatingInfoScene: PackedScene = preload("res://scenes/ui/floating_info.tscn")
-const FloatingTextScene: PackedScene = preload("res://scenes/ui/floating_text.tscn")
+const FloatingInfoScene: PackedScene = preload("res://scenes/ui/common/floating_info.tscn")
+const FloatingTextScene: PackedScene = preload("res://scenes/ui/common/floating_text.tscn")
 
 @export var normal_damage_text_color: Color = Color(.86, .86, .86)
 @export var critical_damage_text_color: Color = Color(1, .79, .11)

@@ -7,12 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://c5lyoyurka7ph" path="res://assets/ui/elements/panelInset_beige.png" id="4_b22c2"]
 [ext_resource type="Texture2D" uid="uid://d1lt421ub5xh1" path="res://assets/ui/elements/circle_gradient_256.png" id="5_y5cmv"]
 [ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="6_etmc2"]
-[ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/stat_tag.tscn" id="7_06qtw"]
+[ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/common/stat_tag.tscn" id="7_06qtw"]
 [ext_resource type="Texture2D" uid="uid://dmex603l0fmrx" path="res://assets/ui/icons/electric.png" id="8_vnpri"]
 [ext_resource type="Texture2D" uid="uid://csymxbvlolpj3" path="res://assets/ui/icons/sword.png" id="9_i42u0"]
 [ext_resource type="Texture2D" uid="uid://2hnhxpjnw4w7" path="res://assets/ui/icons/arrow_cross_divided.png" id="10_v87xr"]
 [ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="11_j5i37"]
-[ext_resource type="PackedScene" uid="uid://dfs1yq07rwhne" path="res://scenes/ui/ability_item.tscn" id="13_cddwn"]
+[ext_resource type="PackedScene" uid="uid://dfs1yq07rwhne" path="res://scenes/ui/common/ability_item.tscn" id="13_cddwn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7sji"]
 

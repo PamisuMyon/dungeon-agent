@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="3_5sxft"]
 [ext_resource type="Theme" uid="uid://dqpx0lu6c2qx6" path="res://assets/ui/blue_button_theme.tres" id="4_1ahlv"]
 [ext_resource type="Texture2D" uid="uid://cevfsikqqietk" path="res://assets/ui/icons/Coin_Skull.png" id="5_ftf81"]
-[ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/stat_tag.tscn" id="5_qubld"]
+[ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/common/stat_tag.tscn" id="5_qubld"]
 [ext_resource type="Texture2D" uid="uid://csymxbvlolpj3" path="res://assets/ui/icons/sword.png" id="6_0rcjd"]
 [ext_resource type="Texture2D" uid="uid://2hnhxpjnw4w7" path="res://assets/ui/icons/arrow_cross_divided.png" id="7_2ofs0"]
 [ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="8_wouel"]
-[ext_resource type="PackedScene" uid="uid://dfs1yq07rwhne" path="res://scenes/ui/ability_item.tscn" id="9_03p17"]
+[ext_resource type="PackedScene" uid="uid://dfs1yq07rwhne" path="res://scenes/ui/common/ability_item.tscn" id="9_03p17"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2u6a"]
 texture = ExtResource("1_ex7km")

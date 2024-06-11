@@ -5,11 +5,11 @@
 [ext_resource type="Script" path="res://scripts/ui/combat_hud.gd" id="3_sca00"]
 [ext_resource type="Script" path="res://scripts/ui/combat_overlay.gd" id="3_tng2u"]
 [ext_resource type="Script" path="res://scripts/ui/servant_bar.gd" id="7_8o8fn"]
-[ext_resource type="PackedScene" uid="uid://c6r21o7gyfdw8" path="res://scenes/ui/heart_texture.tscn" id="8_6l6gc"]
-[ext_resource type="PackedScene" uid="uid://csc5dtc30fdq5" path="res://scenes/ui/character_info_panel.tscn" id="8_7h0cf"]
+[ext_resource type="PackedScene" uid="uid://c6r21o7gyfdw8" path="res://scenes/ui/common/heart_texture.tscn" id="8_6l6gc"]
+[ext_resource type="PackedScene" uid="uid://csc5dtc30fdq5" path="res://scenes/ui/hud/character_info_panel.tscn" id="8_7h0cf"]
 [ext_resource type="Texture2D" uid="uid://cevfsikqqietk" path="res://assets/ui/icons/Coin_Skull.png" id="9_nv2ij"]
 [ext_resource type="Texture2D" uid="uid://i5xftnkmkxfv" path="res://assets/ui/elements/panel_brown.png" id="12_gbiqu"]
-[ext_resource type="PackedScene" uid="uid://ng72oc02cebk" path="res://scenes/ui/shop_item.tscn" id="13_srnhq"]
+[ext_resource type="PackedScene" uid="uid://ng72oc02cebk" path="res://scenes/ui/shop/shop_item.tscn" id="13_srnhq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v6nno"]
 texture = ExtResource("12_gbiqu")
