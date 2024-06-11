@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuad2qm6pl1je"]
+
+[ext_resource type="Texture2D" uid="uid://blr72bjn0wbj7" path="res://assets/ui/icons/suit_hearts.png" id="1_7mdk0"]
+
+[node name="StatTag" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
+offset_right = 57.0
+offset_bottom = 45.0
+theme_override_constants/separation = 4
+
+[node name="Icon" type="TextureRect" parent="."]
+self_modulate = Color(0.91, 0.267692, 0.2093, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_7mdk0")
+expand_mode = 1
+
+[node name="ValueLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.356863, 0.333333, 0.282353, 1)
+theme_override_font_sizes/font_size = 32
+text = "5"

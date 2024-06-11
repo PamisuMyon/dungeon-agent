@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://ng72oc02cebk"]
+[gd_scene load_steps=13 format=3 uid="uid://ng72oc02cebk"]
 
+[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_4ut5s"]
 [ext_resource type="Texture2D" uid="uid://c5lyoyurka7ph" path="res://assets/ui/elements/panelInset_beige.png" id="1_ex7km"]
 [ext_resource type="Texture2D" uid="uid://d1lt421ub5xh1" path="res://assets/ui/elements/circle_gradient_256.png" id="2_uj6vl"]
 [ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="3_5sxft"]
 [ext_resource type="Theme" uid="uid://dqpx0lu6c2qx6" path="res://assets/ui/blue_button_theme.tres" id="4_1ahlv"]
 [ext_resource type="Texture2D" uid="uid://cevfsikqqietk" path="res://assets/ui/icons/Coin_Skull.png" id="5_ftf81"]
+[ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/stat_tag.tscn" id="5_qubld"]
+[ext_resource type="Texture2D" uid="uid://csymxbvlolpj3" path="res://assets/ui/icons/sword.png" id="6_0rcjd"]
+[ext_resource type="Texture2D" uid="uid://2hnhxpjnw4w7" path="res://assets/ui/icons/arrow_cross_divided.png" id="7_2ofs0"]
+[ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="8_wouel"]
+[ext_resource type="PackedScene" uid="uid://dfs1yq07rwhne" path="res://scenes/ui/ability_item.tscn" id="9_03p17"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2u6a"]
 texture = ExtResource("1_ex7km")
@@ -17,6 +23,7 @@ axis_stretch_vertical = 1
 
 [node name="ShopItem" type="VBoxContainer"]
 custom_minimum_size = Vector2(280, 400)
+theme = ExtResource("1_4ut5s")
 theme_override_constants/separation = 12
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -27,6 +34,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_j2u6a")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -45,11 +53,18 @@ layout_mode = 2
 [node name="Gradient" type="TextureRect" parent="PanelContainer/VBoxContainer/MarginContainer/Control"]
 self_modulate = Color(0, 0, 0, 0.227451)
 custom_minimum_size = Vector2(156, 128)
-layout_mode = 2
-offset_left = 23.0
-offset_top = -31.0
-offset_right = 211.0
-offset_bottom = 157.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -94.0
+offset_right = 94.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_uj6vl")
@@ -62,26 +77,35 @@ size_flags_horizontal = 4
 texture = ExtResource("3_5sxft")
 expand_mode = 1
 
-[node name="StatsLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.337255, 0.317647, 0.270588, 1)
-theme_override_font_sizes/normal_font_size = 28
-bbcode_enabled = true
-text = "Health: 50
-Damage: 1
-Move: 2
-"
-fit_content = true
-scroll_active = false
-shortcut_keys_enabled = false
+theme_override_constants/separation = 8
+alignment = 1
 
-[node name="DescLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+[node name="StatTag" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_qubld")]
 layout_mode = 2
-theme_override_colors/default_color = Color(0.337255, 0.317647, 0.270588, 1)
-theme_override_font_sizes/normal_font_size = 28
-bbcode_enabled = true
-scroll_active = false
-shortcut_keys_enabled = false
+
+[node name="StatTag2" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_qubld")]
+layout_mode = 2
+
+[node name="Icon" parent="PanelContainer/VBoxContainer/HBoxContainer/StatTag2" index="0"]
+self_modulate = Color(0.55675, 0.459, 0.85, 1)
+texture = ExtResource("6_0rcjd")
+
+[node name="StatTag3" parent="PanelContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_qubld")]
+layout_mode = 2
+
+[node name="Icon" parent="PanelContainer/VBoxContainer/HBoxContainer/StatTag3" index="0"]
+self_modulate = Color(0.165, 0.66, 0.38775, 1)
+texture = ExtResource("7_2ofs0")
+
+[node name="Divider" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+self_modulate = Color(0.356863, 0.333333, 0.282353, 0.282353)
+layout_mode = 2
+texture = ExtResource("8_wouel")
+
+[node name="AbilityItem" parent="PanelContainer/VBoxContainer" instance=ExtResource("9_03p17")]
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -126,3 +150,6 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.992157, 0.490196, 1)
 theme_override_font_sizes/font_size = 34
 text = "12"
+
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/StatTag2"]
+[editable path="PanelContainer/VBoxContainer/HBoxContainer/StatTag3"]
