@@ -58,6 +58,15 @@
 
 ================================================================================
 
+	UI pack: RPG extension by Kenney Vleugels (www.kenney.nl)
+
+			------------------------------
+
+			        License (CC0)
+	       http://creativecommons.org/publicdomain/zero/1.0/
+
+================================================================================
+
 	Font package (free)
 
 	Created/distributed by Kenney (www.kenney.nl)

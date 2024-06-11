@@ -2,7 +2,7 @@ extends CombatState
 
 
 func on_enter():
-	p.bb.sub_state = CombatBlackboard.SubState.INIT
+	p.bb.sub_state = CombatBlackboard.SubState.LEVEL_BEGIN
 	if p.stage:
 		p.stage.queue_free()
 	var scene = load(p.bb.level_config.stage_path) as PackedScene

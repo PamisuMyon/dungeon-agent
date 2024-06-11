@@ -4,7 +4,7 @@ extends Control
 
 @onready var start_button: Button = $StartButton
 @onready var defeated_view: Control = $DefeatedView
-@onready var win_view: Control = $WinView
+@onready var victory_view: Control = $VictoryView
 
 
 func _ready() -> void:
