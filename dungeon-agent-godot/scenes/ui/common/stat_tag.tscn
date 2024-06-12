@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuad2qm6pl1je"]
 
+[ext_resource type="Script" path="res://scripts/ui/common/stat_tag.gd" id="1_2awkb"]
 [ext_resource type="Texture2D" uid="uid://blr72bjn0wbj7" path="res://assets/ui/icons/suit_hearts.png" id="1_7mdk0"]
-[ext_resource type="Script" path="res://scripts/ui/common/stat_tag.gd" id="1_o6jxc"]
 
 [node name="StatTag" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 34)
 offset_right = 57.0
 offset_bottom = 45.0
 theme_override_constants/separation = 4
-script = ExtResource("1_o6jxc")
+script = ExtResource("1_2awkb")
 
 [node name="Icon" type="TextureRect" parent="."]
 self_modulate = Color(0.91, 0.267692, 0.2093, 1)

@@ -10,11 +10,14 @@ type = 1
 act_range = 1
 cooldown = 1
 init_cooldown = 0
+cost = 0
 priority = 0
 extra = {}
 act_anim_name = "h1_melee_dia"
 act_pre_delay = 0.38
 act_post_delay = 0.62
+display_name = ""
+description = ""
 
 [resource]
 script = ExtResource("2_gaus8")

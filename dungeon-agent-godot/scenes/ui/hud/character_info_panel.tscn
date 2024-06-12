@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://csc5dtc30fdq5"]
+[gd_scene load_steps=17 format=3 uid="uid://csc5dtc30fdq5"]
 
 [ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_8eomp"]
 [ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/elements/panel_blue.png" id="2_d81bj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d1lt421ub5xh1" path="res://assets/ui/elements/circle_gradient_256.png" id="5_y5cmv"]
 [ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="6_etmc2"]
 [ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/common/stat_tag.tscn" id="7_06qtw"]
+[ext_resource type="Script" path="res://scripts/ui/common/stat_tag_group.gd" id="8_pwjdl"]
 [ext_resource type="Texture2D" uid="uid://dmex603l0fmrx" path="res://assets/ui/icons/electric.png" id="8_vnpri"]
 [ext_resource type="Texture2D" uid="uid://csymxbvlolpj3" path="res://assets/ui/icons/sword.png" id="9_i42u0"]
 [ext_resource type="Texture2D" uid="uid://2hnhxpjnw4w7" path="res://assets/ui/icons/arrow_cross_divided.png" id="10_v87xr"]
@@ -25,7 +26,7 @@ texture_margin_bottom = 8.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="CharacterInfoPanel" type="PanelContainer" node_paths=PackedStringArray("background_normal", "background_red", "name_label")]
+[node name="CharacterInfoPanel" type="PanelContainer" node_paths=PackedStringArray("background_normal", "background_red", "name_label", "ability_item", "health", "energy", "damage", "move")]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -40,6 +41,11 @@ script = ExtResource("2_fo8ry")
 background_normal = NodePath("BackgroundNormal")
 background_red = NodePath("BackgroundRed")
 name_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/NameLabel")
+ability_item = NodePath("MarginContainer/PanelContainer/VBoxContainer/AbilityItem")
+health = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/Stats/Health")
+energy = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/Stats/Energy")
+damage = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/Stats/Damage")
+move = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/Stats/Move")
 
 [node name="BackgroundNormal" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -128,6 +134,7 @@ expand_mode = 1
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
+script = ExtResource("8_pwjdl")
 
 [node name="Health" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/Stats" instance=ExtResource("7_06qtw")]
 layout_mode = 2

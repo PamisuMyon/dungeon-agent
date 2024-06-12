@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=5 format=3 uid="uid://ci2hh014uav7c"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=6 format=3 uid="uid://ci2hh014uav7c"]
 
 [ext_resource type="Script" path="res://scripts/configs/ability_config.gd" id="1_03v61"]
 [ext_resource type="Script" path="res://scripts/configs/character_config.gd" id="2_3kukw"]
+[ext_resource type="Texture2D" uid="uid://bix0hgoypun5g" path="res://assets/ui/icons/abi-pointy-sword.png" id="3_cs30o"]
 
 [sub_resource type="Resource" id="Resource_j6abl"]
 script = ExtResource("1_03v61")
@@ -10,24 +11,31 @@ type = 1
 act_range = 1
 cooldown = 1
 init_cooldown = 0
+cost = 0
 priority = 0
 extra = {}
 act_anim_name = "h1_melee_dia"
 act_pre_delay = 0.38
 act_post_delay = 0.62
+display_name = ""
+description = ""
 
 [sub_resource type="Resource" id="Resource_lngl4"]
 script = ExtResource("1_03v61")
 id = "abi_knight_crit_atk"
 type = 1
 act_range = 1
-cooldown = 1
-init_cooldown = 1
+cooldown = 0
+init_cooldown = 0
+cost = 2
 priority = 10
 extra = {}
 act_anim_name = "h1_melee_chop"
 act_pre_delay = 0.56
 act_post_delay = 0.506
+icon = ExtResource("3_cs30o")
+display_name = "Critical Strike"
+description = "Deals [color=#3bad24]200%[/color] damage to a single target."
 
 [resource]
 script = ExtResource("2_3kukw")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatsConfig" load_steps=5 format=3 uid="uid://bhdnpc8pikt5r"]
+
+[ext_resource type="Script" path="res://scripts/configs/stats_config.gd" id="1_41tut"]
+[ext_resource type="Texture2D" uid="uid://blr72bjn0wbj7" path="res://assets/ui/icons/suit_hearts.png" id="1_jpsn3"]
+[ext_resource type="Script" path="res://scripts/configs/stat_config.gd" id="1_rk1xm"]
+
+[sub_resource type="Resource" id="Resource_wvghy"]
+script = ExtResource("1_rk1xm")
+icon = ExtResource("1_jpsn3")
+color = Color(0, 0, 0, 1)
+
+[resource]
+script = ExtResource("1_41tut")
+health = SubResource("Resource_wvghy")

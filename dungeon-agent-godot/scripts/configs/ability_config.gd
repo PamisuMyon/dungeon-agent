@@ -8,8 +8,9 @@ enum AbilityType {
 @export var id: String
 @export var type: AbilityType
 @export var act_range: int = 1
-@export var cooldown: int = 1
-@export var init_cooldown: int = 0
+@export var cooldown: int
+@export var init_cooldown: int
+@export var cost: int
 @export var priority: int
 @export var extra: Dictionary
 
@@ -18,3 +19,8 @@ enum AbilityType {
 @export var act_pre_delay: float
 # @export var act_duration: float
 @export var act_post_delay: float
+
+@export_group("UI Display")
+@export var icon: Texture2D
+@export var display_name: String
+@export var description: String

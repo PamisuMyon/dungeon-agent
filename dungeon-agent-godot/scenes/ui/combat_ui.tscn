@@ -42,7 +42,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_tng2u")
 
-[node name="Hud" type="Control" parent="."]
+[node name="Hud" type="Control" parent="." node_paths=PackedStringArray("character_info_panel")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_sca00")
+character_info_panel = NodePath("CharInfoWrapper/CharInfoPanel")
 
 [node name="Stats" type="VBoxContainer" parent="Hud"]
 layout_mode = 0
@@ -89,8 +90,19 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "123"
 
-[node name="CharacterInfoPanel" parent="Hud" instance=ExtResource("8_7h0cf")]
+[node name="CharInfoWrapper" type="VBoxContainer" parent="Hud"]
 layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_right = 364.0
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="CharInfoPanel" parent="Hud/CharInfoWrapper" instance=ExtResource("8_7h0cf")]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
 
 [node name="BottomBar" type="Control" parent="Hud"]
 layout_mode = 1
@@ -256,6 +268,7 @@ theme_override_font_sizes/font_size = 36
 text = "Place servants to start battle"
 
 [node name="Shop" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
