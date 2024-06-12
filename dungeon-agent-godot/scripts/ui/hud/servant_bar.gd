@@ -1,6 +1,6 @@
 extends Control
 
-const ServantCardScene: PackedScene = preload("res://scenes/ui/servant_card.tscn")
+const ServantCardScene: PackedScene = preload("res://scenes/ui/hud/servant_card.tscn")
 
 var card_pool: NodePool
 var cards: Array[ServantCard] = [] # cards in use

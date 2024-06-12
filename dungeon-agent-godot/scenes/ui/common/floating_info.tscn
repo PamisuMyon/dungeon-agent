@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://skck16wkvfo3"]
 
 [ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="1_b867m"]
-[ext_resource type="Script" path="res://scripts/ui/floating_info.gd" id="1_tws0r"]
+[ext_resource type="Script" path="res://scripts/ui/common/floating_info.gd" id="1_tws0r"]
 
 [node name="FloatingInfo" type="Control" node_paths=PackedStringArray("health_bar")]
 layout_mode = 3

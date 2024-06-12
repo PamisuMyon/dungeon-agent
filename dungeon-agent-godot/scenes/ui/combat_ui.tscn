@@ -2,9 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_yrdo6"]
 [ext_resource type="Script" path="res://scripts/ui/combat_ui.gd" id="2_ndcfv"]
-[ext_resource type="Script" path="res://scripts/ui/combat_hud.gd" id="3_sca00"]
+[ext_resource type="Script" path="res://scripts/ui/hud/combat_hud.gd" id="3_sca00"]
 [ext_resource type="Script" path="res://scripts/ui/combat_overlay.gd" id="3_tng2u"]
-[ext_resource type="Script" path="res://scripts/ui/servant_bar.gd" id="7_8o8fn"]
+[ext_resource type="Script" path="res://scripts/ui/hud/servant_bar.gd" id="7_8o8fn"]
 [ext_resource type="PackedScene" uid="uid://c6r21o7gyfdw8" path="res://scenes/ui/common/heart_texture.tscn" id="8_6l6gc"]
 [ext_resource type="PackedScene" uid="uid://csc5dtc30fdq5" path="res://scenes/ui/hud/character_info_panel.tscn" id="8_7h0cf"]
 [ext_resource type="Texture2D" uid="uid://cevfsikqqietk" path="res://assets/ui/icons/Coin_Skull.png" id="9_nv2ij"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://jw1balh7eku1"]
 
-[ext_resource type="Script" path="res://scripts/ui/servant_card.gd" id="1_rybs3"]
+[ext_resource type="Script" path="res://scripts/ui/hud/servant_card.gd" id="1_rybs3"]
 [ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/elements/panel_blue.png" id="1_yjm6t"]
 [ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="2_l1cm4"]
 [ext_resource type="Texture2D" uid="uid://dgw75o8or6oh2" path="res://assets/ui/elements/rect_r8.png" id="4_ng2ec"]

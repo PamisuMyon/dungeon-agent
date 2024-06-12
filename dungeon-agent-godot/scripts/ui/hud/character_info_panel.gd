@@ -3,8 +3,8 @@ extends Control
 @export var background_normal: Control
 @export var background_red: Control
 @export var name_label: Label
-@export var stats_label: RichTextLabel
-@export var desc_label: RichTextLabel
+#@export_category("Stats")
+#@export var 
 
 var current_chara: Character
 
@@ -33,17 +33,17 @@ func refresh():
 	var attack_range = 0
 	if current_chara.attack_ability:
 		attack_range = current_chara.attack_ability.config.act_range
-	var stats_text = """Health: {health}/{max_health}
-Damage: {damage}
-Move: {move}
-Attack Range: {attak_range}""".format({ 
-	"health": attr_comp.get_value(Schema.AttributeType.HEALTH),
-	"max_health": attr_comp.get_value(Schema.AttributeType.MAX_HEALTH),
-	"damage": attr_comp.get_value(Schema.AttributeType.DAMAGE),
-	"move": attr_comp.get_value(Schema.AttributeType.MOVE),
-	"attak_range": attack_range
-	})
-	stats_label.text = stats_text
+	#var stats_text = """Health: {health}/{max_health}
+#Damage: {damage}
+#Move: {move}
+#Attack Range: {attak_range}""".format({ 
+	#"health": attr_comp.get_value(Schema.AttributeType.HEALTH),
+	#"max_health": attr_comp.get_value(Schema.AttributeType.MAX_HEALTH),
+	#"damage": attr_comp.get_value(Schema.AttributeType.DAMAGE),
+	#"move": attr_comp.get_value(Schema.AttributeType.MOVE),
+	#"attak_range": attack_range
+	#})
+	#stats_label.text = stats_text
 
 
 func bind(chara: Character):
