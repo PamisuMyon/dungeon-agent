@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://3u65lj08gxl5"]
+[gd_scene load_steps=5 format=3 uid="uid://3u65lj08gxl5"]
 
 [ext_resource type="Script" path="res://scripts/app.gd" id="1_0hjwp"]
 [ext_resource type="Script" path="res://scripts/configs/config_system.gd" id="2_yj2j3"]
 [ext_resource type="Resource" uid="uid://5le788wx3e14" path="res://assets/configs/servants/char_sk_minion.tres" id="3_js3el"]
+[ext_resource type="Script" path="res://scripts/save/save_system.gd" id="4_y2u8m"]
 
 [node name="App" type="Node"]
 script = ExtResource("1_0hjwp")
 
 [node name="ConfigSystem" type="Node" parent="."]
 script = ExtResource("2_yj2j3")
-servant_list = Array[Resource("res://scripts/configs/character_config.gd")]([ExtResource("3_js3el")])
+all_servants = Array[Resource("res://scripts/configs/character_config.gd")]([ExtResource("3_js3el")])
 default_servants = Array[Resource("res://scripts/configs/character_config.gd")]([ExtResource("3_js3el"), ExtResource("3_js3el"), ExtResource("3_js3el")])
+
+[node name="SaveSystem" type="Node" parent="."]
+script = ExtResource("4_y2u8m")

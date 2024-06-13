@@ -46,8 +46,8 @@ func on_process(_delta: float):
 		
 		if Input.is_action_just_pressed("confirm"):
 			if _is_placement_available:
-				p.spawn_character_at_cell(p.bb.inventory_servants[_placing_servant_index], cell_pos)
-				p.bb.inventory_servants.remove_at(_placing_servant_index)
+				p.spawn_character_at_cell(App.save.runtime.servants[_placing_servant_index], cell_pos)
+				App.save.runtime.servants.remove_at(_placing_servant_index)
 				_exit_placing()
 				Events.servant_placed.emit()
 			else:
@@ -68,7 +68,7 @@ func place_servant(index: int):
 	is_placing = true
 	p.bb.sub_state = CombatBlackboard.SubState.EMBATTLE_PLACING
 	_placing_servant_index = index
-	var config = p.bb.inventory_servants[index]
+	var config = App.save.runtime.servants[index]
 	assert(config.model_path, "model_path of config %s is null" % config.id)
 	var model_scene = load(config.model_path) as PackedScene
 	var model = model_scene.instantiate()

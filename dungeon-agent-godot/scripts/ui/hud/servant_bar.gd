@@ -5,6 +5,7 @@ const ServantCardScene: PackedScene = preload("res://scenes/ui/hud/servant_card.
 var card_pool: NodePool
 var cards: Array[ServantCard] = [] # cards in use
 var _selected_index: int = -1
+var _current_card_state: ServantCard.CardState = ServantCard.CardState.NORMAL
 
 
 func _ready() -> void:
@@ -23,14 +24,15 @@ func _refresh():
 	cards.clear()
 	card_pool.release_all_in_use()
 
-	var servants = App.combat_controller.bb.inventory_servants
+	var servants = App.save.runtime.servants
 	for i in range(servants.size()):
 		var config = servants[i]
 		var card = card_pool.spawn() as ServantCard
 		move_child(card, 0)
 		card.set_data(config)
-		card.change_state(ServantCard.CardState.NORMAL)
-		card.card_selected.connect(_on_card_selected)
+		card.change_state(_current_card_state)
+		if not card.card_selected.is_connected(_on_card_selected):
+			card.card_selected.connect(_on_card_selected)
 		cards.push_back(card)
 
 
@@ -41,7 +43,7 @@ func _on_card_selected(card: ServantCard):
 			cards[i].change_state(ServantCard.CardState.SELECTED)
 		else:
 			cards[i].change_state(ServantCard.CardState.DISABLED)
-	App.combat_controller.place_servant(_selected_index)
+	App.combat_manager.place_servant(_selected_index)
 
 
 func _on_servant_placed():
@@ -61,8 +63,9 @@ func _on_inventory_servants_changed():
 
 func _on_combat_state_changed(state: CombatBlackboard.SubState):
 	if state == CombatBlackboard.SubState.BATTLE:
-		for i in range(cards.size()):
-			cards[i].change_state(ServantCard.CardState.DISABLED)
+		_current_card_state = ServantCard.CardState.DISABLED
 	elif state == CombatBlackboard.SubState.EMBATTLE_NONE:
-		for i in range(cards.size()):
-			cards[i].change_state(ServantCard.CardState.NORMAL)
+		_current_card_state = ServantCard.CardState.NORMAL
+
+	for i in range(cards.size()):
+		cards[i].change_state(_current_card_state)

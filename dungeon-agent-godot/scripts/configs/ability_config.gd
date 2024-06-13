@@ -20,7 +20,7 @@ enum AbilityType {
 # @export var act_duration: float
 @export var act_post_delay: float
 
-@export_group("UI Display")
+@export_group("Display")
 @export var icon: Texture2D
 @export var display_name: String
 @export var description: String

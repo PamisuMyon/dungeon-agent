@@ -1,8 +1,8 @@
 class_name CombatState
 extends State
 
-var p: CombatController
+var p: CombatManager
 
 
 func on_initialize():
-	p = machine.get_parent() as CombatController
+	p = machine.get_parent() as CombatManager

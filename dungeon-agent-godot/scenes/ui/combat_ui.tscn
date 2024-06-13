@@ -268,7 +268,6 @@ theme_override_font_sizes/font_size = 36
 text = "Place servants to start battle"
 
 [node name="Shop" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

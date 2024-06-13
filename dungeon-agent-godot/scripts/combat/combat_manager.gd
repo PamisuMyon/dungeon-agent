@@ -1,4 +1,4 @@
-class_name CombatController
+class_name CombatManager
 extends Node3D
 
 @export var is_debug: bool = false
@@ -13,11 +13,11 @@ var bb: CombatBlackboard
 
 
 func _ready() -> void:
-	App.combat_controller = self
+	App.combat_manager = self
 	
 	bb = CombatBlackboard.new()
 	for it in App.config.default_servants:
-		bb.inventory_servants.push_back(it)
+		App.save.runtime.servants.push_back(it)
 
 	if is_debug:
 		for node in get_parent().get_children():
@@ -41,9 +41,9 @@ func _input(event: InputEvent) -> void:
 
 func _next_level():
 	# TODO TEMP
-	bb.level_index += 1
-	bb.level_config = config.levels[bb.level_index]
-	bb.wave_index = 0
+	App.save.runtime.level_index += 1
+	App.save.runtime.level_config = config.levels[bb.level_index]
+	App.save.runtime.wave_index = 0
 	fsm.change_state("LevelBegin")
 
 

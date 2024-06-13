@@ -26,7 +26,7 @@ texture_margin_bottom = 8.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="CharacterInfoPanel" type="PanelContainer" node_paths=PackedStringArray("background_normal", "background_red", "name_label", "ability_item", "health", "energy", "damage", "move")]
+[node name="CharacterInfoPanel" type="PanelContainer" node_paths=PackedStringArray("background_normal", "background_red", "name_label", "icon", "ability_item", "health", "energy", "damage", "move")]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -41,6 +41,7 @@ script = ExtResource("2_fo8ry")
 background_normal = NodePath("BackgroundNormal")
 background_red = NodePath("BackgroundRed")
 name_label = NodePath("MarginContainer/PanelContainer/VBoxContainer/NameLabel")
+icon = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer/Icon")
 ability_item = NodePath("MarginContainer/PanelContainer/VBoxContainer/AbilityItem")
 health = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/Stats/Health")
 energy = NodePath("MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/Stats/Energy")

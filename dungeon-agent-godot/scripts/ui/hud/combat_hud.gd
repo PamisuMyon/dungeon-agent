@@ -19,7 +19,8 @@ func _ready() -> void:
 
 func _on_combat_state_changed(state: CombatBlackboard.SubState):
 	if state == CombatBlackboard.SubState.WAVE_BEGIN:
-		start_button.text = "Start"
+		start_button.visible = true
+		start_button.text = "Start Battle"
 		start_button.disabled = false
 	elif state == CombatBlackboard.SubState.BATTLE:
 		start_button.text = "Battling"
@@ -28,6 +29,10 @@ func _on_combat_state_changed(state: CombatBlackboard.SubState):
 		start_button.disabled = false
 	elif state == CombatBlackboard.SubState.EMBATTLE_PLACING:
 		start_button.disabled = true
+	if state == CombatBlackboard.SubState.WAVE_END:
+		# start_button.text = "Start Battle"
+		# start_button.disabled = true
+		start_button.visible = false
 
 
 func _show_character_info_card(chara: Character):

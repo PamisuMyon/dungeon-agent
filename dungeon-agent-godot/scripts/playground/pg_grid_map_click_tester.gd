@@ -15,7 +15,7 @@ func _on_combat_state_changed(state: CombatBlackboard.SubState):
 	if state == CombatBlackboard.SubState.WAVE_BEGIN:
 		Events.combat_state_changed.disconnect(_on_combat_state_changed)
 		await get_tree().process_frame
-		_floor_grid_map = App.combat_controller.floor_grid_map
+		_floor_grid_map = App.combat_manager.floor_grid_map
 
 
 func _input(event: InputEvent) -> void:

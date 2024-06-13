@@ -10,7 +10,6 @@ script = ExtResource("1_tws0r")
 health_bar = NodePath("HealthBar")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

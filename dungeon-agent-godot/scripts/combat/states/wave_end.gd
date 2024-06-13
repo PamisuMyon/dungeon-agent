@@ -4,6 +4,7 @@ var is_win: bool
 
 
 func on_enter():
+	p.bb.sub_state = CombatBlackboard.SubState.WAVE_END
 	_finish_wave()
 
 
@@ -13,8 +14,8 @@ func _finish_wave():
 	if not p.bb.servants_on_stage.is_empty():
 		# TODO anim
 		for it in p.bb.servants_on_stage:
-			p.bb.inventory_servants.push_back(it.chara.config)
-			it.queue_free()
+			App.save.runtime.servants.push_back(it.chara.config)
+			it.free_self()
 		p.bb.servants_on_stage.clear()
 	Events.inventory_servants_changed.emit()
 
@@ -22,7 +23,7 @@ func _finish_wave():
 	if not p.bb.adventurers_on_stage.is_empty():
 		# TODO anim
 		for it in p.bb.adventurers_on_stage:
-			it.queue_free()
+			it.free_self()
 		p.bb.adventurers_on_stage.clear()
 	
 	p.bb.char_on_stage.clear()
@@ -34,8 +35,9 @@ func _finish_wave():
 
 
 func _wave_win():
-	if p.bb.wave_index == p.bb.level_config.waves.size() - 1\
-	and p.bb.level_index == p.config.levels.size() - 1:
+	var data = App.save.runtime
+	if data.wave_index == data.level_config.waves.size() - 1\
+	and data.level_index == p.config.levels.size() - 1:
 		# last wave of last level finished, game clear
 		# TODO
 		pass

@@ -10,11 +10,6 @@ enum SubState {
 	WAVE_END,
 }
 
-var level_index: int = -1
-var level_config: LevelConfig
-var wave_index: int = 0
-var inventory_servants: Array[CharacterConfig] = []
-
 var char_on_stage: Array[CharacterController]
 var adventurers_on_stage: Array[CharacterController]
 var servants_on_stage: Array[CharacterController]

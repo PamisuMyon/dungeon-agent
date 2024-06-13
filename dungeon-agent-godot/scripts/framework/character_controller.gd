@@ -13,7 +13,7 @@ var next_cell_pos: Vector3
 var move_points: int
 var attack_points: int
 var floor_grid_map: GridMapNavRegion2D
-var combat_controller: CombatController
+var combat_controller: CombatManager
 
 #region Blackboard
 var target: CharacterController
@@ -30,7 +30,7 @@ var _temp_targets: Array[CharacterController] = []
 
 
 func _ready() -> void:
-	combat_controller = App.combat_controller
+	combat_controller = App.combat_manager
 	floor_grid_map = combat_controller.floor_grid_map
 	
 	# if not chara.is_auto_initialize:
@@ -54,6 +54,11 @@ func _process(delta: float) -> void:
 func _on_health_changed(_delta: float, new_health: float):
 	if new_health <= 0 and fsm.current_state.name != "Death":
 		fsm.change_state("Death")
+
+
+func free_self():
+	Events.req_unbind_character_floating_info.emit(chara)
+	queue_free()
 
 
 func move_to_cell(cell_pos: Vector3i):
@@ -169,9 +174,9 @@ func select_target() -> bool:
 func _min_distance_criteria(cc: CharacterController) -> float:
 	if cc == self or not cc.chara.is_alive:
 		return 1000001.
-	if (chara.config.type == CharacterConfig.Type.Adventurer \
+	if (chara.config.type == CharacterConfig.Type.ADVENTURER \
 	and cc is MonsterController) \
-	or (chara.config.type == CharacterConfig.Type.Servant \
+	or (chara.config.type == CharacterConfig.Type.SERVANT \
 	and cc is AdventurerController):
 		var distance = GameplayUtils.distance_chebyshev(agent.current_cell, cc.agent.current_cell)
 		return distance
