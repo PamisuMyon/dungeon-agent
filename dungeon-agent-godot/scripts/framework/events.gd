@@ -27,7 +27,7 @@ signal req_start_battle
 
 signal shop_items_updated(items: Array[ShopItem])
 
-signal req_shop_items_reroll
+signal req_shop_reroll
 
 signal shop_reroll_price_changed(price: int)
 

@@ -1,5 +1,5 @@
 class_name ShopItem
 extends RefCounted
 
-var price: float
+var price: int
 var config: CharacterConfig

@@ -27,7 +27,7 @@ var attributes: Dictionary
 @export_file("*.tscn") var model_path: String
 
 @export_group("Shop")
-@export var base_price: float
+@export var base_price: int
 
 
 func initialize():

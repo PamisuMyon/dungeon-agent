@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dpbiahnw3qd13"]
+[gd_scene load_steps=13 format=3 uid="uid://dpbiahnw3qd13"]
 
 [ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_yrdo6"]
 [ext_resource type="Script" path="res://scripts/ui/combat_ui.gd" id="2_ndcfv"]
@@ -7,9 +7,10 @@
 [ext_resource type="Script" path="res://scripts/ui/hud/servant_bar.gd" id="7_8o8fn"]
 [ext_resource type="PackedScene" uid="uid://c6r21o7gyfdw8" path="res://scenes/ui/common/heart_texture.tscn" id="8_6l6gc"]
 [ext_resource type="PackedScene" uid="uid://csc5dtc30fdq5" path="res://scenes/ui/hud/character_info_panel.tscn" id="8_7h0cf"]
+[ext_resource type="Script" path="res://scripts/ui/shop/shop_view.gd" id="9_n3lmk"]
 [ext_resource type="Texture2D" uid="uid://cevfsikqqietk" path="res://assets/ui/icons/Coin_Skull.png" id="9_nv2ij"]
 [ext_resource type="Texture2D" uid="uid://i5xftnkmkxfv" path="res://assets/ui/elements/panel_brown.png" id="12_gbiqu"]
-[ext_resource type="PackedScene" uid="uid://ng72oc02cebk" path="res://scenes/ui/shop/shop_item.tscn" id="13_srnhq"]
+[ext_resource type="Theme" uid="uid://dqpx0lu6c2qx6" path="res://assets/ui/blue_button_theme.tres" id="12_sdhrp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v6nno"]
 texture = ExtResource("12_gbiqu")
@@ -17,8 +18,8 @@ texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
-expand_margin_left = 8.0
-expand_margin_right = 8.0
+expand_margin_left = 14.0
+expand_margin_right = 14.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
@@ -267,13 +268,18 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Place servants to start battle"
 
-[node name="Shop" type="Control" parent="."]
+[node name="Shop" type="Control" parent="." node_paths=PackedStringArray("item_container", "reroll_button", "reroll_label", "reroll_price_label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("9_n3lmk")
+item_container = NodePath("Panel/VBoxContainer/ItemContainer")
+reroll_button = NodePath("Panel/Control/RerollButton")
+reroll_label = NodePath("Panel/Control/RerollButton/HBoxContainer/RerollLabel")
+reroll_price_label = NodePath("Panel/Control/RerollButton/HBoxContainer/PriceLabel")
 
 [node name="Panel" type="PanelContainer" parent="Shop"]
 layout_mode = 1
@@ -282,29 +288,79 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -500.0
+offset_left = -603.0
 offset_top = -302.0
-offset_right = 500.0
+offset_right = 603.0
 offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_v6nno")
+
+[node name="Control" type="Control" parent="Shop/Panel"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="RerollButton" type="Button" parent="Shop/Panel/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
+offset_top = 6.0
+offset_right = -1.0
+offset_bottom = 66.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("12_sdhrp")
+theme_override_font_sizes/font_size = 30
+text = " "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/Panel/Control/RerollButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -22.0
+offset_right = 164.0
+offset_bottom = 17.0
+grow_vertical = 2
+
+[node name="RerollLabel" type="Label" parent="Shop/Panel/Control/RerollButton/HBoxContainer"]
+custom_minimum_size = Vector2(78, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 34
+text = "Reroll"
+
+[node name="Icon" type="TextureRect" parent="Shop/Panel/Control/RerollButton/HBoxContainer"]
+custom_minimum_size = Vector2(38, 38)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("9_nv2ij")
+expand_mode = 1
+
+[node name="PriceLabel" type="Label" parent="Shop/Panel/Control/RerollButton/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992, 0.49, 1)
+theme_override_font_sizes/font_size = 34
+text = "12"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Shop/Panel"]
 layout_mode = 2
 theme_override_constants/separation = 24
 
 [node name="TitleLabel" type="Label" parent="Shop/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Shop!"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Shop/Panel/VBoxContainer"]
+[node name="ItemContainer" type="HBoxContainer" parent="Shop/Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = 22
 alignment = 1
-
-[node name="ShopItem" parent="Shop/Panel/VBoxContainer/HBoxContainer" instance=ExtResource("13_srnhq")]
-layout_mode = 2

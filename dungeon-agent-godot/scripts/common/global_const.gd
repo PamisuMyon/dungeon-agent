@@ -8,3 +8,6 @@ const TRANS_REQ_IDLE_VARIANT = "parameters/idle_variant/transition_request"
 
 const ADVENTURER = "adventurer"
 const SERVANT = "servant"
+
+const PRICE_TAG_COLOR_AVAILABLE := Color(1., .992, .49)
+const PRICE_TAG_COLOR_UNAVAILABLE := Color(1., .306, .15)
