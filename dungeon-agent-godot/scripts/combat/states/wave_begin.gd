@@ -11,7 +11,7 @@ func on_enter():
 
 func _spawn_enemies():
 	var points = p.stage.spawn_points.duplicate()
-	var wave = p.bb.level_config.waves[p.bb.wave_index]
+	var wave = App.save.runtime.level_config.waves[App.save.runtime.wave_index]
 	for config in wave.enemies:
 		var ri = randi_range(0, points.size() - 1)
 		var cell_pos = points[ri]

@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://scripts/combat/states/level_begin.gd" id="7_4cihk"]
 [ext_resource type="Script" path="res://scripts/combat/states/wave_end.gd" id="11_xj7tj"]
 [ext_resource type="Script" path="res://scripts/playground/pg_reloader.gd" id="11_xwev3"]
-[ext_resource type="Script" path="res://scripts/combat/shop_manager.gd" id="12_uf3gk"]
+[ext_resource type="Script" path="res://scripts/shop/shop_manager.gd" id="12_uf3gk"]
 [ext_resource type="Script" path="res://scripts/playground/pg_grid_map_click_tester.gd" id="14_yultt"]
 [ext_resource type="Script" path="res://scripts/pamisu_kit/fsm/state_machine.gd" id="16_b8u78"]
 [ext_resource type="PackedScene" uid="uid://dpbiahnw3qd13" path="res://scenes/ui/combat_ui.tscn" id="24_02myq"]

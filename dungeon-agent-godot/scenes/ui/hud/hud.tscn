@@ -1,0 +1,245 @@
+[gd_scene load_steps=7 format=3 uid="uid://38n26ifa0bfh"]
+
+[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_nrknd"]
+[ext_resource type="Script" path="res://scripts/ui/hud/combat_hud.gd" id="1_u6qhv"]
+[ext_resource type="Script" path="res://scripts/ui/hud/dungeon_health_bar.gd" id="2_j06b2"]
+[ext_resource type="Texture2D" uid="uid://cevfsikqqietk" path="res://assets/ui/icons/Coin_Skull.png" id="4_7bg2p"]
+[ext_resource type="PackedScene" uid="uid://csc5dtc30fdq5" path="res://scenes/ui/hud/character_info_panel.tscn" id="5_kkvvk"]
+[ext_resource type="Script" path="res://scripts/ui/hud/servant_bar.gd" id="6_4ikbl"]
+
+[node name="Hud" type="Control" node_paths=PackedStringArray("health_bar", "gold_label", "character_info_panel", "start_button", "health_detail_view", "detail_health_bar", "defeated_view", "victory_view")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_nrknd")
+script = ExtResource("1_u6qhv")
+health_bar = NodePath("Stats/HealthBar")
+gold_label = NodePath("Stats/MarginContainer/Gold/GoldLabel")
+character_info_panel = NodePath("CharInfoWrapper/CharInfoPanel")
+start_button = NodePath("StartButton")
+health_detail_view = NodePath("HealthDetailView")
+detail_health_bar = NodePath("HealthDetailView/DetailHealthBar")
+defeated_view = NodePath("DefeatedView")
+victory_view = NodePath("VictoryView")
+
+[node name="Stats" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 140.0
+offset_bottom = 121.0
+theme_override_constants/separation = 12
+
+[node name="HealthBar" type="HBoxContainer" parent="Stats"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+script = ExtResource("2_j06b2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+
+[node name="Gold" type="HBoxContainer" parent="Stats/MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Stats/MarginContainer/Gold"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("4_7bg2p")
+expand_mode = 1
+
+[node name="GoldLabel" type="Label" parent="Stats/MarginContainer/Gold"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.992157, 0.490196, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "123"
+
+[node name="CharInfoWrapper" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_right = 364.0
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="CharInfoPanel" parent="CharInfoWrapper" instance=ExtResource("5_kkvvk")]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+
+[node name="BottomBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ServantBar" type="HBoxContainer" parent="BottomBar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 6
+alignment = 1
+script = ExtResource("6_4ikbl")
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_top = -246.0
+offset_right = -135.0
+offset_bottom = -173.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 34
+text = "Next Wave"
+
+[node name="HealthDetailView" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="HealthDetailView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="DetailHealthBar" type="HBoxContainer" parent="HealthDetailView"]
+custom_minimum_size = Vector2(476, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_j06b2")
+heart_size = Vector2(156, 156)
+
+[node name="DefeatedView" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="DefeatedView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Label" type="Label" parent="DefeatedView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -230.0
+offset_right = 145.0
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 76
+text = "Defeated..."
+
+[node name="VictoryView" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="VictoryView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Label" type="Label" parent="VictoryView"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.5
+offset_top = -241.0
+offset_right = 200.5
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 76
+text = "Victory!"
+horizontal_alignment = 1
+
+[node name="Hint" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -223.0
+offset_top = -199.0
+offset_right = 224.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Hint"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HintLabel" type="Label" parent="Hint/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Place servants to start battle"

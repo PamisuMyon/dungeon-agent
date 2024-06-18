@@ -22,7 +22,7 @@ texture_margin_bottom = 8.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="ShopItemView" type="VBoxContainer" node_paths=PackedStringArray("name_label", "icon", "ability_item", "health", "damage", "move")]
+[node name="ShopItemView" type="VBoxContainer" node_paths=PackedStringArray("name_label", "icon", "ability_item", "buy_button", "price_label", "health", "damage", "move")]
 custom_minimum_size = Vector2(280, 400)
 theme = ExtResource("1_idf00")
 theme_override_constants/separation = 12
@@ -30,6 +30,8 @@ script = ExtResource("2_j6b14")
 name_label = NodePath("PanelContainer/VBoxContainer/NameLabel")
 icon = NodePath("PanelContainer/VBoxContainer/MarginContainer/Icon")
 ability_item = NodePath("PanelContainer/VBoxContainer/AbilityItem")
+buy_button = NodePath("MarginContainer/BuyButton")
+price_label = NodePath("MarginContainer/BuyButton/PriceLabel")
 health = NodePath("PanelContainer/VBoxContainer/HBoxContainer/Health")
 damage = NodePath("PanelContainer/VBoxContainer/HBoxContainer/Damage")
 move = NodePath("PanelContainer/VBoxContainer/HBoxContainer/Move")

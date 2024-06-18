@@ -75,12 +75,10 @@ func _on_character_die(cc: CharacterController):
 func _check_battle_finished() -> bool:
 	if p.bb.adventurers_on_stage.size() == 0:
 		_is_acting = false
-		machine.states["WaveEnd"].is_win = true
 		machine.change_state("WaveEnd")
 		return true
 	elif p.bb.servants_on_stage.size() == 0:
 		_is_acting = false
-		machine.states["WaveEnd"].is_win = true
 		machine.change_state("WaveEnd")
 		return true
 	return false

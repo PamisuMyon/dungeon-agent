@@ -26,7 +26,10 @@ func _ready() -> void:
 	
 	fsm.initialize()
 	await get_tree().process_frame
-	_next_level()
+
+	App.save.runtime.change_dungeon_health(config.dungeon_health)
+	App.save.runtime.change_gold(config.gold)
+	next_level()
 	
 
 func _process(delta: float) -> void:
@@ -39,10 +42,10 @@ func _input(event: InputEvent) -> void:
 		fsm.on_input(event)
 
 
-func _next_level():
+func next_level():
 	# TODO TEMP
 	App.save.runtime.level_index += 1
-	App.save.runtime.level_config = config.levels[bb.level_index]
+	App.save.runtime.level_config = config.levels[App.save.runtime.level_index]
 	App.save.runtime.wave_index = 0
 	fsm.change_state("LevelBegin")
 

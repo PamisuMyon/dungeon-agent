@@ -3,6 +3,8 @@ extends Node
 
 #region Misc
 
+signal dungeon_health_changed(new_health: int)
+
 signal consumable_changed(type: Schema.ConsumableType, new_value, delta)
 
 signal inventory_servants_changed
@@ -48,5 +50,13 @@ signal req_hide_character_info_card
 signal req_show_shop_view
 
 signal req_hide_shop_view
+
+signal req_show_defeated_view
+
+signal req_show_victory_view
+
+signal req_show_dungeon_health_detail_view
+
+signal dungeon_health_detail_view_anim_finished
 
 #endregion
