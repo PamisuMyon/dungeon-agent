@@ -17,7 +17,7 @@ expand_margin_right = 14.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("item_container", "reroll_button", "reroll_label", "reroll_price_label")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("item_container", "reroll_button", "reroll_label", "reroll_price_label", "next_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +30,7 @@ item_container = NodePath("Panel/VBoxContainer/ItemContainer")
 reroll_button = NodePath("Panel/Control/RerollButton")
 reroll_label = NodePath("Panel/Control/RerollButton/HBoxContainer/RerollLabel")
 reroll_price_label = NodePath("Panel/Control/RerollButton/HBoxContainer/PriceLabel")
+next_button = NodePath("NextButton")
 
 [node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -46,10 +47,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_v6nno")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Shop!"
+horizontal_alignment = 1
+
+[node name="ItemContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 22
+alignment = 1
+
 [node name="Control" type="Control" parent="Panel"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="RerollButton" type="Button" parent="Panel/Control"]
 layout_mode = 1
@@ -99,18 +117,18 @@ theme_override_colors/font_color = Color(1, 0.992, 0.49, 1)
 theme_override_font_sizes/font_size = 34
 text = "12"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 2
-theme_override_constants/separation = 24
-
-[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 60)
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Shop!"
-horizontal_alignment = 1
-
-[node name="ItemContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 22
-alignment = 1
+[node name="NextButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -296.0
+offset_top = -246.0
+offset_right = -135.0
+offset_bottom = -173.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 34
+text = "Next Wave"

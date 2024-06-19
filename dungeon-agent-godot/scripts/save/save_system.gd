@@ -26,10 +26,12 @@ class RuntimeData:
 		if notify:
 			Events.dungeon_health_changed.emit(dungeon_health)
 
+	
+	func is_last_wave() -> bool:
+		return wave_index == level_config.waves.size() - 1
+
 
 	func change_gold(delta: int, notify: bool = true):
 		gold = max(0, gold + delta)
 		if notify:
 			Events.consumable_changed.emit(Schema.ConsumableType.GOLD, gold, delta)
-
-

@@ -23,6 +23,8 @@ signal servant_place_cancelled
 
 signal req_start_battle
 
+signal req_next_battle
+
 #endregion
 
 #region Shop
@@ -30,6 +32,8 @@ signal req_start_battle
 signal shop_items_updated(items: Array[ShopItem])
 
 signal req_shop_reroll
+
+signal req_shop_buy_item
 
 signal shop_reroll_price_changed(price: int)
 

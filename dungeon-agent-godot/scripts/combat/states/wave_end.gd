@@ -5,7 +5,23 @@ var _is_win: bool
 
 func on_enter():
 	p.bb.sub_state = CombatBlackboard.SubState.WAVE_END
+	Events.req_next_battle.connect(_on_req_next_battle)
 	_finish_wave()
+
+
+func on_exit():
+	Events.req_next_battle.disconnect(_on_req_next_battle)
+
+
+func _on_req_next_battle():
+	Events.req_hide_shop_view.emit()
+	if App.save.runtime.is_last_wave():
+		# next level
+		p.next_level()
+	else:
+		# next wave
+		App.save.runtime.wave_index += 1
+		machine.change_state("LevelBegin")
 
 
 func _finish_wave():
@@ -41,7 +57,7 @@ func _finish_wave():
 
 func _wave_win():
 	var data = App.save.runtime
-	if data.wave_index == data.level_config.waves.size() - 1\
+	if data.is_last_wave() \
 	and data.level_index == p.config.levels.size() - 1:
 		# last wave of last level finished, game clear
 		# TODO
@@ -50,6 +66,7 @@ func _wave_win():
 	
 	# show shop
 	App.shop_manager.show_shop()
+	p.bb.sub_state = CombatBlackboard.SubState.WAVE_END_SHOP
 
 
 func _wave_lose():
@@ -65,3 +82,4 @@ func _wave_lose():
 	else:
 		# show shop
 		App.shop_manager.show_shop()
+		p.bb.sub_state = CombatBlackboard.SubState.WAVE_END_SHOP

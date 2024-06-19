@@ -12,6 +12,7 @@ var _reroll_increase: int
 func _ready() -> void:
 	App.shop_manager = self
 	Events.req_shop_reroll.connect(_on_req_shop_items_reroll)
+	Events.req_shop_buy_item.connect(_on_req_shop_buy_item)
 	
 
 func _on_req_shop_items_reroll():
@@ -32,18 +33,19 @@ func _on_req_shop_buy_item(index: int):
 		print("shop buy item: not enough gold %d  price %f" % [App.save.runtime.gold, item.price])
 		return
 	App.save.runtime.change_gold(-item.price)
+	# add to inventory # TODO temp
+	App.save.runtime.servants.push_back(item.config)
+	Events.inventory_servants_changed.emit()
 	# remove item
 	current_items.remove_at(index)
 	Events.shop_items_updated.emit(current_items)
-	# add to inventory # TODO temp
-	App.save.runtime.servants.push_back(item)
-	Events.inventory_servants_changed.emit()
 
 
 func show_shop():
 	var level_num = App.save.runtime.level_index + 1
 	_reroll_increase = max(1, floori(.5 * level_num))
 	reroll_price = level_num + _reroll_increase
+	Events.shop_reroll_price_changed.emit(reroll_price)
 	roll_items()
 	Events.req_show_shop_view.emit()
 

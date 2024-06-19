@@ -64,8 +64,8 @@ func set_data(p_config: CharacterConfig):
 
 
 func change_state(p_state: ServantCard.CardState):
-	if _state == p_state:
-		return
+	# if _state == p_state:
+	# 	return
 	_state = p_state
 	if _state == CardState.NORMAL:
 		highlight.visible = false

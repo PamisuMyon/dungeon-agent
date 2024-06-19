@@ -37,6 +37,8 @@ func _refresh():
 
 
 func _on_card_selected(card: ServantCard):
+	if App.combat_manager.bb.sub_state != CombatBlackboard.SubState.EMBATTLE_NONE:
+		return
 	for i in range(_cards.size()):
 		if _cards[i] == card:
 			_selected_index = i
@@ -66,6 +68,11 @@ func _on_combat_state_changed(state: CombatBlackboard.SubState):
 		_current_card_state = ServantCard.CardState.DISABLED
 	elif state == CombatBlackboard.SubState.EMBATTLE_NONE:
 		_current_card_state = ServantCard.CardState.NORMAL
+	# TODO temp
+	elif state == CombatBlackboard.SubState.WAVE_END_SHOP:
+		_current_card_state = ServantCard.CardState.NORMAL
+	else:
+		return
 
 	for i in range(_cards.size()):
 		_cards[i].change_state(_current_card_state)

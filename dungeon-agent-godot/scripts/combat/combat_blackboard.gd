@@ -8,6 +8,7 @@ enum SubState {
 	EMBATTLE_PLACING,
 	BATTLE,
 	WAVE_END,
+	WAVE_END_SHOP,
 }
 
 var char_on_stage: Array[CharacterController]

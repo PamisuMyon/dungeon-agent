@@ -1,8 +1,6 @@
 class_name ShopItemView
 extends Control
 
-signal buy_button_pressed(item: ShopItem)
-
 @export var name_label: Label
 @export var icon: TextureRect
 @export var ability_item: AbilityItem
@@ -14,6 +12,7 @@ signal buy_button_pressed(item: ShopItem)
 @export var damage: StatTag
 @export var move: StatTag
 
+var _index: int
 var _item: ShopItem
 
 
@@ -22,8 +21,16 @@ func _ready() -> void:
 	Events.consumable_changed.connect(_on_consumable_changed)
 
 
+func on_spawn():
+	visible = true
+
+
+func on_release():
+	visible = false
+
+
 func _on_buy_button_pressed():
-	buy_button_pressed.emit(_item)
+	Events.req_shop_buy_item.emit(_index)
 
 
 func _on_consumable_changed(type: Schema.ConsumableType, new_value, _delta):
@@ -31,7 +38,8 @@ func _on_consumable_changed(type: Schema.ConsumableType, new_value, _delta):
 		_refresh_buy_button(_item.price, new_value)
 
 
-func set_data(item: ShopItem):
+func set_data(index: int, item: ShopItem):
+	_index = index
 	_item = item
 	name_label.text = item.config.display_name
 

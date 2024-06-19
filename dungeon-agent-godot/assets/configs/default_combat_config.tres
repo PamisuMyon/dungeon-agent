@@ -21,4 +21,5 @@ waves = Array[ExtResource("3_f21xh")]([SubResource("Resource_76d6g"), SubResourc
 [resource]
 script = ExtResource("1_6711x")
 dungeon_health = 3
+gold = 20
 levels = Array[ExtResource("1_ql81l")]([SubResource("Resource_scc22")])
