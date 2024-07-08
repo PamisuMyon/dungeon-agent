@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/ui/hud/combat_hud.gd" id="1_u6qhv"]
 [ext_resource type="Script" path="res://scripts/ui/hud/dungeon_health_bar.gd" id="2_j06b2"]
 [ext_resource type="Texture2D" uid="uid://cevfsikqqietk" path="res://assets/ui/icons/Coin_Skull.png" id="4_7bg2p"]
-[ext_resource type="PackedScene" uid="uid://csc5dtc30fdq5" path="res://scenes/ui/hud/character_info_panel.tscn" id="5_kkvvk"]
+[ext_resource type="PackedScene" uid="uid://csc5dtc30fdq5" path="res://scenes/ui/hud/char_info_panel.tscn" id="5_pbsga"]
 [ext_resource type="Script" path="res://scripts/ui/hud/servant_bar.gd" id="6_4ikbl"]
 
 [node name="Hud" type="Control" node_paths=PackedStringArray("health_bar", "gold_label", "character_info_panel", "start_button", "health_detail_view", "detail_health_bar", "defeated_view", "victory_view")]
@@ -70,7 +70,7 @@ grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="CharInfoPanel" parent="CharInfoWrapper" instance=ExtResource("5_kkvvk")]
+[node name="CharInfoPanel" parent="CharInfoWrapper" instance=ExtResource("5_pbsga")]
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 
@@ -85,12 +85,14 @@ grow_vertical = 0
 
 [node name="ServantBar" type="HBoxContainer" parent="BottomBar"]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -126.0
-offset_bottom = 98.0
+offset_left = -94.0
+offset_top = -271.0
+offset_right = 94.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 6

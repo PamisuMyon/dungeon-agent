@@ -1,16 +1,16 @@
-class_name CharacterCard
+class_name CharHandCard
 extends Control
 
-signal card_selected(card: CharacterCard)
+signal card_selected(card: CharHandCard)
 
 enum CardState {
 	NORMAL, DISABLED, SELECTED
 }
 
 @export var selection_offset_y: float = -20.
-# @export var body: Control
+@export var body: Control
 @export var icon: TextureRect
-# @export var highlight: Control
+@export var highlight: Control
 @export var disabled_mask: Control
 
 var index: int
@@ -26,9 +26,9 @@ func _ready() -> void:
 func _on_mouse_entered():
 	if _state == CardState.NORMAL:
 		# TODO Animation
-		# var pos = body.position
-		# pos.y = selection_offset_y
-		# body.position = pos
+		var pos = body.position
+		pos.y = selection_offset_y
+		body.position = pos
 		pass
 
 
@@ -43,7 +43,7 @@ func _gui_input(event: InputEvent) -> void:
 
 func _on_mouse_exited():
 	if _state == CardState.NORMAL:
-		# body.position = Vector2.ZERO
+		body.position = Vector2.ZERO
 		pass
 
 
@@ -64,18 +64,18 @@ func set_data(p_config: CharacterConfig):
 		icon.texture = null
 
 
-func change_state(p_state: CharacterCard.CardState):
+func change_state(p_state: CharHandCard.CardState):
 	# if _state == p_state:
 	# 	return
 	_state = p_state
 	if _state == CardState.NORMAL:
-		# highlight.visible = false
+		highlight.visible = false
 		disabled_mask.visible = false
-		# body.position = Vector2.ZERO
+		body.position = Vector2.ZERO
 	elif _state == CardState.DISABLED:
-		# highlight.visible = false
+		highlight.visible = false
 		disabled_mask.visible = true
-		# body.position = Vector2.ZERO
+		body.position = Vector2.ZERO
 	elif _state == CardState.SELECTED:
-		# highlight.visible = true
+		highlight.visible = true
 		pass

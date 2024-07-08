@@ -1,0 +1,156 @@
+[gd_scene load_steps=13 format=3 uid="uid://bac1qxmrf2mht"]
+
+[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_j0pts"]
+[ext_resource type="Script" path="res://scripts/ui/hud/char_hand_card.gd" id="2_dyv35"]
+[ext_resource type="Texture2D" uid="uid://dgw75o8or6oh2" path="res://assets/ui/elements/rect_r8.png" id="2_yk3bh"]
+[ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/elements/panel_blue.png" id="3_i3ea0"]
+[ext_resource type="Texture2D" uid="uid://ce1glbw1diptj" path="res://assets/ui/elements/panel_red.png" id="4_oaxii"]
+[ext_resource type="Texture2D" uid="uid://c5lyoyurka7ph" path="res://assets/ui/elements/panelInset_beige.png" id="5_ljdua"]
+[ext_resource type="Texture2D" uid="uid://d1lt421ub5xh1" path="res://assets/ui/elements/circle_gradient_256.png" id="6_di8fv"]
+[ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="7_bso3r"]
+[ext_resource type="Texture2D" uid="uid://csymxbvlolpj3" path="res://assets/ui/icons/sword.png" id="10_0c8ry"]
+[ext_resource type="PackedScene" uid="uid://c1jbt3gvpvyfn" path="res://scenes/ui/common/stat_tag_1.tscn" id="10_f2ers"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7sji"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7b3yf"]
+texture = ExtResource("5_ljdua")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CharHandCard" type="PanelContainer" node_paths=PackedStringArray("body", "icon", "highlight", "disabled_mask")]
+offset_right = 118.0
+offset_bottom = 143.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_j0pts")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c7sji")
+script = ExtResource("2_dyv35")
+body = NodePath("Body")
+icon = NodePath("Body/Content/PanelContainer/Control/MarginContainer/Icon")
+highlight = NodePath("Body/HighLight")
+disabled_mask = NodePath("Body/DisabledMask")
+
+[node name="Body" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="HighLight" type="NinePatchRect" parent="Body"]
+visible = false
+self_modulate = Color(0.96, 0.90176, 0.0864, 1)
+layout_mode = 2
+texture = ExtResource("2_yk3bh")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BackgroundNormal" type="NinePatchRect" parent="Body"]
+layout_mode = 2
+texture = ExtResource("3_i3ea0")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BackgroundRed" type="NinePatchRect" parent="Body"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_oaxii")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Content" type="MarginContainer" parent="Body"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="Body/Content"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_7b3yf")
+
+[node name="Control" type="VBoxContainer" parent="Body/Content/PanelContainer"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Body/Content/PanelContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="Body/Content/PanelContainer/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Gradient" type="TextureRect" parent="Body/Content/PanelContainer/Control/MarginContainer/Control"]
+self_modulate = Color(0, 0, 0, 0.227451)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -50.0
+offset_right = 59.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_di8fv")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Body/Content/PanelContainer/Control/MarginContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_bso3r")
+expand_mode = 1
+
+[node name="Stats" type="HBoxContainer" parent="Body/Content/PanelContainer/Control"]
+layout_mode = 2
+alignment = 1
+
+[node name="Damage" parent="Body/Content/PanelContainer/Control/Stats" instance=ExtResource("10_f2ers")]
+layout_mode = 2
+
+[node name="Icon" parent="Body/Content/PanelContainer/Control/Stats/Damage" index="0"]
+self_modulate = Color(0.55675, 0.459, 0.85, 1)
+texture = ExtResource("10_0c8ry")
+
+[node name="Fill" type="Control" parent="Body/Content/PanelContainer/Control/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Health" parent="Body/Content/PanelContainer/Control/Stats" instance=ExtResource("10_f2ers")]
+layout_mode = 2
+
+[node name="DisabledMask" type="NinePatchRect" parent="Body"]
+visible = false
+self_modulate = Color(0, 0, 0, 0.341176)
+layout_mode = 2
+texture = ExtResource("3_i3ea0")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[editable path="Body/Content/PanelContainer/Control/Stats/Damage"]
+[editable path="Body/Content/PanelContainer/Control/Stats/Health"]

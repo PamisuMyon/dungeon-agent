@@ -1,21 +1,21 @@
 [gd_scene load_steps=14 format=3 uid="uid://csc5dtc30fdq5"]
 
-[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_8eomp"]
-[ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/elements/panel_blue.png" id="2_d81bj"]
-[ext_resource type="Texture2D" uid="uid://ce1glbw1diptj" path="res://assets/ui/elements/panel_red.png" id="3_jiis4"]
-[ext_resource type="Texture2D" uid="uid://c5lyoyurka7ph" path="res://assets/ui/elements/panelInset_beige.png" id="4_b22c2"]
-[ext_resource type="Texture2D" uid="uid://d1lt421ub5xh1" path="res://assets/ui/elements/circle_gradient_256.png" id="5_y5cmv"]
-[ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="6_etmc2"]
-[ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/common/stat_tag.tscn" id="7_06qtw"]
-[ext_resource type="Script" path="res://scripts/ui/common/stat_tag_group.gd" id="8_pwjdl"]
-[ext_resource type="Texture2D" uid="uid://csymxbvlolpj3" path="res://assets/ui/icons/sword.png" id="9_i42u0"]
-[ext_resource type="Texture2D" uid="uid://2hnhxpjnw4w7" path="res://assets/ui/icons/arrow_cross_divided.png" id="10_v87xr"]
-[ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="11_j5i37"]
+[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_duomw"]
+[ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/elements/panel_blue.png" id="2_josfk"]
+[ext_resource type="Texture2D" uid="uid://ce1glbw1diptj" path="res://assets/ui/elements/panel_red.png" id="3_rlpk6"]
+[ext_resource type="Texture2D" uid="uid://c5lyoyurka7ph" path="res://assets/ui/elements/panelInset_beige.png" id="4_qvbj5"]
+[ext_resource type="Texture2D" uid="uid://d1lt421ub5xh1" path="res://assets/ui/elements/circle_gradient_256.png" id="5_bfvv2"]
+[ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="6_dfc5f"]
+[ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="7_e4i13"]
+[ext_resource type="Script" path="res://scripts/ui/common/stat_tag_group.gd" id="8_6rbwa"]
+[ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/common/stat_tag.tscn" id="9_4hn80"]
+[ext_resource type="Texture2D" uid="uid://csymxbvlolpj3" path="res://assets/ui/icons/sword.png" id="10_ui8ge"]
+[ext_resource type="Texture2D" uid="uid://2hnhxpjnw4w7" path="res://assets/ui/icons/arrow_cross_divided.png" id="11_e6y1u"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7sji"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6nh48"]
-texture = ExtResource("4_b22c2")
+texture = ExtResource("4_qvbj5")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
@@ -33,12 +33,12 @@ offset_top = -202.0
 offset_right = 240.0
 offset_bottom = 96.0
 grow_vertical = 2
-theme = ExtResource("1_8eomp")
+theme = ExtResource("1_duomw")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_c7sji")
 
 [node name="BackgroundNormal" type="NinePatchRect" parent="."]
 layout_mode = 2
-texture = ExtResource("2_d81bj")
+texture = ExtResource("2_josfk")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -49,7 +49,7 @@ axis_stretch_vertical = 1
 [node name="BackgroundRed" type="NinePatchRect" parent="."]
 visible = false
 layout_mode = 2
-texture = ExtResource("3_jiis4")
+texture = ExtResource("3_rlpk6")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
@@ -110,20 +110,20 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("5_y5cmv")
+texture = ExtResource("5_bfvv2")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("6_etmc2")
+texture = ExtResource("6_dfc5f")
 expand_mode = 1
 
 [node name="Divider" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer"]
 self_modulate = Color(0.356863, 0.333333, 0.282353, 0.282353)
 layout_mode = 2
-texture = ExtResource("11_j5i37")
+texture = ExtResource("7_e4i13")
 
 [node name="Desc" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -144,38 +144,38 @@ shortcut_keys_enabled = false
 [node name="Divider2" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer"]
 self_modulate = Color(0.356863, 0.333333, 0.282353, 0.282353)
 layout_mode = 2
-texture = ExtResource("11_j5i37")
+texture = ExtResource("7_e4i13")
 
 [node name="Stats" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
-script = ExtResource("8_pwjdl")
+script = ExtResource("8_6rbwa")
 
-[node name="Damage" parent="MarginContainer/PanelContainer/VBoxContainer/Stats" instance=ExtResource("7_06qtw")]
+[node name="Damage" parent="MarginContainer/PanelContainer/VBoxContainer/Stats" instance=ExtResource("9_4hn80")]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 
 [node name="Icon" parent="MarginContainer/PanelContainer/VBoxContainer/Stats/Damage" index="0"]
 self_modulate = Color(0.467528, 0.443071, 0.384359, 1)
 custom_minimum_size = Vector2(26, 26)
-texture = ExtResource("9_i42u0")
+texture = ExtResource("10_ui8ge")
 
 [node name="ValueLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Stats/Damage" index="1"]
 theme_override_font_sizes/font_size = 28
 
-[node name="Move" parent="MarginContainer/PanelContainer/VBoxContainer/Stats" instance=ExtResource("7_06qtw")]
+[node name="Move" parent="MarginContainer/PanelContainer/VBoxContainer/Stats" instance=ExtResource("9_4hn80")]
 layout_mode = 2
 
 [node name="Icon" parent="MarginContainer/PanelContainer/VBoxContainer/Stats/Move" index="0"]
 self_modulate = Color(0.467528, 0.443071, 0.384359, 1)
 custom_minimum_size = Vector2(26, 26)
-texture = ExtResource("10_v87xr")
+texture = ExtResource("11_e6y1u")
 
 [node name="ValueLabel" parent="MarginContainer/PanelContainer/VBoxContainer/Stats/Move" index="1"]
 theme_override_font_sizes/font_size = 28
 
-[node name="Health" parent="MarginContainer/PanelContainer/VBoxContainer/Stats" instance=ExtResource("7_06qtw")]
+[node name="Health" parent="MarginContainer/PanelContainer/VBoxContainer/Stats" instance=ExtResource("9_4hn80")]
 layout_mode = 2
 
 [node name="Icon" parent="MarginContainer/PanelContainer/VBoxContainer/Stats/Health" index="0"]
