@@ -11,7 +11,7 @@ extends Control
 
 
 func _ready() -> void:
-	character_info_panel.hide_info()
+	#character_info_panel.hide_info()
 	start_button.pressed.connect(_on_start_button_pressed)
 	detail_health_bar.animation_finished.connect(_on_detail_health_bar_animation_finished)
 
@@ -64,11 +64,13 @@ func _on_consumable_changed(type: Schema.ConsumableType, new_value, _delta):
 
 
 func _show_character_info_card(chara: Character):
-	character_info_panel.show_info(chara)
+	#character_info_panel.show_info(chara)
+	pass
 
 
 func _hide_character_info_card():
-	character_info_panel.hide_info()
+	#character_info_panel.hide_info()
+	pass
 
 
 func _on_req_show_defeated_view():

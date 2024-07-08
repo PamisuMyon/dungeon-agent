@@ -60,6 +60,7 @@ theme_override_font_sizes/font_size = 32
 text = "123"
 
 [node name="CharInfoWrapper" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -88,8 +89,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
-offset_bottom = 20.0
+offset_top = -126.0
+offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 6

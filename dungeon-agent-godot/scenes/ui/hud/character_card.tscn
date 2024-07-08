@@ -1,0 +1,220 @@
+[gd_scene load_steps=14 format=3 uid="uid://dhnfpmb2cgqhv"]
+
+[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_jqq4l"]
+[ext_resource type="Script" path="res://scripts/ui/common/character_card.gd" id="2_fxnwj"]
+[ext_resource type="Texture2D" uid="uid://26mwsii8gl4i" path="res://assets/ui/elements/panel_blue.png" id="3_dpbvi"]
+[ext_resource type="Texture2D" uid="uid://dgw75o8or6oh2" path="res://assets/ui/elements/rect_r8.png" id="3_qoiun"]
+[ext_resource type="Texture2D" uid="uid://ce1glbw1diptj" path="res://assets/ui/elements/panel_red.png" id="4_1ck6e"]
+[ext_resource type="Texture2D" uid="uid://c5lyoyurka7ph" path="res://assets/ui/elements/panelInset_beige.png" id="5_y3n3h"]
+[ext_resource type="Texture2D" uid="uid://d1lt421ub5xh1" path="res://assets/ui/elements/circle_gradient_256.png" id="6_xpct5"]
+[ext_resource type="Texture2D" uid="uid://dstg1hmkqifnx" path="res://assets/ui/icons/skeleton_minion.png" id="7_ny3m0"]
+[ext_resource type="Texture2D" uid="uid://btb18h3an2tpd" path="res://assets/ui/elements/OnePx.png" id="8_a40jp"]
+[ext_resource type="PackedScene" uid="uid://cuad2qm6pl1je" path="res://scenes/ui/common/stat_tag.tscn" id="10_lhcj2"]
+[ext_resource type="Texture2D" uid="uid://csymxbvlolpj3" path="res://assets/ui/icons/sword.png" id="11_gamsx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7sji"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7b3yf"]
+texture = ExtResource("5_y3n3h")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="CharacterCard" type="PanelContainer" node_paths=PackedStringArray("icon", "disabled_mask")]
+custom_minimum_size = Vector2(188, 0)
+offset_right = 188.0
+offset_bottom = 224.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_jqq4l")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_c7sji")
+script = ExtResource("2_fxnwj")
+icon = NodePath("Content/PanelContainer/VBoxContainer/Middle/MarginContainer/Icon")
+disabled_mask = NodePath("DisabledMask")
+
+[node name="HighLight" type="NinePatchRect" parent="."]
+self_modulate = Color(0.96, 0.90176, 0.0864, 1)
+layout_mode = 2
+texture = ExtResource("3_qoiun")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BackgroundNormal" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_dpbvi")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="BackgroundRed" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_1ck6e")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="Content"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_7b3yf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="NameLabel" type="Label" parent="Content/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.337255, 0.317647, 0.270588, 1)
+theme_override_font_sizes/font_size = 22
+text = "Bare-bone"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Middle" type="Control" parent="Content/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/PanelContainer/VBoxContainer/Middle"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -52.0
+offset_right = 64.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+
+[node name="Control" type="Control" parent="Content/PanelContainer/VBoxContainer/Middle/MarginContainer"]
+layout_mode = 2
+
+[node name="Gradient" type="TextureRect" parent="Content/PanelContainer/VBoxContainer/Middle/MarginContainer/Control"]
+self_modulate = Color(0, 0, 0, 0.227451)
+custom_minimum_size = Vector2(156, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -94.0
+offset_right = 94.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_xpct5")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Content/PanelContainer/VBoxContainer/Middle/MarginContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_ny3m0")
+expand_mode = 1
+
+[node name="Damage" parent="Content/PanelContainer/VBoxContainer/Middle" instance=ExtResource("10_lhcj2")]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+offset_right = 69.0
+offset_bottom = 0.0
+grow_vertical = 0
+
+[node name="Icon" parent="Content/PanelContainer/VBoxContainer/Middle/Damage" index="0"]
+self_modulate = Color(0.467528, 0.443071, 0.384359, 1)
+custom_minimum_size = Vector2(26, 26)
+texture = ExtResource("11_gamsx")
+
+[node name="ValueLabel" parent="Content/PanelContainer/VBoxContainer/Middle/Damage" index="1"]
+theme_override_font_sizes/font_size = 28
+
+[node name="Health" parent="Content/PanelContainer/VBoxContainer/Middle" instance=ExtResource("10_lhcj2")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -34.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Icon" parent="Content/PanelContainer/VBoxContainer/Middle/Health" index="0"]
+self_modulate = Color(0.467528, 0.443071, 0.384359, 1)
+custom_minimum_size = Vector2(26, 26)
+
+[node name="ValueLabel" parent="Content/PanelContainer/VBoxContainer/Middle/Health" index="1"]
+theme_override_font_sizes/font_size = 28
+
+[node name="Divider" type="TextureRect" parent="Content/PanelContainer/VBoxContainer"]
+self_modulate = Color(0.356863, 0.333333, 0.282353, 0.282353)
+layout_mode = 2
+texture = ExtResource("8_a40jp")
+
+[node name="Desc" type="MarginContainer" parent="Content/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="DescLabel" type="RichTextLabel" parent="Content/PanelContainer/VBoxContainer/Desc"]
+custom_minimum_size = Vector2(0, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0.337255, 0.317647, 0.270588, 1)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center][color=#8c7a00]Charge 2:[/color] Deals [color=#3bad24]200%[/color] damage to a single target.[/center]"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="DisabledMask" type="NinePatchRect" parent="."]
+visible = false
+self_modulate = Color(0, 0, 0, 0.341176)
+layout_mode = 2
+texture = ExtResource("3_dpbvi")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[editable path="Content/PanelContainer/VBoxContainer/Middle/Damage"]
+[editable path="Content/PanelContainer/VBoxContainer/Middle/Health"]
