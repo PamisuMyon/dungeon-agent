@@ -8,6 +8,10 @@ func _ready() -> void:
 	runtime = RuntimeData.new()
 
 
+func reset():
+	runtime = RuntimeData.new()
+
+
 class RuntimeData:
 	#region combat
 	var dungeon_health: int
@@ -20,6 +24,7 @@ class RuntimeData:
 	var gold: int
 	var servants: Array[CharacterConfig] = []
 	#endregion
+
 
 	func change_dungeon_health(delta: int, notify: bool = true):
 		dungeon_health = max(0, dungeon_health + delta)
