@@ -100,6 +100,8 @@ Game-icons (https://game-icons.net)
 
 Electric icon by sbed
 Pointy sword icon by Lorc
+Pawn icon by Lorc
+High shot icon by Lorc
 
 License:
 CC-BY 3.0 ( http://creativecommons.org/licenses/by/3.0/legalcode )

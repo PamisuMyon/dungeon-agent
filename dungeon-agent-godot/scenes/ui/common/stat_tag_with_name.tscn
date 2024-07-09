@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://g86uhumfyn8p"]
+
+[ext_resource type="Theme" uid="uid://c12818w33rh73" path="res://assets/ui/default_theme.tres" id="1_mamgb"]
+[ext_resource type="Script" path="res://scripts/ui/common/stat_tag.gd" id="1_pk8qs"]
+[ext_resource type="Texture2D" uid="uid://blr72bjn0wbj7" path="res://assets/ui/icons/suit_hearts.png" id="2_51r6w"]
+
+[node name="StatTagWithName" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 34)
+offset_right = 57.0
+offset_bottom = 45.0
+theme = ExtResource("1_mamgb")
+theme_override_constants/separation = 4
+script = ExtResource("1_pk8qs")
+
+[node name="Icon" type="TextureRect" parent="."]
+self_modulate = Color(0.466667, 0.443137, 0.384314, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_51r6w")
+expand_mode = 1
+
+[node name="NameLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.356863, 0.333333, 0.282353, 1)
+theme_override_font_sizes/font_size = 22
+text = "Health"
+
+[node name="ValueLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.356863, 0.333333, 0.282353, 1)
+theme_override_font_sizes/font_size = 24
+text = "5"
+horizontal_alignment = 2

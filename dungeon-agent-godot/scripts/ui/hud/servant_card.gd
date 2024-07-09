@@ -8,15 +8,14 @@ enum CardState {
 }
 
 @export var selection_offset_y: float = -20.
+@export var body: Control
+@export var icon: TextureRect
+@export var highlight: Control
+@export var disabled_mask: Control
 
 var index: int
 var config: CharacterConfig
 var _state = CardState.NORMAL
-
-@onready var body: Control = $Body
-@onready var icon: TextureRect = $Body/Icon
-@onready var highlight: Control = $Body/HighLight
-@onready var disabled_mask: Control = $Body/DisabledMask
 
 
 func _ready() -> void:

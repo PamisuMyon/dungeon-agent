@@ -23,6 +23,7 @@ var attributes: Dictionary
 
 @export_group("Display")
 @export var display_name: String
+@export var description: String
 @export_file("*.png") var icon_path: String
 @export_file("*.tscn") var model_path: String
 

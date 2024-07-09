@@ -64,12 +64,12 @@ func _on_consumable_changed(type: Schema.ConsumableType, new_value, _delta):
 
 
 func _show_character_info_card(chara: Character):
-	#character_info_panel.show_info(chara)
+	character_info_panel.show_info(chara)
 	pass
 
 
 func _hide_character_info_card():
-	#character_info_panel.hide_info()
+	character_info_panel.hide_info()
 	pass
 
 
