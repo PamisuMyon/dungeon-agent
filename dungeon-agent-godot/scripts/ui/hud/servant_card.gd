@@ -23,14 +23,6 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 
 
-func _on_mouse_entered():
-	if _state == CardState.NORMAL:
-		# TODO Animation
-		var pos = body.position
-		pos.y = selection_offset_y
-		body.position = pos
-
-
 func _gui_input(event: InputEvent) -> void:
 	if _state != CardState.NORMAL:
 		return
@@ -40,9 +32,19 @@ func _gui_input(event: InputEvent) -> void:
 		card_selected.emit(self)
 
 
+func _on_mouse_entered():
+	if _state == CardState.NORMAL:
+		# TODO Animation
+		var pos = body.position
+		pos.y = selection_offset_y
+		body.position = pos
+		Events.req_show_character_info_by_config.emit(config, false)
+
+
 func _on_mouse_exited():
 	if _state == CardState.NORMAL:
 		body.position = Vector2.ZERO
+		Events.req_hide_character_info.emit(false)
 
 
 func on_spawn():

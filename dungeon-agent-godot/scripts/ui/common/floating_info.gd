@@ -25,15 +25,15 @@ func _process(_delta: float) -> void:
 
 func _on_mouse_entered() -> void:
 	if chara:
-		Events.req_show_character_info_card.emit(chara)
+		Events.req_show_character_info.emit(chara)
 
 
 func _on_mouse_exited() -> void:
 	if chara:
-		Events.req_hide_character_info_card.emit()
+		Events.req_hide_character_info.emit(false)
 
 
-func _on_health_changed(delta: float, new_health: float):
+func _on_health_changed(_delta: float, new_health: float):
 	update_health(new_health, chara.attr_comp.get_value(Schema.AttributeType.MAX_HEALTH))
 
 

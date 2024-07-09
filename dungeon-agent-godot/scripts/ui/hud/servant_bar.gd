@@ -43,6 +43,7 @@ func _refresh():
 func _on_card_selected(card: ServantCard):
 	if App.combat_manager.bb.sub_state != CombatBlackboard.SubState.EMBATTLE_NONE:
 		return
+	Events.req_show_character_info_by_config.emit(card.config, true)
 	for i in range(_cards.size()):
 		if _cards[i] == card:
 			_selected_index = i
@@ -57,10 +58,12 @@ func _on_servant_placed():
 	_cards.remove_at(_selected_index)
 	_card_pool.release(card)
 	_selected_index = -1
+	Events.req_hide_character_info.emit(true)
 
 
 func _on_servant_place_cancelled():
 	_selected_index = -1
+	Events.req_hide_character_info.emit(true)
 
 
 func _on_inventory_servants_changed():

@@ -2,7 +2,7 @@ extends Control
 
 @export var health_bar: DungeonHealthBar
 @export var gold_label: Label
-@export var character_info_panel: Control
+@export var character_info_panel: CharacterInfoPanel
 @export var start_button: Button
 @export var health_detail_view: Control
 @export var detail_health_bar: DungeonHealthBar
@@ -19,8 +19,9 @@ func _ready() -> void:
 	Events.dungeon_health_changed.connect(_on_dungeon_health_changed)
 	Events.consumable_changed.connect(_on_consumable_changed)
 
-	Events.req_show_character_info_card.connect(_show_character_info_card)
-	Events.req_hide_character_info_card.connect(_hide_character_info_card)
+	Events.req_show_character_info.connect(_show_character_info_by_character)
+	Events.req_show_character_info_by_config.connect(_show_character_info_by_config)
+	Events.req_hide_character_info.connect(_hide_character_info)
 	Events.req_show_defeated_view.connect(_on_req_show_defeated_view)
 	Events.req_show_victory_view.connect(_on_req_show_victory_view)
 	Events.req_show_dungeon_health_detail_view.connect(_on_req_show_dungeon_health_detail_view)
@@ -63,14 +64,16 @@ func _on_consumable_changed(type: Schema.ConsumableType, new_value, _delta):
 		gold_label.text = str(new_value)
 
 
-func _show_character_info_card(chara: Character):
-	character_info_panel.show_info(chara)
-	pass
+func _show_character_info_by_character(chara: Character):
+	character_info_panel.show_by_character(chara)
 
 
-func _hide_character_info_card():
-	character_info_panel.hide_info()
-	pass
+func _show_character_info_by_config(config: CharacterConfig, is_pinned: bool):
+	character_info_panel.show_by_config(config, is_pinned)
+
+
+func _hide_character_info(force: bool):
+	character_info_panel.hide_info(force)
 
 
 func _on_req_show_defeated_view():

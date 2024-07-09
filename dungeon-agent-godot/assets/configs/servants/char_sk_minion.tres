@@ -16,8 +16,6 @@ extra = {}
 act_anim_name = "h1_melee_dia"
 act_pre_delay = 0.38
 act_post_delay = 0.62
-display_name = ""
-description = ""
 
 [resource]
 script = ExtResource("2_gaus8")
@@ -33,6 +31,7 @@ damage = 4.0
 initiative = 0.0
 move = 2
 display_name = "Skeleton Minion"
+description = ""
 icon_path = "res://assets/ui/icons/skeleton_minion.png"
 model_path = "res://scenes/servants/models/skeleton_minion_model.tscn"
 base_price = 12.0
