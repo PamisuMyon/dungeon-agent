@@ -11,7 +11,7 @@ theme_override_constants/separation = 4
 script = ExtResource("1_2awkb")
 
 [node name="Icon" type="TextureRect" parent="."]
-self_modulate = Color(0.91, 0.267692, 0.2093, 1)
+self_modulate = Color(0.466667, 0.443137, 0.384314, 1)
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4

@@ -1,16 +1,9 @@
 class_name ShopItemView
 extends Control
 
-@export var name_label: Label
-@export var icon: TextureRect
-@export var ability_item: AbilityItem
 @export var buy_button: Button
 @export var price_label: Label
-
-@export_category("Stats")
-@export var health: StatTag
-@export var damage: StatTag
-@export var move: StatTag
+@export var char_info: CharacterInfoView
 
 var _index: int
 var _item: ShopItem
@@ -41,24 +34,7 @@ func _on_consumable_changed(type: Schema.ConsumableType, new_value, _delta):
 func set_data(index: int, item: ShopItem):
 	_index = index
 	_item = item
-	name_label.text = item.config.display_name
-
-	if item.config.skill_abilities.is_empty():
-		ability_item.visible = false
-		size.y = 100
-	else:
-		ability_item.visible = true
-		ability_item.set_data(item.config.skill_abilities[0])
-
-	health.set_value(item.config.max_health)
-	damage.set_value(item.config.damage)
-	move.set_value(item.config.move)
-
-	if item.config.icon_path:
-		icon.visible = true
-		icon.texture = load(item.config.icon_path)
-	else:
-		icon.visible = false
+	char_info.inflate_by_config(item.config)
 
 	_refresh_buy_button(item.price, App.save.runtime.gold)
 
