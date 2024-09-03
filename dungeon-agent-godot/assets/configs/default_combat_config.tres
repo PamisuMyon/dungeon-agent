@@ -1,17 +1,18 @@
-[gd_resource type="Resource" script_class="CombatConfig" load_steps=8 format=3 uid="uid://mwxy7ml6yy8e"]
+[gd_resource type="Resource" script_class="CombatConfig" load_steps=9 format=3 uid="uid://mwxy7ml6yy8e"]
 
 [ext_resource type="Script" path="res://scripts/configs/combat_config.gd" id="1_6711x"]
 [ext_resource type="Resource" uid="uid://ci2hh014uav7c" path="res://assets/configs/adventurers/char_knight.tres" id="1_lslll"]
 [ext_resource type="Script" path="res://scripts/configs/level_config.gd" id="1_ql81l"]
+[ext_resource type="Script" path="res://scripts/configs/character_config.gd" id="3_43o0v"]
 [ext_resource type="Script" path="res://scripts/configs/wave_config.gd" id="3_f21xh"]
 
 [sub_resource type="Resource" id="Resource_76d6g"]
 script = ExtResource("3_f21xh")
-enemies = Array[Resource("res://scripts/configs/character_config.gd")]([ExtResource("1_lslll")])
+enemies = Array[ExtResource("3_43o0v")]([ExtResource("1_lslll")])
 
 [sub_resource type="Resource" id="Resource_aw4q3"]
 script = ExtResource("3_f21xh")
-enemies = Array[Resource("res://scripts/configs/character_config.gd")]([ExtResource("1_lslll")])
+enemies = Array[ExtResource("3_43o0v")]([ExtResource("1_lslll")])
 
 [sub_resource type="Resource" id="Resource_scc22"]
 script = ExtResource("1_ql81l")
